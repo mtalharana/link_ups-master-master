@@ -384,6 +384,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                               fontFamily: 'OpenSans',
                               color: Colors.white,
                               fontSize: 18,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ],
@@ -414,6 +415,10 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                 itemBuilder: (context, index) {
                                   final data = snapshot.data!.docs[index];
                                   final dataa = snapshot.data!.docs[index].id;
+                                  String description = stripHtmlIfNeededd(
+                                      "${data.get("description")}");
+                                  String descriptiontrimmed =
+                                      description.trim();
                                   return (endtimecheck[index] == 1)
                                       ? Container(
                                           height: appSize.height * 0.4,
@@ -554,63 +559,111 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                         style: TextStyle(
                                                                             fontFamily:
                                                                                 'OpenSans',
-                                                                            color:
-                                                                                Colors.white,
-                                                                            fontSize: 15),
+                                                                            color: Colors
+                                                                                .white,
+                                                                            fontSize:
+                                                                                15,
+                                                                            fontWeight:
+                                                                                FontWeight.w600),
                                                                       ),
                                                                     ),
                                                                   ),
                                                                   // SizedBox(
                                                                   //   width: 8,
                                                                   // ),
-                                                                  Container(
-                                                                    height: 19,
-                                                                    width:
-                                                                        60.62,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      image: DecorationImage(
-                                                                          image: AssetImage(
-                                                                              "assets/Group 163989.png"),
-                                                                          fit: BoxFit
-                                                                              .cover),
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
+                                                                            .only(
+                                                                        right:
+                                                                            8.0),
+                                                                    child:
+                                                                        Container(
+                                                                      height:
+                                                                          19,
+                                                                      width:
+                                                                          60.62,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        image: DecorationImage(
+                                                                            image:
+                                                                                AssetImage("assets/Group 163989.png"),
+                                                                            fit: BoxFit.cover),
+                                                                      ),
                                                                     ),
                                                                   ),
-                                                                  Text(
-                                                                    data.get(
-                                                                        "category"),
-                                                                    style: TextStyle(
-                                                                        fontFamily:
-                                                                            'OpenSans',
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        fontSize:
-                                                                            1),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Expanded(
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: const EdgeInsets
+                                                                              .only(
+                                                                          left:
+                                                                              10.0),
+                                                                      child:
+                                                                          Text(
+                                                                        descriptiontrimmed,
+                                                                        overflow:
+                                                                            TextOverflow.ellipsis,
+                                                                        maxLines:
+                                                                            2,
+                                                                        style: TextStyle(
+                                                                            fontFamily:
+                                                                                'OpenSans',
+                                                                            color: Colors
+                                                                                .white,
+                                                                            fontSize:
+                                                                                10,
+                                                                            fontWeight:
+                                                                                FontWeight.w600),
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
                                                               Padding(
                                                                 padding:
                                                                     const EdgeInsets
-                                                                            .all(
-                                                                        8.0),
-                                                                child: Column(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
+                                                                            .only(
+                                                                        left:
+                                                                            10),
+                                                                child: Row(
                                                                   children: [
                                                                     Text(
-                                                                      stripHtmlIfNeededd(
-                                                                        "${data.get("description")}",
-                                                                      ),
-                                                                      overflow:
-                                                                          TextOverflow
-                                                                              .ellipsis,
-                                                                      maxLines:
-                                                                          1,
+                                                                      "Location : ",
+                                                                      style: TextStyle(
+                                                                          fontFamily:
+                                                                              'OpenSans',
+                                                                          color: Colors
+                                                                              .white,
+                                                                          fontSize:
+                                                                              10,
+                                                                          fontWeight:
+                                                                              FontWeight.w600),
+                                                                    ),
+                                                                    Text(
+                                                                      data.get(
+                                                                          "venue"),
+                                                                      style: TextStyle(
+                                                                          fontFamily:
+                                                                              'OpenSans',
+                                                                          color: Colors
+                                                                              .white,
+                                                                          fontSize:
+                                                                              10,
+                                                                          fontWeight:
+                                                                              FontWeight.w600),
+                                                                    ),
+                                                                    Text(
+                                                                      (","),
                                                                       style: TextStyle(
                                                                           fontFamily:
                                                                               'OpenSans',
@@ -621,46 +674,6 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                     ),
                                                                   ],
                                                                 ),
-                                                              ),
-                                                              Row(
-                                                                children: [
-                                                                  Padding(
-                                                                    padding:
-                                                                        const EdgeInsets.all(
-                                                                            8.0),
-                                                                    child: Text(
-                                                                      "Location : ",
-                                                                      style: TextStyle(
-                                                                          fontFamily:
-                                                                              'OpenSans',
-                                                                          color: Colors
-                                                                              .white,
-                                                                          fontSize:
-                                                                              10),
-                                                                    ),
-                                                                  ),
-                                                                  Text(
-                                                                    data.get(
-                                                                        "venue"),
-                                                                    style: TextStyle(
-                                                                        fontFamily:
-                                                                            'OpenSans',
-                                                                        color: Colors
-                                                                            .white,
-                                                                        fontSize:
-                                                                            10),
-                                                                  ),
-                                                                  Text(
-                                                                    (","),
-                                                                    style: TextStyle(
-                                                                        fontFamily:
-                                                                            'OpenSans',
-                                                                        color: Colors
-                                                                            .white,
-                                                                        fontSize:
-                                                                            10),
-                                                                  ),
-                                                                ],
                                                               ),
                                                             ],
                                                           ),
@@ -691,7 +704,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                           }),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Container(
                         height: 77,
                         width: 334,
@@ -703,34 +716,37 @@ class _CurrentLocationState extends State<CurrentLocation> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 25),
+                              padding: const EdgeInsets.only(left: 19),
                               child: Row(
                                 children: [
-                                  Text(
-                                    "INVITE YOUR FRIENDS",
-                                    style: TextStyle(
-                                        fontFamily: 'OpenSans',
-                                        fontSize: 16,
-                                        color: Colors.white),
+                                  Expanded(
+                                    child: Text(
+                                      "INVITE YOUR FRIENDS",
+                                      style: TextStyle(
+                                          fontFamily: 'OpenSans',
+                                          fontSize: 16,
+                                          color: Colors.white),
+                                    ),
                                   ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  TextButton(
-                                    onPressed: () {},
-                                    child: Container(
-                                      height: 18,
-                                      width: 69,
-                                      decoration: BoxDecoration(
-                                        color: Color.fromRGBO(214, 220, 22, 1),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          "INVITE",
-                                          style: TextStyle(
-                                            fontFamily: 'OpenSans',
-                                            fontSize: 10,
-                                            color: Colors.white,
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 12.0),
+                                    child: TextButton(
+                                      onPressed: () {},
+                                      child: Container(
+                                        height: 18,
+                                        width: 69,
+                                        decoration: BoxDecoration(
+                                          color:
+                                              Color.fromRGBO(214, 220, 22, 1),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            "INVITE",
+                                            style: TextStyle(
+                                              fontFamily: 'OpenSans',
+                                              fontSize: 10,
+                                              color: Colors.white,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -740,13 +756,14 @@ class _CurrentLocationState extends State<CurrentLocation> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 15),
+                              padding: const EdgeInsets.only(left: 19),
                               child: Text(
                                 "Get 20\$ off Tickets",
                                 style: TextStyle(
                                     fontFamily: 'OpenSans',
-                                    fontSize: 12,
-                                    color: Colors.white),
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400),
                               ),
                             ),
                           ],
