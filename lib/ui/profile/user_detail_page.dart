@@ -128,7 +128,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
               //         padding: const EdgeInsets.only(top: 10, left: 35),
               //         child: Text(
               //           "Upload Photos from",
-              //           style: TextStyle(color: Colors.white, fontSize: 16),
+              //          style: TextStyle(color: Colors.white, fontSize: 16),
               //         ),
               //       ),
               //     ),
@@ -154,7 +154,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
               //             Text(
               //               // 'browse_image'.tr,
               //               'Your Photos',
-              //               style: TextStyle(color: Colors.black),
+              //              style: TextStyle(color: Colors.black),
               //             )
               //           ],
               //         ),
@@ -176,7 +176,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
               //             Text(
               //               // 'take_photo'.tr,
               //               'Camera',
-              //               style: TextStyle(color: Colors.black),
+              //              style: TextStyle(color: Colors.black),
               //             )
               //           ],
               //         ),
@@ -213,9 +213,6 @@ class _UserDetailPageState extends State<UserDetailPage> {
               ),
             ),
           ),
-
-
-
 
           // Column(
           //   children: [
@@ -545,7 +542,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                         //     children: [
                         //       Text(
                         //         "Photography",
-                        //         style: TextStyle(fontSize: 12),
+                        //        style: TextStyle(fontSize: 12),
                         //       )
                         //     ],
                         //   ),
@@ -565,7 +562,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                         //     children: [
                         //       Text(
                         //         "Cooking",
-                        //         style: TextStyle(fontSize: 12),
+                        //        style: TextStyle(fontSize: 12),
                         //       )
                         //     ],
                         //   ),
@@ -585,7 +582,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                         //     children: [
                         //       Text(
                         //         "Dancing",
-                        //         style: TextStyle(fontSize: 12),
+                        //        style: TextStyle(fontSize: 12),
                         //       )
                         //     ],
                         //   ),
@@ -605,7 +602,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                         //     children: [
                         //       Text(
                         //         "Shopping",
-                        //         style: TextStyle(fontSize: 12),
+                        //        style: TextStyle(fontSize: 12),
                         //       ),
                         //     ],
                         //   ),

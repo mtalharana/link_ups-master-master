@@ -229,6 +229,7 @@ class _ChatSearchPageState extends State<ChatSearchPage> {
                                               searchList[index].firstname[0] +
                                                   searchList[index].lastname[0],
                                               style: TextStyle(
+                                                  fontFamily: "OpenSans",
                                                   color: Colors.blue[700],
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.bold),

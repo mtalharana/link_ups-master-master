@@ -224,8 +224,7 @@ class _Event8State extends State<Event8> {
                                 itemCount: snapshot.data!.docs.length,
                                 itemBuilder: (context, index) {
                                   final data = snapshot.data!.docs[index];
-                                  final dataaaa =
-                                      snapshot.data!.docs[index].id;
+                                  final dataaaa = snapshot.data!.docs[index].id;
 
                                   return PrettyQr(
                                     typeNumber: 2,
@@ -254,7 +253,7 @@ class _Event8State extends State<Event8> {
             //     child: Center(
             //       child: Text(
             //         "My Bookings",
-            //         style: TextStyle(color: Colors.white),
+            //        style: TextStyle(color: Colors.white),
             //       ),
             //     ),
             //   )
@@ -289,4 +288,3 @@ class _Event8State extends State<Event8> {
     );
   }
 }
-

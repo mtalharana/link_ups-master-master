@@ -32,6 +32,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
             Text(
               "Linkup Vibes!",
               style: TextStyle(
+                  fontFamily: "OpenSans",
                   color: Color(0xff38ABD8),
                   fontSize: 17,
                   fontWeight: FontWeight.bold),
@@ -44,6 +45,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
               'With linkup Vibes, you can select which\n Caribbean or Latin American country you \nwant to see people from',
               textAlign: TextAlign.center,
               style: TextStyle(
+                fontFamily: "OpenSans",
                 fontSize: 14,
                 color: Color(0xff2E2E2E),
                 fontWeight: FontWeight.w400,

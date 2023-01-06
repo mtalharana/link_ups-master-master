@@ -41,13 +41,13 @@ class _TabBarScreenState extends State<TabBarScreen> {
               Center(
                   child: Text(
                 "0",
-                style: TextStyle(fontSize: 40),
+                style: TextStyle(fontFamily: "OpenSans", fontSize: 40),
               )),
               HomePage(),
               Center(
                   child: Text(
                 "2",
-                style: TextStyle(fontSize: 40),
+                style: TextStyle(fontFamily: "OpenSans", fontSize: 40),
               )),
             ],
           )),

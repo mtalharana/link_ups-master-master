@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class Short3 extends StatefulWidget {
-
   @override
   State<Short3> createState() => _Short3State();
 }
@@ -15,34 +14,34 @@ class _Short3State extends State<Short3> {
         child: Column(children: [
           Stack(
             children: [
-             Image.asset("assets/appbar-removebg-preview.png"),
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 127, top: 0),
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            "assets/Vector Smart Object 2.png",
-                            width: 130,
-                            height: 130,
-                          ),
-                          SizedBox(
-                            width: 60,
-                          ),
-                          Image.asset(
-                            "assets/filter-search.png",
-                            width: 30,
-                            height: 30,
-                          ),
-                        ],
-                      ),
+              Image.asset("assets/appbar-removebg-preview.png"),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 127, top: 0),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          "assets/Vector Smart Object 2.png",
+                          width: 130,
+                          height: 130,
+                        ),
+                        SizedBox(
+                          width: 60,
+                        ),
+                        Image.asset(
+                          "assets/filter-search.png",
+                          width: 30,
+                          height: 30,
+                        ),
+                      ],
                     ),
+                  ),
                   // SizedBox(height: 35),
-                 Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 28.0),
-                      child: Image.asset("assets/Group 163981.png"),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 28.0),
+                    child: Image.asset("assets/Group 163981.png"),
+                  ),
                   // SizedBox(
                   //   height: 5,
                   // ),
@@ -53,8 +52,8 @@ class _Short3State extends State<Short3> {
                         child: Image.asset("assets/Layer 31.png"),
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(left: 28, top: 430, right: 13),
+                        padding: const EdgeInsets.only(
+                            left: 28, top: 430, right: 13),
                         child: Container(
                           height: 200,
                           width: 330,
@@ -75,6 +74,7 @@ class _Short3State extends State<Short3> {
                                 child: Text(
                                   "Age Range",
                                   style: TextStyle(
+                                    fontFamily: "OpenSans",
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,
@@ -91,6 +91,7 @@ class _Short3State extends State<Short3> {
                                     Text(
                                       "22",
                                       style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         color: Colors.grey,
                                       ),
                                     ),
@@ -100,6 +101,7 @@ class _Short3State extends State<Short3> {
                                     Text(
                                       "27",
                                       style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         color: Colors.grey,
                                       ),
                                     )
@@ -120,6 +122,7 @@ class _Short3State extends State<Short3> {
                                     Text(
                                       "23",
                                       style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         color: Colors.grey,
                                       ),
                                     ),
@@ -129,6 +132,7 @@ class _Short3State extends State<Short3> {
                                     Text(
                                       "24",
                                       style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         color: Colors.grey,
                                       ),
                                     )
@@ -149,6 +153,7 @@ class _Short3State extends State<Short3> {
                                     Text(
                                       "23",
                                       style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         color: Colors.grey,
                                       ),
                                     ),
@@ -158,6 +163,7 @@ class _Short3State extends State<Short3> {
                                     Text(
                                       "29",
                                       style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         color: Colors.grey,
                                       ),
                                     ),
@@ -169,15 +175,16 @@ class _Short3State extends State<Short3> {
                         ),
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(top: 612, left: 55, right: 52),
+                        padding: const EdgeInsets.only(
+                            top: 612, left: 55, right: 52),
                         child: Stack(children: [
                           Image.asset("assets/Rectangle 23327.jpg"),
                           Padding(
                             padding: const EdgeInsets.only(top: 10, left: 115),
                             child: Text(
                               "Apply",
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(
+                                  fontFamily: "OpenSans", color: Colors.white),
                             ),
                           )
                         ]),

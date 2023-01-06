@@ -29,6 +29,7 @@ class _OnboardingScreenSixState extends State<OnboardingScreenSix> {
             Text(
               "Linkup Vibes Resturant",
               style: TextStyle(
+                  fontFamily: "OpenSans",
                   color: Color(0xff38ABD8),
                   fontSize: 17,
                   fontWeight: FontWeight.bold),
@@ -41,6 +42,7 @@ class _OnboardingScreenSixState extends State<OnboardingScreenSix> {
               'Want to take your new date to a nice resturant? \nSelect the food section on the app and all the \nresturant in your area will be visible',
               textAlign: TextAlign.center,
               style: TextStyle(
+                fontFamily: "OpenSans",
                 fontSize: 14,
                 color: Color(0xff2E2E2E),
                 fontWeight: FontWeight.w400,

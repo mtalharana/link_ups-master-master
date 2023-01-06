@@ -213,7 +213,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   @override
   void initState() {
-    
     WidgetsBinding.instance.addObserver(this);
     checkToken(context);
     fetchProfiles();
@@ -235,8 +234,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   String? replacedistancerange;
   String? distancerange;
   String? result2;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -418,7 +415,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                                                 padding: const EdgeInsets.only(left: 8.0, top: 10, right: 8.0),
                                                                                 child: Text(
                                                                                   "which_carribbean_or_latin_linkwith".tr,
-                                                                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                                                                                  style: TextStyle(fontFamily: "OpenSans", fontSize: 16, fontWeight: FontWeight.w500),
                                                                                   textAlign: TextAlign.start,
                                                                                 ),
                                                                               ),
@@ -461,7 +458,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                                                 padding: const EdgeInsets.only(left: 8.0, top: 10, right: 8.0),
                                                                                 child: Text(
                                                                                   "which_carrib_people_meet_from".tr,
-                                                                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                                                                                  style: TextStyle(fontFamily: "OpenSans", fontSize: 16, fontWeight: FontWeight.w500),
                                                                                   textAlign: TextAlign.start,
                                                                                 ),
                                                                               ),
@@ -527,6 +524,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                                                   child: Text(
                                                                                     "Apply",
                                                                                     style: TextStyle(
+                                                                                      fontFamily: "OpenSans",
                                                                                       color: Colors.white,
                                                                                     ),
                                                                                   ),
@@ -547,6 +545,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                         child: Text(
                                                           "Link Up",
                                                           style: TextStyle(
+                                                              fontFamily:
+                                                                  "OpenSans",
                                                               fontSize: 15,
                                                               color:
                                                                   Colors.black,
@@ -588,6 +588,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                         Text(
                                                           "Show me",
                                                           style: TextStyle(
+                                                              fontFamily:
+                                                                  "OpenSans",
                                                               fontSize: 15,
                                                               color:
                                                                   Colors.black,
@@ -602,6 +604,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                           "${authController.linkmeWith}"
                                                               .toString(),
                                                           style: TextStyle(
+                                                              fontFamily:
+                                                                  "OpenSans",
                                                               color:
                                                                   Colors.black,
                                                               fontSize: 10),
@@ -671,6 +675,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                                             Text(
                                                                       "Show Me",
                                                                       style: TextStyle(
+                                                                          fontFamily:
+                                                                              "OpenSans",
                                                                           fontSize:
                                                                               20,
                                                                           fontWeight:
@@ -681,6 +687,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                                           Text(
                                                                         "Whichgender(s) would you like to see?",
                                                                         style: TextStyle(
+                                                                            fontFamily:
+                                                                                "OpenSans",
                                                                             fontSize:
                                                                                 16,
                                                                             color: Color.fromARGB(
@@ -821,6 +829,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                           Text(
                                                             "Age range",
                                                             style: TextStyle(
+                                                                fontFamily:
+                                                                    "OpenSans",
                                                                 color: Colors
                                                                     .black,
                                                                 fontWeight:
@@ -834,6 +844,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                           Text(
                                                             result.toString(),
                                                             style: TextStyle(
+                                                                fontFamily:
+                                                                    "OpenSans",
                                                                 fontSize: 10,
                                                                 color: Colors
                                                                     .black),
@@ -922,6 +934,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                                           Text(
                                                                         "Age Range",
                                                                         style: TextStyle(
+                                                                            fontFamily:
+                                                                                "OpenSans",
                                                                             fontSize:
                                                                                 20,
                                                                             fontWeight:
@@ -1052,6 +1066,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                           Text(
                                                             "Distance (M)",
                                                             style: TextStyle(
+                                                                fontFamily:
+                                                                    "OpenSans",
                                                                 color: Colors
                                                                     .black,
                                                                 fontWeight:
@@ -1065,6 +1081,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                           Text(
                                                             result2.toString(),
                                                             style: TextStyle(
+                                                                fontFamily:
+                                                                    "OpenSans",
                                                                 color: Colors
                                                                     .black,
                                                                 fontSize: 10),
@@ -1253,6 +1271,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                         Text(
                                                           "Additional options",
                                                           style: TextStyle(
+                                                              fontFamily:
+                                                                  "OpenSans",
                                                               color:
                                                                   Colors.black,
                                                               fontWeight:
@@ -1431,6 +1451,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                               .toString() ??
                                                           '',
                                                       style: TextStyle(
+                                                          fontFamily:
+                                                              "OpenSans",
                                                           color: Colors.white),
                                                     ),
                                                   );
@@ -1630,6 +1652,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                         child: Text(
                                                           data.whyarewehere,
                                                           style: TextStyle(
+                                                              fontFamily:
+                                                                  "OpenSans",
                                                               color:
                                                                   Colors.white,
                                                               fontSize: 17),
@@ -1706,6 +1730,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                                           : "NAH"
                                                                               .tr,
                                                                   style: TextStyle(
+                                                                      fontFamily:
+                                                                          "OpenSans",
                                                                       color: Colors
                                                                           .green,
                                                                       fontSize:
@@ -1732,7 +1758,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                       //   child: Text(
                                                       //   // authController.actLocation.value,
                                                       //     // authController.actLocation.value,
-                                                      //     style: TextStyle(
+                                                      //    style: TextStyle(
+                                                      //  fontFamily: "OpenSans",
                                                       //         color: Colors.white,
                                                       //         fontSize: 16),
                                                       //   ),
@@ -1771,6 +1798,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                                           (data
                                                                               .lastName),
                                                                       style: TextStyle(
+                                                                          fontFamily:
+                                                                              "OpenSans",
                                                                           color: Colors
                                                                               .white,
                                                                           fontSize:
@@ -1820,6 +1849,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                                       TextAlign
                                                                           .start,
                                                                   style: TextStyle(
+                                                                      fontFamily:
+                                                                          "OpenSans",
                                                                       color: Colors
                                                                           .white)),
                                                             ),
@@ -1831,6 +1862,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                                     TextAlign
                                                                         .start,
                                                                 style: TextStyle(
+                                                                    fontFamily:
+                                                                        "OpenSans",
                                                                     color: Colors
                                                                         .white,
                                                                     fontSize:
@@ -1927,6 +1960,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                       child: Text(
                                                         'ADS',
                                                         style: TextStyle(
+                                                          fontFamily:
+                                                              "OpenSans",
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -1975,6 +2010,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                                       .tr,
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
+                                                    fontFamily: "OpenSans",
                                                     fontSize: 17,
                                                   ),
                                                 ),

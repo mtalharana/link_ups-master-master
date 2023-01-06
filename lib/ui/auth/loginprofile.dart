@@ -47,13 +47,13 @@ class LoginProfileState extends State<LoginProfile> {
   //               padding: const EdgeInsets.only(top: 20, left: 58),
   //               child: Text(
   //                 "Upload Photos from",
-  //                 style: TextStyle(
+  //                style: TextStyle(
   //                     color: Colors.white,
   //                     fontSize: 19,
   //                     fontWeight: FontWeight.bold),
   //               ),
   //             ),
-              
+
   //             Padding(
   //               padding: const EdgeInsets.only(top:140),
   //               child: Row(
@@ -75,7 +75,7 @@ class LoginProfileState extends State<LoginProfile> {
   //                       Text(
   //                         // 'browse_image'.tr,
   //                         'Your Photos',
-  //                         style: TextStyle(color: Colors.black),
+  //                        style: TextStyle(color: Colors.black),
   //                       )
   //                     ],
   //                   ),
@@ -97,7 +97,7 @@ class LoginProfileState extends State<LoginProfile> {
   //                       Text(
   //                         // 'take_photo'.tr,
   //                         'Camera',
-  //                         style: TextStyle(color: Colors.black),
+  //                        style: TextStyle(color: Colors.black),
   //                       )
   //                     ],
   //                   ),
@@ -123,7 +123,7 @@ class LoginProfileState extends State<LoginProfile> {
   //           //         padding: const EdgeInsets.only(top: 10, left: 35),
   //           //         child: Text(
   //           //           "Upload Photos from",
-  //           //           style: TextStyle(color: Colors.white, fontSize: 16),
+  //           //          style: TextStyle(color: Colors.white, fontSize: 16),
   //           //         ),
   //           //       ),
   //           //     ),
@@ -149,7 +149,7 @@ class LoginProfileState extends State<LoginProfile> {
   //           //             Text(
   //           //               // 'browse_image'.tr,
   //           //               'Your Photos',
-  //           //               style: TextStyle(color: Colors.black),
+  //           //              style: TextStyle(color: Colors.black),
   //           //             )
   //           //           ],
   //           //         ),
@@ -171,7 +171,7 @@ class LoginProfileState extends State<LoginProfile> {
   //           //             Text(
   //           //               // 'take_photo'.tr,
   //           //               'Camera',
-  //           //               style: TextStyle(color: Colors.black),
+  //           //              style: TextStyle(color: Colors.black),
   //           //             )
   //           //           ],
   //           //         ),
@@ -319,7 +319,7 @@ class LoginProfileState extends State<LoginProfile> {
                               //     if (authController.user!.value.email != '')
                               //       Text(
                               //         authController.user!.value.email,
-                              //         style: TextStyle(fontSize: 16),
+                              //        style: TextStyle(fontSize: 16),
                               //       ),
                               //   ],
                               // ),
@@ -380,8 +380,9 @@ class LoginProfileState extends State<LoginProfile> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text("Country",
-                                   style: TextStyle(
+                                  Text(
+                                    "Country",
+                                    style: TextStyle(
                                         fontSize: 18,
                                         color: Color(0xff2E2E2E),
                                         fontWeight: FontWeight.bold),
@@ -389,104 +390,105 @@ class LoginProfileState extends State<LoginProfile> {
                                 ],
                               ),
                               GestureDetector(
-                                    onTap: () {
-                                      showCountryPicker(
-                                        context: context,
-                                        exclude: <String>['KN', 'MF'],
-                                        showPhoneCode: true,
-                                        onSelect: (Country country) {
-                                          selectedCountry =
-                                              country.countryCode;
-                                          setState(() {});
-                                          authController
-                                              .updateOriginCountry(country);
-                                        },
-                                      );
+                                onTap: () {
+                                  showCountryPicker(
+                                    context: context,
+                                    exclude: <String>['KN', 'MF'],
+                                    showPhoneCode: true,
+                                    onSelect: (Country country) {
+                                      selectedCountry = country.countryCode;
+                                      setState(() {});
+                                      authController
+                                          .updateOriginCountry(country);
                                     },
-                                    child: Container(
-                                      height: 60,
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 15),
-                                      decoration: BoxDecoration(
-                                          color: Colors.transparent,
-                                         ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                           
-                                          Container(
-                                            width: 250,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(
-                                                  authController.countryName
-                                                              .value.length <=
-                                                          30
-                                                      ? authController
-                                                          .countryName.value
-                                                      : authController
-                                                          .countryName.value
-                                                          .substring(0, 29),
-                                                  style:
-                                                      TextStyle(fontSize: 15),
-                                                ),
-                                                SizedBox(width: 10,),
-                                                Icon(Icons.arrow_drop_down),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  height: 60,
+                                  padding: EdgeInsets.symmetric(horizontal: 15),
+                                  decoration: BoxDecoration(
+                                    color: Colors.transparent,
                                   ),
-                                  Divider(color: Colors.black,),
-                                  SizedBox(height: 10,),
-                                   Row(
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        width: 250,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              authController.countryName.value
+                                                          .length <=
+                                                      30
+                                                  ? authController
+                                                      .countryName.value
+                                                  : authController
+                                                      .countryName.value
+                                                      .substring(0, 29),
+                                              style: TextStyle(fontSize: 15),
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Icon(Icons.arrow_drop_down),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Divider(
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text("Phone Number",
-                                   style: TextStyle(
+                                  Text(
+                                    "Phone Number",
+                                    style: TextStyle(
                                         fontSize: 18,
                                         color: Color(0xff2E2E2E),
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
-                                  TextFormField(
-                                    controller:
-                                        authController.phoneNumberController,
-                                    decoration: InputDecoration(
-                                      // labelText: "phone_number".tr,
-                                      hintText: "+244 234576482",
-                                      floatingLabelBehavior:
-                                          FloatingLabelBehavior.always,
-                                      
-                                      prefixIcon: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 8.0),
-                                        child: CountryCodePicker(
-                                          alignLeft: false,
-                                          onChanged: (e) {
-                                            authController
-                                                .updatePhoneNumberCode(
-                                                    e.code!);
-                                          },
-                                          initialSelection: selectedCountry,
-                                          favorite: ['Bs', 'Bb'],
-                                        ),
-                                      ),
+                              TextFormField(
+                                controller:
+                                    authController.phoneNumberController,
+                                decoration: InputDecoration(
+                                  // labelText: "phone_number".tr,
+                                  hintText: "+244 234576482",
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.always,
+
+                                  prefixIcon: Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: CountryCodePicker(
+                                      alignLeft: false,
+                                      onChanged: (e) {
+                                        authController
+                                            .updatePhoneNumberCode(e.code!);
+                                      },
+                                      initialSelection: selectedCountry,
+                                      favorite: ['Bs', 'Bb'],
                                     ),
-                                    keyboardType: TextInputType.number,
                                   ),
+                                ),
+                                keyboardType: TextInputType.number,
+                              ),
                               // Align(
                               //   alignment: Alignment.topLeft,
                               //   child: Container(
                               //     child: Text(
                               //       "Country".tr,
-                              //       style: TextStyle(
+                              //      style: TextStyle(
                               //           fontSize: 18,
                               //           color: Color(0xff2E2E2E),
                               //           fontWeight: FontWeight.bold),
@@ -521,7 +523,7 @@ class LoginProfileState extends State<LoginProfile> {
                               //                   : authController
                               //                       .countryName.value
                               //                       .substring(0, 29),
-                              //               style: TextStyle(fontSize: 16),
+                              //              style: TextStyle(fontSize: 16),
                               //             ),
                               //             Icon(
                               //               Icons.arrow_drop_down,
@@ -540,7 +542,7 @@ class LoginProfileState extends State<LoginProfile> {
                               //   child: Container(
                               //     child: Text(
                               //       "Phone Number",
-                              //       style: TextStyle(
+                              //      style: TextStyle(
                               //           fontSize: 18,
                               //           color: Color(0xff2E2E2E),
                               //           fontWeight: FontWeight.bold),
@@ -571,7 +573,7 @@ class LoginProfileState extends State<LoginProfile> {
                               //         ),
                               //   ),
                               //   keyboardType: TextInputType.number,
-                                
+
                               // ),
                               SizedBox(
                                 height: 10,
@@ -589,7 +591,7 @@ class LoginProfileState extends State<LoginProfile> {
                               //           value: gender,
                               //           child: Text(
                               //             gender.toString(),
-                              //             style: TextStyle(fontSize: 15),
+                              //            style: TextStyle(fontSize: 15),
                               //           ),
                               //         );
                               //       }).toList(),
@@ -677,7 +679,7 @@ class LoginProfileState extends State<LoginProfile> {
                               //   child: Container(
                               //     child: Text(
                               //       "Why are you here",
-                              //       style: TextStyle(
+                              //      style: TextStyle(
                               //           fontSize: 18,
                               //           color: Color(0xff2E2E2E),
                               //           fontWeight: FontWeight.bold),
@@ -685,7 +687,7 @@ class LoginProfileState extends State<LoginProfile> {
                               //     ),
                               //   ),
                               // ),
-                             
+
                               SizedBox(
                                 height: 20,
                               ),
@@ -778,7 +780,7 @@ class LoginProfileState extends State<LoginProfile> {
                               //       children: [
                               //         Text(
                               //           "more_photos".tr,
-                              //           style: TextStyle(
+                              //          style: TextStyle(
                               //             fontSize: 17,
                               //             fontWeight: FontWeight.bold,
                               //             color: Colors.black,
@@ -934,7 +936,7 @@ class LoginProfileState extends State<LoginProfile> {
                               //         SizedBox(width: 5),
                               //         Text(
                               //           "${'interest'.tr}",
-                              //           style: TextStyle(
+                              //          style: TextStyle(
                               //               fontSize: 17,
                               //               color: Colors.black,
                               //               fontWeight: FontWeight.bold),

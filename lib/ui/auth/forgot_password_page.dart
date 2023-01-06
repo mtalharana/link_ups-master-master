@@ -60,7 +60,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 // ),
                 // Text(
                 //   'recovery_password'.tr,
-                //   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                //  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 // ),
                 Container(
                   // width: width * 0.6,
@@ -157,7 +157,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                 //   color: Colors.red[700],
                                 //   child: Text(
                                 //     'send_link_to_inbox'.tr,
-                                //     style: TextStyle(color: Colors.white),
+                                //    style: TextStyle(color: Colors.white),
                                 //   ),
                                 //   onPressed: () {
                                 //     if (_formKey.currentState!.validate()) {

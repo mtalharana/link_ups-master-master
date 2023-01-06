@@ -338,7 +338,7 @@ class _TicketTypeState extends State<TicketType> {
             //       children: [
             //         Text(
             //           "Early Bird VIP",
-            //           style: TextStyle(color: Colors.white, fontSize: 16),
+            //          style: TextStyle(color: Colors.white, fontSize: 16),
             //         ),
             //         SizedBox(
             //           width: 10,
@@ -376,7 +376,7 @@ class _TicketTypeState extends State<TicketType> {
             //       children: [
             //         Text(
             //           "Regular VIP",
-            //           style: TextStyle(color: Colors.white, fontSize: 16),
+            //          style: TextStyle(color: Colors.white, fontSize: 16),
             //         ),
             //         SizedBox(
             //           width: 10,
@@ -591,7 +591,7 @@ class _TicketTypeState extends State<TicketType> {
             //     children: [
             //       Text(
             //         "Pay from wallet\nLinkup Event Balance",
-            //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            //        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             //       ),
             //       Padding(
             //         padding: const EdgeInsets.only(right: 10),
@@ -608,7 +608,7 @@ class _TicketTypeState extends State<TicketType> {
             //   padding: const EdgeInsets.only(top: 10, left: 20),
             //   child: Text(
             //     "Available for Payment \$65.0",
-            //     style: TextStyle(fontSize: 14, color: Colors.black38),
+            //    style: TextStyle(fontSize: 14, color: Colors.black38),
             //   ),
             // ),
             // Divider(

@@ -32,6 +32,7 @@ class _AuthPageState extends State<AuthPage> {
                 Text(
                   "Explorer the\nTopics",
                   style: TextStyle(
+                      fontFamily: "OpenSans",
                       fontWeight: FontWeight.w600,
                       fontSize: 38,
                       color: Colors.white),
@@ -43,6 +44,7 @@ class _AuthPageState extends State<AuthPage> {
                 Text(
                   "Link and Vibe with Carribean & Latin\n American people Around you",
                   style: TextStyle(
+                      fontFamily: "OpenSans",
                       fontWeight: FontWeight.w400,
                       fontSize: 14,
                       color: Colors.white),
@@ -79,11 +81,13 @@ class _AuthPageState extends State<AuthPage> {
                                               'sign_in_with_phone'.tr,
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
+                                                  fontFamily: "OpenSans",
                                                   color: Colors.white,
                                                   fontSize: 14),
                                             ),
                                             style: ElevatedButton.styleFrom(
-                                              backgroundColor: Color(0xffD6DC16),
+                                              backgroundColor:
+                                                  Color(0xffD6DC16),
                                             ),
                                             onPressed: () {
                                               Navigator.pushNamed(
@@ -141,6 +145,7 @@ class _AuthPageState extends State<AuthPage> {
                                                                     "privacy_policy"
                                                               }),
                                                 style: TextStyle(
+                                                  fontFamily: "OpenSans",
                                                   color: Colors.black
                                                       .withOpacity(0.3),
                                                 ),
@@ -148,6 +153,7 @@ class _AuthPageState extends State<AuthPage> {
                                               TextSpan(
                                                 text: ' | ',
                                                 style: TextStyle(
+                                                  fontFamily: "OpenSans",
                                                   color: Colors.black,
                                                 ),
                                               ),
@@ -165,6 +171,7 @@ class _AuthPageState extends State<AuthPage> {
                                                                     "term_and_condition"
                                                               }),
                                                 style: TextStyle(
+                                                  fontFamily: "OpenSans",
                                                   color: Colors.black
                                                       .withOpacity(0.3),
                                                 ),

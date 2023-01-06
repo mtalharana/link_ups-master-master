@@ -108,6 +108,7 @@ class _CouponScreenState extends State<CouponScreen> {
                                               entcontroller.code!.value
                                                   .toString(),
                                               style: TextStyle(
+                                                  fontFamily: "OpenSans",
                                                   color: Colors.black,
                                                   fontSize: 10),
                                             ),
@@ -115,6 +116,7 @@ class _CouponScreenState extends State<CouponScreen> {
                                               entcontroller.discount!.value
                                                   .toString(),
                                               style: TextStyle(
+                                                fontFamily: "OpenSans",
                                                 color: Colors.transparent,
                                                 fontSize: 1,
                                               ),
@@ -152,6 +154,7 @@ class _CouponScreenState extends State<CouponScreen> {
                   Text(
                     "Get 10% OFF up to \$100",
                     style: TextStyle(
+                        fontFamily: "OpenSans",
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold),
@@ -162,6 +165,7 @@ class _CouponScreenState extends State<CouponScreen> {
                   Text(
                     "In case the cashback is not credited within stipulatedtimeline, please contact 0120-4456-456",
                     style: TextStyle(
+                        fontFamily: "OpenSans",
                         color: Colors.black38,
                         fontSize: 12,
                         fontWeight: FontWeight.bold),
@@ -216,6 +220,7 @@ class _CouponScreenState extends State<CouponScreen> {
                   Text(
                     "Cashback using CityBank",
                     style: TextStyle(
+                        fontFamily: "OpenSans",
                         color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold),
@@ -226,6 +231,7 @@ class _CouponScreenState extends State<CouponScreen> {
                   Text(
                     "applicable with Paytm wallet.Paytm cashback will becredited in your wallet within 24 hours of ordercompletion In casse the cashback is no...",
                     style: TextStyle(
+                        fontFamily: "OpenSans",
                         color: Colors.black38,
                         fontSize: 12,
                         fontWeight: FontWeight.bold),

@@ -92,6 +92,7 @@ class _SettingPageState extends State<SettingPage> {
                                 title: Text(
                                   'account_setting'.tr,
                                   style: TextStyle(
+                                      fontFamily: "OpenSans",
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -123,6 +124,7 @@ class _SettingPageState extends State<SettingPage> {
                                 title: Text(
                                   'email_settings'.tr,
                                   style: TextStyle(
+                                      fontFamily: "OpenSans",
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -162,6 +164,7 @@ class _SettingPageState extends State<SettingPage> {
                                 title: Text(
                                   'invite_friends'.tr,
                                   style: TextStyle(
+                                      fontFamily: "OpenSans",
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -184,6 +187,7 @@ class _SettingPageState extends State<SettingPage> {
                                     maxLines: 2,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
+                                      fontFamily: "OpenSans",
                                       fontSize: 16,
                                     ),
                                   ),
@@ -203,6 +207,7 @@ class _SettingPageState extends State<SettingPage> {
                                         child: Text(
                                           'cancel'.tr,
                                           style: TextStyle(
+                                            fontFamily: "OpenSans",
                                             color: Colors.white,
                                           ),
                                         ),
@@ -219,6 +224,7 @@ class _SettingPageState extends State<SettingPage> {
                                         child: Text(
                                           'delete'.tr,
                                           style: TextStyle(
+                                            fontFamily: "OpenSans",
                                             color: Colors.black,
                                           ),
                                         ),
@@ -238,6 +244,7 @@ class _SettingPageState extends State<SettingPage> {
                                 title: Text(
                                   'delete_account'.tr,
                                   style: TextStyle(
+                                    fontFamily: "OpenSans",
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,

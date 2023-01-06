@@ -185,12 +185,16 @@ class _DownloadTicketState extends State<DownloadTicket> {
                                                     Text(
                                                       event['start_time'],
                                                       style: TextStyle(
+                                                          fontFamily:
+                                                              "OpenSans",
                                                           fontSize: 10,
                                                           color: Colors.grey),
                                                     ),
                                                     Text(
                                                       event['title'],
                                                       style: TextStyle(
+                                                          fontFamily:
+                                                              "OpenSans",
                                                           fontSize: 14,
                                                           color: Colors.black,
                                                           fontWeight:
@@ -201,6 +205,8 @@ class _DownloadTicketState extends State<DownloadTicket> {
                                                         Text(
                                                           event['venue'],
                                                           style: TextStyle(
+                                                              fontFamily:
+                                                                  "OpenSans",
                                                               fontSize: 12,
                                                               color:
                                                                   Colors.grey),
@@ -208,6 +214,8 @@ class _DownloadTicketState extends State<DownloadTicket> {
                                                         Text(
                                                           ',',
                                                           style: TextStyle(
+                                                              fontFamily:
+                                                                  "OpenSans",
                                                               fontSize: 12,
                                                               color:
                                                                   Colors.grey),
@@ -215,6 +223,8 @@ class _DownloadTicketState extends State<DownloadTicket> {
                                                         Text(
                                                           event['country'],
                                                           style: TextStyle(
+                                                              fontFamily:
+                                                                  "OpenSans",
                                                               fontSize: 12,
                                                               color:
                                                                   Colors.grey),
@@ -355,12 +365,16 @@ class _DownloadTicketState extends State<DownloadTicket> {
                                                     Text(
                                                       event['start_time'],
                                                       style: TextStyle(
+                                                          fontFamily:
+                                                              "OpenSans",
                                                           fontSize: 10,
                                                           color: Colors.grey),
                                                     ),
                                                     Text(
                                                       event['title'],
                                                       style: TextStyle(
+                                                          fontFamily:
+                                                              "OpenSans",
                                                           fontSize: 14,
                                                           color: Colors.black,
                                                           fontWeight:
@@ -371,6 +385,8 @@ class _DownloadTicketState extends State<DownloadTicket> {
                                                         Text(
                                                           event['venue'],
                                                           style: TextStyle(
+                                                              fontFamily:
+                                                                  "OpenSans",
                                                               fontSize: 12,
                                                               color:
                                                                   Colors.grey),
@@ -378,6 +394,8 @@ class _DownloadTicketState extends State<DownloadTicket> {
                                                         Text(
                                                           ',',
                                                           style: TextStyle(
+                                                              fontFamily:
+                                                                  "OpenSans",
                                                               fontSize: 12,
                                                               color:
                                                                   Colors.grey),
@@ -385,6 +403,8 @@ class _DownloadTicketState extends State<DownloadTicket> {
                                                         Text(
                                                           event['country'],
                                                           style: TextStyle(
+                                                              fontFamily:
+                                                                  "OpenSans",
                                                               fontSize: 12,
                                                               color:
                                                                   Colors.grey),
@@ -514,12 +534,14 @@ class _DownloadTicketState extends State<DownloadTicket> {
                                               Text(
                                                 event['start_time'],
                                                 style: TextStyle(
+                                                    fontFamily: "OpenSans",
                                                     fontSize: 10,
                                                     color: Colors.grey),
                                               ),
                                               Text(
                                                 event['title'],
                                                 style: TextStyle(
+                                                    fontFamily: "OpenSans",
                                                     fontSize: 14,
                                                     color: Colors.black,
                                                     fontWeight:
@@ -530,18 +552,21 @@ class _DownloadTicketState extends State<DownloadTicket> {
                                                   Text(
                                                     event['venue'],
                                                     style: TextStyle(
+                                                        fontFamily: "OpenSans",
                                                         fontSize: 12,
                                                         color: Colors.grey),
                                                   ),
                                                   Text(
                                                     ',',
                                                     style: TextStyle(
+                                                        fontFamily: "OpenSans",
                                                         fontSize: 12,
                                                         color: Colors.grey),
                                                   ),
                                                   Text(
                                                     event['country'],
                                                     style: TextStyle(
+                                                        fontFamily: "OpenSans",
                                                         fontSize: 12,
                                                         color: Colors.grey),
                                                   ),
@@ -622,7 +647,10 @@ class _DownloadTicketState extends State<DownloadTicket> {
               child: Center(
                 child: Text(
                   'Cancel Booking',
-                  style: TextStyle(color: Colors.white, fontSize: 12),
+                  style: TextStyle(
+                      fontFamily: "OpenSans",
+                      color: Colors.white,
+                      fontSize: 12),
                 ),
               ),
             ),
@@ -659,7 +687,8 @@ class View_e_ticket_button extends StatelessWidget {
         child: Center(
           child: Text(
             'View E-Ticket',
-            style: TextStyle(color: Colors.white, fontSize: 12),
+            style: TextStyle(
+                fontFamily: "OpenSans", color: Colors.white, fontSize: 12),
           ),
         ),
       ),

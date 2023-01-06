@@ -33,6 +33,7 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
             Text(
               "Linkup Vibes!",
               style: TextStyle(
+                  fontFamily: "OpenSans",
                   color: Color(0xff38ABD8),
                   fontSize: 17,
                   fontWeight: FontWeight.bold),
@@ -45,6 +46,7 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
               'The only App that brings Caribbean & Latin\n Americans Together from all over the World',
               textAlign: TextAlign.center,
               style: TextStyle(
+                fontFamily: "OpenSans",
                 fontSize: 14,
                 color: Color(0xff2E2E2E),
                 fontWeight: FontWeight.w400,

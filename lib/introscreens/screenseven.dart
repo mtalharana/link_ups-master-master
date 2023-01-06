@@ -41,6 +41,7 @@ class _OnboardingScreenSevenState extends State<OnboardingScreenSeven> {
             Text(
               "Linkup Membership",
               style: TextStyle(
+                  fontFamily: "OpenSans",
                   color: Color(0xff38ABD8),
                   fontSize: 17,
                   fontWeight: FontWeight.bold),
@@ -53,6 +54,7 @@ class _OnboardingScreenSevenState extends State<OnboardingScreenSeven> {
               'Unlimited Calls \nUnlimited Video \nUnlimited Restaurant Search \nUnlimited Live \nTop Shelf Profile \nUnlimited Swipes.',
               textAlign: TextAlign.center,
               style: TextStyle(
+                fontFamily: "OpenSans",
                 fontSize: 14,
                 color: Color(0xff2E2E2E),
                 fontWeight: FontWeight.w400,
@@ -71,7 +73,10 @@ class _OnboardingScreenSevenState extends State<OnboardingScreenSeven> {
                   child: Text(
                     'Get Started',
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: Colors.white, fontSize: 14),
+                    style: TextStyle(
+                        fontFamily: "OpenSans",
+                        color: Colors.white,
+                        fontSize: 14),
                   ),
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xff38ABD8),

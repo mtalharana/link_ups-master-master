@@ -16,46 +16,46 @@ class _Short4State extends State<Short4> {
         child: Column(children: [
           Stack(
             children: [
-               Image.asset("assets/appbar-removebg-preview.png"),
-                  Column(
+              Image.asset("assets/appbar-removebg-preview.png"),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 127, top: 0),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          "assets/Vector Smart Object 2.png",
+                          width: 130,
+                          height: 130,
+                        ),
+                        SizedBox(
+                          width: 60,
+                        ),
+                        Image.asset(
+                          "assets/filter-search.png",
+                          width: 30,
+                          height: 30,
+                        ),
+                      ],
+                    ),
+                  ),
+                  // SizedBox(height: 35),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 28.0),
+                    child: Image.asset("assets/Group 163981.png"),
+                  ),
+                  // SizedBox(
+                  //   height: 5,
+                  // ),
+                  Stack(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 127, top: 0),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              "assets/Vector Smart Object 2.png",
-                              width: 130,
-                              height: 130,
-                            ),
-                            SizedBox(
-                              width: 60,
-                            ),
-                            Image.asset(
-                              "assets/filter-search.png",
-                              width: 30,
-                              height: 30,
-                            ),
-                          ],
-                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Image.asset("assets/Layer 31.png"),
                       ),
-                    // SizedBox(height: 35),
-                   Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 28.0),
-                        child: Image.asset("assets/Group 163981.png"),
-                      ),
-                    // SizedBox(
-                    //   height: 5,
-                    // ),
-                    Stack(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Image.asset("assets/Layer 31.png"),
-                        ),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(left: 29, top: 420, right: 13),
+                        padding: const EdgeInsets.only(
+                            left: 29, top: 420, right: 13),
                         child: Container(
                           height: 200,
                           width: 330,
@@ -78,6 +78,7 @@ class _Short4State extends State<Short4> {
                                   child: Text(
                                     "Distance (km)",
                                     style: TextStyle(
+                                      fontFamily: "OpenSans",
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20,
@@ -90,7 +91,9 @@ class _Short4State extends State<Short4> {
                                 child: Center(
                                   child: Text(
                                     "How far would you like to search",
-                                    style: TextStyle(color: Colors.grey),
+                                    style: TextStyle(
+                                        fontFamily: "OpenSans",
+                                        color: Colors.grey),
                                   ),
                                 ),
                               ),
@@ -100,6 +103,7 @@ class _Short4State extends State<Short4> {
                                   child: Text(
                                     "160",
                                     style: TextStyle(
+                                      fontFamily: "OpenSans",
                                       color: Colors.grey,
                                     ),
                                   ),
@@ -118,6 +122,7 @@ class _Short4State extends State<Short4> {
                                   child: Text(
                                     "Which Country",
                                     style: TextStyle(
+                                      fontFamily: "OpenSans",
                                       color: Colors.grey,
                                     ),
                                   ),
@@ -128,16 +133,19 @@ class _Short4State extends State<Short4> {
                         ),
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(top: 600,  left: 50, right: 50),
+                        padding: const EdgeInsets.only(
+                            top: 600, left: 50, right: 50),
                         child: Stack(
                           children: [
                             Image.asset("assets/Rectangle 23327.jpg"),
                             Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 120),
+                              padding:
+                                  const EdgeInsets.only(top: 10, left: 120),
                               child: Text(
                                 "Apply",
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    color: Colors.white),
                               ),
                             ),
                           ],

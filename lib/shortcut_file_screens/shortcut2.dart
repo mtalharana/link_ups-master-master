@@ -20,15 +20,24 @@ class _Short2State extends State<Short2> {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 127,),
+                    padding: const EdgeInsets.only(
+                      left: 127,
+                    ),
                     child: Row(
                       children: [
-                        Image.asset("assets/Vector Smart Object 2.png",  width: 130,
-                            height: 120,),
+                        Image.asset(
+                          "assets/Vector Smart Object 2.png",
+                          width: 130,
+                          height: 120,
+                        ),
                         SizedBox(
                           width: 60,
                         ),
-                        Image.asset("assets/filter-search.png", width: 30, height: 30,),
+                        Image.asset(
+                          "assets/filter-search.png",
+                          width: 30,
+                          height: 30,
+                        ),
                       ],
                     ),
                   ),
@@ -47,8 +56,8 @@ class _Short2State extends State<Short2> {
                         child: Image.asset("assets/Layer 31.png"),
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(left: 25, top: 420, right: 13),
+                        padding: const EdgeInsets.only(
+                            left: 25, top: 420, right: 13),
                         child: Container(
                           height: 240,
                           width: 340,
@@ -69,16 +78,19 @@ class _Short2State extends State<Short2> {
                                 "Show Me",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
+                                    fontFamily: "OpenSans",
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 5),
                                 child: Center(
                                     child: Text(
                                   "Whichgender(s) would you like to see?",
-                                  style: TextStyle(color: Colors.grey),
+                                  style: TextStyle(
+                                      fontFamily: "OpenSans",
+                                      color: Colors.grey),
                                 )),
                               ),
                               Padding(
@@ -91,6 +103,7 @@ class _Short2State extends State<Short2> {
                                     Text(
                                       "Women",
                                       style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         color: Colors.grey,
                                       ),
                                     ),
@@ -124,6 +137,7 @@ class _Short2State extends State<Short2> {
                                     Text(
                                       "Men",
                                       style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         color: Colors.grey,
                                       ),
                                     ),
@@ -157,6 +171,7 @@ class _Short2State extends State<Short2> {
                                     Text(
                                       "Everyone",
                                       style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         color: Colors.grey,
                                       ),
                                     ),
@@ -180,16 +195,17 @@ class _Short2State extends State<Short2> {
                           ),
                         ),
                       ),
-                       Padding(
-                        padding:
-                            const EdgeInsets.only(top: 645, left: 55, right: 52),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 645, left: 55, right: 52),
                         child: Stack(children: [
                           Image.asset("assets/Rectangle 23327.jpg"),
                           Padding(
                             padding: const EdgeInsets.only(top: 10, left: 115),
                             child: Text(
                               "Apply",
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(
+                                  fontFamily: "OpenSans", color: Colors.white),
                             ),
                           )
                         ]),

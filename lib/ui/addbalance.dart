@@ -44,7 +44,10 @@ class AddBalance extends StatelessWidget {
                   ),
                   Text(
                     "Your current balance",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    style: TextStyle(
+                        fontFamily: "OpenSans",
+                        color: Colors.white,
+                        fontSize: 20),
                   )
                 ],
               ),
@@ -56,6 +59,7 @@ class AddBalance extends StatelessWidget {
                   child: Text(
                     "Add Amount",
                     style: TextStyle(
+                        fontFamily: "OpenSans",
                         color: Colors.black,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
@@ -71,6 +75,7 @@ class AddBalance extends StatelessWidget {
                       Text(
                         "Add Amount",
                         style: TextStyle(
+                            fontFamily: "OpenSans",
                             color: Colors.black,
                             fontSize: 14,
                             fontWeight: FontWeight.bold),
@@ -88,6 +93,7 @@ class AddBalance extends StatelessWidget {
                       Text(
                         "300",
                         style: TextStyle(
+                          fontFamily: "OpenSans",
                           color: Colors.black38,
                           fontSize: 14,
                         ),
@@ -122,6 +128,7 @@ class AddBalance extends StatelessWidget {
                                           child: Text(
                                             "Select Payment Method",
                                             style: TextStyle(
+                                                fontFamily: "OpenSans",
                                                 color: Color.fromARGB(
                                                     255, 56, 171, 216),
                                                 fontSize: 22,
@@ -147,6 +154,7 @@ class AddBalance extends StatelessWidget {
                                                   Text(
                                                     "Paypal",
                                                     style: TextStyle(
+                                                        fontFamily: "OpenSans",
                                                         fontSize: 16,
                                                         fontWeight:
                                                             FontWeight.bold),
@@ -157,6 +165,7 @@ class AddBalance extends StatelessWidget {
                                                   Text(
                                                     "Credit/Debit card with Easier way to pay -\nonline and on your mobile.",
                                                     style: TextStyle(
+                                                        fontFamily: "OpenSans",
                                                         fontSize: 14,
                                                         color: Colors.black38),
                                                   ),
@@ -193,6 +202,7 @@ class AddBalance extends StatelessWidget {
                                                   Text(
                                                     "Stripe",
                                                     style: TextStyle(
+                                                        fontFamily: "OpenSans",
                                                         fontSize: 16,
                                                         fontWeight:
                                                             FontWeight.bold),
@@ -203,6 +213,7 @@ class AddBalance extends StatelessWidget {
                                                   Text(
                                                     "Accept all major debit and credit cards from\ncustomers from customers in every country",
                                                     style: TextStyle(
+                                                        fontFamily: "OpenSans",
                                                         fontSize: 14,
                                                         color: Colors.black38),
                                                   ),
@@ -239,6 +250,7 @@ class AddBalance extends StatelessWidget {
                                                   Text(
                                                     "Razorpay",
                                                     style: TextStyle(
+                                                        fontFamily: "OpenSans",
                                                         fontSize: 16,
                                                         fontWeight:
                                                             FontWeight.bold),
@@ -249,6 +261,7 @@ class AddBalance extends StatelessWidget {
                                                   Text(
                                                     "Card, UPI Net banking,\nWallet (Phone Pe, Amazon Pay, Freecharge)",
                                                     style: TextStyle(
+                                                        fontFamily: "OpenSans",
                                                         fontSize: 14,
                                                         color: Colors.black38),
                                                   ),
@@ -284,6 +297,7 @@ class AddBalance extends StatelessWidget {
                                             child: Text(
                                               "Pay Now | 300\$",
                                               style: TextStyle(
+                                                  fontFamily: "OpenSans",
                                                   color: Colors.white,
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.bold),
@@ -331,6 +345,7 @@ class AddBalance extends StatelessWidget {
                       child: Text(
                         "ADD AMOUNT",
                         style: TextStyle(
+                            fontFamily: "OpenSans",
                             color: Colors.white,
                             fontSize: 18,
                             fontWeight: FontWeight.bold),
@@ -356,7 +371,7 @@ class AddBalance extends StatelessWidget {
       child: Center(
         child: Text(
           title!,
-          style: TextStyle(fontSize: 18),
+          style: TextStyle(fontFamily: "OpenSans", fontSize: 18),
         ),
       ),
     );

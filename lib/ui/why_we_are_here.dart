@@ -112,7 +112,10 @@ class _WhyAreState extends State<WhyAre> {
                     child: Image.asset("assets/LinkUp App Login 2.png")),
                 Text(
                   "Why are you here",
-                  style: TextStyle(color: Colors.white, fontSize: 17),
+                  style: TextStyle(
+                      fontFamily: "OpenSans",
+                      color: Colors.white,
+                      fontSize: 17),
                 ),
                 SizedBox(
                   height: 30,
@@ -128,6 +131,7 @@ class _WhyAreState extends State<WhyAre> {
             child: Text(
               "Tell People why are you here",
               style: TextStyle(
+                  fontFamily: "OpenSans",
                   color: Colors.black,
                   fontSize: 25,
                   fontWeight: FontWeight.bold),
@@ -141,6 +145,7 @@ class _WhyAreState extends State<WhyAre> {
             child: Text(
               "We’ll share this on your profile. You can",
               style: TextStyle(
+                  fontFamily: "OpenSans",
                   fontSize: 17,
                   color: Colors.grey.withOpacity(0.5),
                   fontWeight: FontWeight.bold),
@@ -154,6 +159,7 @@ class _WhyAreState extends State<WhyAre> {
             child: Text(
               "change it whenever you want.",
               style: TextStyle(
+                  fontFamily: "OpenSans",
                   fontSize: 17,
                   color: Colors.grey.withOpacity(0.5),
                   fontWeight: FontWeight.bold),
@@ -179,10 +185,15 @@ class _WhyAreState extends State<WhyAre> {
                         children: [
                           Text('Here to Party',
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                                  fontFamily: "OpenSans",
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold)),
                           Text(
                             "I'm looking for good fete",
-                            style: TextStyle(color: Colors.grey, fontSize: 12),
+                            style: TextStyle(
+                                fontFamily: "OpenSans",
+                                color: Colors.grey,
+                                fontSize: 12),
                           )
                         ],
                       ),
@@ -232,10 +243,15 @@ class _WhyAreState extends State<WhyAre> {
                         children: [
                           Text('Here to Link Up',
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                                  fontFamily: "OpenSans",
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold)),
                           Text(
                             "I'm looking for someone nice nothing serious",
-                            style: TextStyle(color: Colors.grey, fontSize: 12),
+                            style: TextStyle(
+                                fontFamily: "OpenSans",
+                                color: Colors.grey,
+                                fontSize: 12),
                           )
                         ],
                       ),
@@ -285,10 +301,15 @@ class _WhyAreState extends State<WhyAre> {
                         children: [
                           Text('Here for Casual Chat',
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                                  fontFamily: "OpenSans",
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold)),
                           Text(
                             "I'm here for nothing serious",
-                            style: TextStyle(color: Colors.grey, fontSize: 12),
+                            style: TextStyle(
+                                fontFamily: "OpenSans",
+                                color: Colors.grey,
+                                fontSize: 12),
                           )
                         ],
                       ),
@@ -337,10 +358,15 @@ class _WhyAreState extends State<WhyAre> {
                         children: [
                           Text('Here to make friends',
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                                  fontFamily: "OpenSans",
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold)),
                           Text(
                             "I'm here to meet friends from the region",
-                            style: TextStyle(color: Colors.grey, fontSize: 12),
+                            style: TextStyle(
+                                fontFamily: "OpenSans",
+                                color: Colors.grey,
+                                fontSize: 12),
                           )
                         ],
                       ),
@@ -391,10 +417,15 @@ class _WhyAreState extends State<WhyAre> {
                         children: [
                           Text('Look for something serious',
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                                  fontFamily: "OpenSans",
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold)),
                           Text(
                             "I'm here looking for serious relationship",
-                            style: TextStyle(color: Colors.grey, fontSize: 12),
+                            style: TextStyle(
+                                fontFamily: "OpenSans",
+                                color: Colors.grey,
+                                fontSize: 12),
                           )
                         ],
                       ),
@@ -444,6 +475,7 @@ class _WhyAreState extends State<WhyAre> {
               child: Text(
                 "Add To Profile",
                 style: TextStyle(
+                  fontFamily: "OpenSans",
                   color: Colors.white,
                 ),
               ),

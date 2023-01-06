@@ -97,12 +97,14 @@ class _DialCallState extends State<DialCall> {
                           Text(
                             "${'waiting_for_replay'.tr} \n${widget.receiver?.firstName}...",
                             style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                                fontFamily: "OpenSans",
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           ),
                           ElevatedButton.icon(
                               style: ElevatedButton.styleFrom(
-                               backgroundColor: Colors.black,
+                                backgroundColor: Colors.black,
                               ),
                               icon: Icon(
                                 Icons.call_end,
@@ -110,7 +112,9 @@ class _DialCallState extends State<DialCall> {
                               ),
                               label: Text(
                                 "End",
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    color: Colors.white),
                               ),
                               onPressed: () async {
                                 await callRef
@@ -142,19 +146,22 @@ class _DialCallState extends State<DialCall> {
                         children: <Widget>[
                           Text("${widget.receiver?.firstName} is not available",
                               style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold)),
+                                  fontFamily: "OpenSans",
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold)),
                           ElevatedButton.icon(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black,
-
-                            ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.black,
+                              ),
                               icon: Icon(
                                 Icons.arrow_back,
                                 color: Colors.white,
                               ),
                               label: Text(
                                 "Return",
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    color: Colors.white),
                               ),
                               onPressed: () async {
                                 Get.offAll(() => HomePage());
@@ -172,7 +179,9 @@ class _DialCallState extends State<DialCall> {
                           Text(
                             "${widget.receiver?.firstName} ${'didnt_answer_call'.tr}",
                             style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
+                                fontFamily: "OpenSans",
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           ),
                           ElevatedButton.icon(
@@ -185,7 +194,9 @@ class _DialCallState extends State<DialCall> {
                               ),
                               label: Text(
                                 "return".tr,
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    color: Colors.white),
                               ),
                               onPressed: () async {
                                 Navigator.pop(context);

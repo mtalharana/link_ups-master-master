@@ -118,6 +118,7 @@ class LiveHomePageState extends State<LiveHomePage> {
                       Text(
                         'Meet People',
                         style: TextStyle(
+                            fontFamily: "OpenSans",
                             color: Colors.white,
                             fontSize: Get.width * .06,
                             fontWeight: FontWeight.bold),

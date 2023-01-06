@@ -54,7 +54,10 @@ class _PushNotificationPageState extends State<PushNotificationPage> {
                 child: ListTile(
                   title: Text(
                     'new_matches'.tr,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontFamily: "OpenSans",
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text('you_got_new_match'.tr),
                   trailing: Container(
@@ -81,7 +84,10 @@ class _PushNotificationPageState extends State<PushNotificationPage> {
                 child: ListTile(
                   title: Text(
                     'messages'.tr,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontFamily: "OpenSans",
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text('someone_sent_new_message'.tr),
                   trailing: Container(
@@ -108,7 +114,10 @@ class _PushNotificationPageState extends State<PushNotificationPage> {
                 child: ListTile(
                   title: Text(
                     'message_likes'.tr,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontFamily: "OpenSans",
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text('someone_likes_message'.tr),
                   trailing: Container(
@@ -135,7 +144,10 @@ class _PushNotificationPageState extends State<PushNotificationPage> {
                 child: ListTile(
                   title: Text(
                     'super_likes'.tr,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontFamily: "OpenSans",
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text("you_been_super_like".tr),
                   trailing: Container(
@@ -162,7 +174,10 @@ class _PushNotificationPageState extends State<PushNotificationPage> {
                 child: ListTile(
                   title: Text(
                     'top_picks'.tr,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontFamily: "OpenSans",
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text('your_dails_top_picks'.tr),
                   trailing: Container(
@@ -189,7 +204,10 @@ class _PushNotificationPageState extends State<PushNotificationPage> {
                 child: ListTile(
                   title: Text(
                     'in_app_vibration'.tr,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontFamily: "OpenSans",
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                   trailing: Container(
                     height: 40,
@@ -215,7 +233,10 @@ class _PushNotificationPageState extends State<PushNotificationPage> {
                 child: ListTile(
                   title: Text(
                     'in_app_sound'.tr,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontFamily: "OpenSans",
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                   trailing: Container(
                     height: 40,

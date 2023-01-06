@@ -60,7 +60,9 @@ class _SignUpThirdPageState extends State<SignUpThirdPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Text('distance_mile'.tr,
-                                        style: TextStyle(fontSize: 18)),
+                                        style: TextStyle(
+                                            fontFamily: "OpenSans",
+                                            fontSize: 18)),
                                   ],
                                 ),
                               ),
@@ -99,6 +101,7 @@ class _SignUpThirdPageState extends State<SignUpThirdPage> {
                                 child: Text(
                                   "link_me_with".tr,
                                   style: TextStyle(
+                                    fontFamily: "OpenSans",
                                     fontSize: 18,
                                   ),
                                 ),
@@ -165,7 +168,8 @@ class _SignUpThirdPageState extends State<SignUpThirdPage> {
                                     const EdgeInsets.only(left: 18.0, top: 10),
                                 child: Text(
                                   "which_carribbean_or_latin_linkwith".tr,
-                                  style: TextStyle(fontSize: 17),
+                                  style: TextStyle(
+                                      fontFamily: "OpenSans", fontSize: 17),
                                   textAlign: TextAlign.start,
                                 ),
                               ),
@@ -204,6 +208,7 @@ class _SignUpThirdPageState extends State<SignUpThirdPage> {
                                 child: Text(
                                   "which_carrib_people_meet_from".tr,
                                   style: TextStyle(
+                                    fontFamily: "OpenSans",
                                     fontSize: 17,
                                   ),
                                   textAlign: TextAlign.start,
@@ -273,7 +278,8 @@ class _SignUpThirdPageState extends State<SignUpThirdPage> {
                                     const EdgeInsets.only(left: 18.0, top: 10),
                                 child: Text(
                                   "age_title".tr,
-                                  style: TextStyle(fontSize: 17),
+                                  style: TextStyle(
+                                      fontFamily: "OpenSans", fontSize: 17),
                                 ),
                               ),
                               Container(
@@ -317,6 +323,7 @@ class _SignUpThirdPageState extends State<SignUpThirdPage> {
                                       Text(
                                         "preferred_language".tr,
                                         style: TextStyle(
+                                          fontFamily: "OpenSans",
                                           fontSize: 17,
                                         ),
                                         textAlign: TextAlign.center,
@@ -404,6 +411,7 @@ class _SignUpThirdPageState extends State<SignUpThirdPage> {
                                       Text(
                                         "make_status_ghost".tr,
                                         style: TextStyle(
+                                          fontFamily: "OpenSans",
                                           fontSize: 17,
                                         ),
                                         textAlign: TextAlign.center,
@@ -438,17 +446,19 @@ class _SignUpThirdPageState extends State<SignUpThirdPage> {
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.blue[800],
                                 ),
-                                child: Text('next' .tr,
-                                style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
-                                
+                                child: Text(
+                                  'next'.tr,
+                                  style: TextStyle(
+                                      fontFamily: "OpenSans",
+                                      color: Colors.white,
+                                      fontSize: 18),
                                 ),
                               ),
                               // RaisedButton(
                               //   color: Colors.blue[800],
                               //   child: Text(
                               //     'next'.tr,
-                              //     style: TextStyle(
+                              //    style: TextStyle(
                               //         color: Colors.white, fontSize: 18),
                               //   ),
                               //   onPressed: () {

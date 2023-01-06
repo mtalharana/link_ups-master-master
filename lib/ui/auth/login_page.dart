@@ -90,7 +90,9 @@ class _LoginPageState extends State<LoginPage> {
                               Text(
                                 "Email",
                                 style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w500),
+                                    fontFamily: "OpenSans",
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500),
                               ),
                               TextFormField(
                                 controller: authController.emailController,
@@ -120,7 +122,9 @@ class _LoginPageState extends State<LoginPage> {
                               Text(
                                 "Password",
                                 style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w500),
+                                    fontFamily: "OpenSans",
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500),
                               ),
                               TextFormField(
                                 controller: authController.passwordController,
@@ -173,6 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                                     'forget_password'.tr,
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
+                                      fontFamily: "OpenSans",
                                       color: Color(0xff38ABD8),
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -196,18 +201,20 @@ class _LoginPageState extends State<LoginPage> {
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Color(0xff38ABD8),
                                       ),
-                                      
                                       child: Text(
                                         'log_in'.tr,
                                         style: TextStyle(
-                                            color: Colors.white, fontSize: 18),
+                                            fontFamily: "OpenSans",
+                                            color: Colors.white,
+                                            fontSize: 18),
                                       ),
                                     ),
                                     // RaisedButton(
                                     //   color: Colors.green[700],
                                     //   child: Text(
                                     //     'log_in'.tr,
-                                    //     style: TextStyle(
+                                    //    style: TextStyle(
+                                    //  fontFamily: "OpenSans",
                                     //         color: Colors.white, fontSize: 18),
                                     //   ),
                                     //   onPressed: () {
@@ -225,7 +232,9 @@ class _LoginPageState extends State<LoginPage> {
                                 children: <Widget>[
                                   Text(
                                     "dont_have_account".tr,
-                                    style: TextStyle(color: Colors.grey),
+                                    style: TextStyle(
+                                        fontFamily: "OpenSans",
+                                        color: Colors.grey),
                                   ),
                                   GestureDetector(
                                     onTap: () {
@@ -235,6 +244,7 @@ class _LoginPageState extends State<LoginPage> {
                                     child: Text(
                                       'sign_up'.tr,
                                       style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         color: Color(0xff38ABD8),
                                         fontWeight: FontWeight.bold,
                                       ),

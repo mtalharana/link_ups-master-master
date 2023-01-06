@@ -131,7 +131,7 @@ class _EmailSettingPageState extends State<EmailSettingPage> {
                         //   padding: EdgeInsets.symmetric(vertical: 10),
                         //   child: Text(
                         //     'send_email_verification'.tr,
-                        //     style: TextStyle(
+                        //    style: TextStyle(
                         //         fontSize: 16,
                         //         color: Colors.black45,
                         //         fontWeight: FontWeight.bold),

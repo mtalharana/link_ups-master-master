@@ -146,8 +146,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                             fontSize: 14,
                                           ),
                                         ),
-                                        if (location != null &&
-                                            location != '')
+                                        if (location != null && location != '')
                                           Text(
                                             location,
                                             style: TextStyle(fontSize: 12),
@@ -155,7 +154,6 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                       ],
                                     ),
                                   ),
-                                 
                                   IconButton(
                                       // icon: Icon(
                                       //   Icons.arrow_forward_ios,
@@ -200,8 +198,8 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                     ),
                                   ),
                                   RangeSlider(
-                                    values: authController
-                                        .distanceRangeValue.value,
+                                    values:
+                                        authController.distanceRangeValue.value,
                                     min: 1,
                                     max: 1000,
                                     divisions: 100,
@@ -219,10 +217,9 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                     ),
                                     onChanged: (RangeValues values) {
                                       setState(() {
-                                         authController
-                                          .updateDistanceValue(values);
+                                        authController
+                                            .updateDistanceValue(values);
                                       });
-                                     
                                     },
                                   ),
                                 ],
@@ -271,8 +268,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                             .ageRangeValues.value.start
                                             .round()
                                             .toString(),
-                                        authController
-                                            .ageRangeValues.value.end
+                                        authController.ageRangeValues.value.end
                                             .round()
                                             .toString(),
                                       ),
@@ -301,7 +297,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                             //       left: 18.0, top: 10),
                             //   child: Text(
                             //     "like_me_with".tr,
-                            //     style: TextStyle(
+                            //    style: TextStyle(
                             //       fontSize: 18,
                             //     ),
                             //   ),
@@ -322,9 +318,9 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                   ),
                                   Radio(
                                     value: 'Female',
-                                    groupValue: authController
-                                            .user?.value.linkMeWith ??
-                                        authController.linkmeWith.value,
+                                    groupValue:
+                                        authController.user?.value.linkMeWith ??
+                                            authController.linkmeWith.value,
                                     onChanged: (value) {
                                       authController
                                           .updateLinkMeWith(value.toString());
@@ -336,9 +332,9 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                   // ),
                                   Radio(
                                     value: 'Male',
-                                    groupValue: authController
-                                            .user?.value.linkMeWith ??
-                                        authController.linkmeWith.value,
+                                    groupValue:
+                                        authController.user?.value.linkMeWith ??
+                                            authController.linkmeWith.value,
                                     onChanged: (value) {
                                       print(value);
                                       authController
@@ -351,9 +347,9 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                   // ),
                                   Radio(
                                     value: 'Both',
-                                    groupValue: authController
-                                            .user?.value.linkMeWith ??
-                                        authController.linkmeWith.value,
+                                    groupValue:
+                                        authController.user?.value.linkMeWith ??
+                                            authController.linkmeWith.value,
                                     onChanged: (value) {
                                       authController
                                           .updateLinkMeWith(value.toString());
@@ -454,9 +450,8 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                           groupValue: authController
                                               .meetFromPreference.value,
                                           onChanged: (value) {
-                                            authController
-                                                .updateMeetFromValues(
-                                                    '', 'all', '');
+                                            authController.updateMeetFromValues(
+                                                '', 'all', '');
                                             authController
                                                 .updateMeetFromPreference(
                                                     "all");
@@ -477,8 +472,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                       ],
                                     ),
                                   ),
-                                  if (authController
-                                          .meetFromPreference.value !=
+                                  if (authController.meetFromPreference.value !=
                                       "all")
                                     Row(
                                       mainAxisAlignment:
@@ -492,9 +486,8 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                               authController
                                                   .countryMeetFromCode.value,
                                           onChanged: (e) {
-                                            authController
-                                                .updateMeetFromValues(e.name!,
-                                                    e.code!, e.dialCode!);
+                                            authController.updateMeetFromValues(
+                                                e.name!, e.code!, e.dialCode!);
                                           },
                                           countryList:
                                               Utils.carribAndLatinCountry,
@@ -517,8 +510,8 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                             // ),
                             Container(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 8.0),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -560,8 +553,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                             // SizedBox(
                                             //   width: ,
                                             // ),
-                                            Text(authController
-                                                .language.value),
+                                            Text(authController.language.value),
                                             SizedBox(
                                               width: 8,
                                             ),
@@ -592,9 +584,8 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                           );
                                         }).toList(),
                                         onChanged: (LanguageModel? val) {
-                                          SharedPref.instance.shared
-                                              .setString('locale',
-                                                  val!.languageCode);
+                                          SharedPref.instance.shared.setString(
+                                              'locale', val!.languageCode);
                                           Locale _l = AppConstant.getLocale(
                                               val.languageCode);
                                           Get.updateLocale(_l);
@@ -618,8 +609,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                             //   height: 10,
                             // ),
                             Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Expanded(
@@ -648,8 +638,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                     inactiveThumbColor: Color(0xff38ABD8),
                                     inactiveTrackColor: Colors.grey[300],
                                     onChanged: (value) {
-                                      authController
-                                          .updateShowAgeStatus(value);
+                                      authController.updateShowAgeStatus(value);
                                     },
                                   ),
                                 ),
@@ -665,8 +654,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                             //   height: 10,
                             // ),
                             Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Expanded(
@@ -681,9 +669,8 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                     // ),
                                     // SizedBox(width: 6),
                                     SizedBox(
-                                      width:
-                                          MediaQuery.of(context).size.width *
-                                              0.5,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.5,
                                       child: Text(
                                         "make_status_ghost".tr,
                                         maxLines: 2,
@@ -711,8 +698,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                     inactiveThumbColor: Color(0xff38ABD8),
                                     inactiveTrackColor: Colors.grey[300],
                                     onChanged: (value) {
-                                      authController
-                                          .updateIsGhostStatus(value);
+                                      authController.updateIsGhostStatus(value);
                                     },
                                   ),
                                 ),
@@ -733,8 +719,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Expanded(
                                           child: Row(
@@ -767,17 +752,16 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                                   .user!.value.subscription
                                                   .where((element) => DateTime
                                                           .fromMillisecondsSinceEpoch(
-                                                              element[
-                                                                  'expiry'])
-                                                      .isAfter(
-                                                          DateTime.now()))
+                                                              element['expiry'])
+                                                      .isAfter(DateTime.now()))
                                                   .toList()
                                                   .isNotEmpty
                                               : false,
                                           activeColor: Colors.red,
                                           onChanged: (value) {
-                                            authController.updateMembershipModel(
-                                                'islivestream', value);
+                                            authController
+                                                .updateMembershipModel(
+                                                    'islivestream', value);
                                           },
                                         ),
                                       ),
@@ -803,8 +787,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Expanded(
                                           child: Row(
@@ -830,25 +813,22 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                         padding: EdgeInsets.only(
                                             left: 10.0, top: 10.0),
                                         child: CupertinoSwitch(
-                                        
                                           value: authController.user!.value
                                                   .subscription.isNotEmpty
                                               ? authController
                                                   .user!.value.subscription
                                                   .where((element) => DateTime
                                                           .fromMillisecondsSinceEpoch(
-                                                              element[
-                                                                  'expiry'])
-                                                      .isAfter(
-                                                          DateTime.now()))
+                                                              element['expiry'])
+                                                      .isAfter(DateTime.now()))
                                                   .toList()
                                                   .isNotEmpty
                                               : false,
                                           activeColor: Colors.red,
-                                        
                                           onChanged: (value) {
-                                            authController.updateMembershipModel(
-                                                'topshelf', value);
+                                            authController
+                                                .updateMembershipModel(
+                                                    'topshelf', value);
                                           },
                                         ),
                                       ),
@@ -874,8 +854,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Expanded(
                                           child: Row(
@@ -907,17 +886,16 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                                   .user!.value.subscription
                                                   .where((element) => DateTime
                                                           .fromMillisecondsSinceEpoch(
-                                                              element[
-                                                                  'expiry'])
-                                                      .isAfter(
-                                                          DateTime.now()))
+                                                              element['expiry'])
+                                                      .isAfter(DateTime.now()))
                                                   .toList()
                                                   .isNotEmpty
                                               : false,
                                           activeColor: Colors.red,
                                           onChanged: (value) {
-                                            authController.updateMembershipModel(
-                                                'restaurant', value);
+                                            authController
+                                                .updateMembershipModel(
+                                                    'restaurant', value);
                                           },
                                         ),
                                       ),
@@ -929,8 +907,8 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                   Container(
                                     padding: EdgeInsets.only(
                                         left: 5, top: 5, right: 50),
-                                    child: Text(
-                                        'turning_this_msg_restaurant'.tr),
+                                    child:
+                                        Text('turning_this_msg_restaurant'.tr),
                                   )
                                 ],
                               ),
@@ -944,8 +922,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Expanded(
                                           child: Row(
@@ -969,7 +946,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                       Container(
                                         height: 40,
                                         padding: EdgeInsets.only(
-                                            left: 0, top: 10.0,right: 15),
+                                            left: 0, top: 10.0, right: 15),
                                         child: CupertinoSwitch(
                                           value: authController.user!.value
                                                   .subscription.isNotEmpty
@@ -977,17 +954,16 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                                   .user!.value.subscription
                                                   .where((element) => DateTime
                                                           .fromMillisecondsSinceEpoch(
-                                                              element[
-                                                                  'expiry'])
-                                                      .isAfter(
-                                                          DateTime.now()))
+                                                              element['expiry'])
+                                                      .isAfter(DateTime.now()))
                                                   .toList()
                                                   .isNotEmpty
                                               : true,
                                           activeColor: Colors.red,
                                           onChanged: (value) {
-                                            authController.updateMembershipModel(
-                                                'clubs', value);
+                                            authController
+                                                .updateMembershipModel(
+                                                    'clubs', value);
                                           },
                                         ),
                                       ),
@@ -1015,7 +991,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                                   //     },
                                   //     child: Text(
                                   //       "Update",
-                                  //       style: TextStyle(
+                                  //      style: TextStyle(
                                   //         color: Colors.white,
                                   //       ),
                                   //     ),
@@ -1059,7 +1035,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                       //     alignment: Alignment.center,
                       //     child: Text(
                       //       "update".tr,
-                      //       style: TextStyle(
+                      //      style: TextStyle(
                       //           color: Colors.white,
                       //           fontSize: 18,
                       //           fontWeight: FontWeight.bold),
@@ -1070,42 +1046,40 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                       //   },
                       // ),
                       Container(
-                                    padding: EdgeInsets.only(
-                                        left: 5, top: 0, right: 50),
-                                    child: Text('turning_this_clubs_msg'.tr),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 20),
-                                    child: Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 12.0, vertical: 15.0),
-                                      width: width,
-                                      height: 40,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          // Navigator.push(context, MaterialPageRoute(builder: (_){
-                                          //   return HomePage();
-                                          // }));
-                                           authController.addSetting(context);
-                                        },
-                                        child: Text(
-                                          "Update",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        style: ElevatedButton.styleFrom(
-                                            backgroundColor: Color(0xff38abd8)),
-                                      ),
-                                    ),
-                                  ),
+                        padding: EdgeInsets.only(left: 5, top: 0, right: 50),
+                        child: Text('turning_this_clubs_msg'.tr),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 12.0, vertical: 15.0),
+                          width: width,
+                          height: 40,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Navigator.push(context, MaterialPageRoute(builder: (_){
+                              //   return HomePage();
+                              // }));
+                              authController.addSetting(context);
+                            },
+                            child: Text(
+                              "Update",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xff38abd8)),
+                          ),
+                        ),
+                      ),
                       SizedBox(
                         height: 30,
                       ),
                     ],
                   ),
                 ),
-                
               ],
             ),
           );

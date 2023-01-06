@@ -133,7 +133,7 @@ class _NotificationPageState extends State<NotificationPage> {
             //       padding: const EdgeInsets.fromLTRB(60, 40, 0, 0),
             //       child: Text(
             //         "Notification",
-            //         style: TextStyle(color: Colors.white, fontSize: 24),
+            //        style: TextStyle(color: Colors.white, fontSize: 24),
             //       ),
             //     ),
             //   ),
@@ -159,7 +159,7 @@ class _NotificationPageState extends State<NotificationPage> {
             //           children: [
             //             Text(
             //               'no_new_notification'.tr,
-            //               style: TextStyle(
+            //              style: TextStyle(
             //                   fontSize: 24,
             //                   fontWeight: FontWeight.bold,
             //                   color: Colors.black),

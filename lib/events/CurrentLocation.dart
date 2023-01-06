@@ -169,14 +169,17 @@ class _CurrentLocationState extends State<CurrentLocation> {
                           children: [
                             Text(
                               "Current Location",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
+                              style: TextStyle(
+                                  fontFamily: 'OpenSans',
+                                  color: Colors.white,
+                                  fontSize: 18),
                             ),
                             // Text(
                             //   // "Lat:" + entcontroller.currentlatitude.toString(),
                             //   "",
                             //   style:
-                            //       TextStyle(color: Colors.white, fontSize: 15),
+                            //       TextStyle(
+                            //  fontFamily: 'OpenSans',color: Colors.white, fontSize: 15),
                             // ),
 
                             //  (dt1.compareTo(dt2) == 0)?Text("Both date time are at same moment."):Text("DT1 is After DT2..........."),
@@ -187,23 +190,30 @@ class _CurrentLocationState extends State<CurrentLocation> {
                             //   //     entcontroller.currrentlongitude.toString(),
                             //   dateToday.toString(),
                             //   style:
-                            //       TextStyle(color: Colors.white, fontSize: 15),
+                            //       TextStyle(
+                            // fontFamily: 'OpenSans',color: Colors.white, fontSize: 15),
                             // ),
                             Row(
                               children: [
                                 Text(
                                   authController.countryName.toString(),
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
+                                      fontFamily: 'OpenSans',
+                                      color: Colors.white,
+                                      fontSize: 18),
                                 ),
                                 Text(
                                   ",",
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(
+                                      fontFamily: 'OpenSans',
+                                      color: Colors.white),
                                 ),
                                 Text(
                                   authController.countryCode.toString(),
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
+                                      fontFamily: 'OpenSans',
+                                      color: Colors.white,
+                                      fontSize: 18),
                                 ),
                               ],
                             ),
@@ -371,9 +381,9 @@ class _CurrentLocationState extends State<CurrentLocation> {
                           Text(
                             "Upcomming Events",
                             style: TextStyle(
+                              fontFamily: 'OpenSans',
                               color: Colors.white,
                               fontSize: 18,
-                              fontFamily: "OpenSans",
                             ),
                           ),
                         ],
@@ -542,6 +552,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                             .get("title")
                                                                             .toString(),
                                                                         style: TextStyle(
+                                                                            fontFamily:
+                                                                                'OpenSans',
                                                                             color:
                                                                                 Colors.white,
                                                                             fontSize: 15),
@@ -568,6 +580,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                     data.get(
                                                                         "category"),
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'OpenSans',
                                                                         color: Colors
                                                                             .transparent,
                                                                         fontSize:
@@ -598,6 +612,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                       maxLines:
                                                                           1,
                                                                       style: TextStyle(
+                                                                          fontFamily:
+                                                                              'OpenSans',
                                                                           color: Colors
                                                                               .white,
                                                                           fontSize:
@@ -615,6 +631,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                     child: Text(
                                                                       "Location : ",
                                                                       style: TextStyle(
+                                                                          fontFamily:
+                                                                              'OpenSans',
                                                                           color: Colors
                                                                               .white,
                                                                           fontSize:
@@ -625,6 +643,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                     data.get(
                                                                         "venue"),
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'OpenSans',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -633,6 +653,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                   Text(
                                                                     (","),
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'OpenSans',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -660,7 +682,9 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                 Text(
                                   "Please add events from Admin Pannel",
                                   style: TextStyle(
-                                      color: Colors.black, fontSize: 20),
+                                      fontFamily: 'OpenSans',
+                                      color: Colors.black,
+                                      fontSize: 20),
                                 ),
                               ],
                             );
@@ -685,7 +709,9 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                   Text(
                                     "INVITE YOUR FRIENDS",
                                     style: TextStyle(
-                                        fontSize: 16, color: Colors.white),
+                                        fontFamily: 'OpenSans',
+                                        fontSize: 16,
+                                        color: Colors.white),
                                   ),
                                   SizedBox(
                                     width: 20,
@@ -702,6 +728,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                         child: Text(
                                           "INVITE",
                                           style: TextStyle(
+                                            fontFamily: 'OpenSans',
                                             fontSize: 10,
                                             color: Colors.white,
                                           ),
@@ -717,7 +744,9 @@ class _CurrentLocationState extends State<CurrentLocation> {
                               child: Text(
                                 "Get 20\$ off Tickets",
                                 style: TextStyle(
-                                    fontSize: 12, color: Colors.white),
+                                    fontFamily: 'OpenSans',
+                                    fontSize: 12,
+                                    color: Colors.white),
                               ),
                             ),
                           ],
@@ -905,6 +934,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                       data.get(
                                                                           "start_time"),
                                                                       style: TextStyle(
+                                                                          fontFamily:
+                                                                              'OpenSans',
                                                                           color: Colors
                                                                               .grey,
                                                                           fontSize:
@@ -915,6 +946,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                     data.get(
                                                                         "category"),
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'OpenSans',
                                                                         color: Colors
                                                                             .transparent,
                                                                         fontSize:
@@ -931,6 +964,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                                 "end_time")
                                                                             .toString(),
                                                                         style: TextStyle(
+                                                                            fontFamily:
+                                                                                'OpenSans',
                                                                             color:
                                                                                 Colors.transparent,
                                                                             fontSize: 1)),
@@ -939,6 +974,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                     data.get(
                                                                         "early_bird_economy_price"),
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'OpenSans',
                                                                         color: Colors
                                                                             .transparent,
                                                                         fontSize:
@@ -948,6 +985,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                     data.get(
                                                                         "vip_price"),
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'OpenSans',
                                                                         color: Colors
                                                                             .transparent,
                                                                         fontSize:
@@ -957,6 +996,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                     data.get(
                                                                         "economy_price"),
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'OpenSans',
                                                                         color: Colors
                                                                             .transparent,
                                                                         fontSize:
@@ -966,6 +1007,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                     data.get(
                                                                         "early_bird_vip_price"),
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'OpenSans',
                                                                         color: Colors
                                                                             .transparent,
                                                                         fontSize:
@@ -977,6 +1020,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                             "event_fee")
                                                                         .toString(),
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'OpenSans',
                                                                         color: Colors
                                                                             .transparent,
                                                                         fontSize:
@@ -997,6 +1042,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                   data.get(
                                                                       "title"),
                                                                   style: TextStyle(
+                                                                      fontFamily:
+                                                                          'OpenSans',
                                                                       color: Colors
                                                                           .black,
                                                                       fontSize:
@@ -1017,6 +1064,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                       data.get(
                                                                           "venue"),
                                                                       style: TextStyle(
+                                                                          fontFamily:
+                                                                              'OpenSans',
                                                                           color: Colors
                                                                               .grey,
                                                                           fontSize:
@@ -1027,6 +1076,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                     data.get(
                                                                         "disclaimer"),
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'OpenSans',
                                                                         color: Colors
                                                                             .transparent,
                                                                         fontSize:
@@ -1035,7 +1086,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                   // Text(
                                                                   //   data.get(
                                                                   //       "latitude"),
-                                                                  //   style: TextStyle(
+                                                                  //  style: TextStyle(
+                                                                  //  fontFamily: 'OpenSans',
                                                                   //       color: Colors
                                                                   //           .transparent,
                                                                   //       fontSize: 1),
@@ -1043,7 +1095,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                   // Text(
                                                                   //   data.get(
                                                                   //       "longtitude"),
-                                                                  //   style: TextStyle(
+                                                                  //  style: TextStyle(
+//fontFamily: 'OpenSans',
                                                                   //       color: Colors
                                                                   //           .transparent,
                                                                   //       fontSize: 1),
@@ -1052,6 +1105,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                     data.get(
                                                                         "organizer_name"),
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'OpenSans',
                                                                         color: Colors
                                                                             .transparent,
                                                                         fontSize:
@@ -1070,14 +1125,17 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                           child:
                                                                               Text(
                                                                             data.get("early_bird_vip_price"),
-                                                                            style:
-                                                                                TextStyle(color: Colors.transparent, fontSize: 1),
+                                                                            style: TextStyle(
+                                                                                fontFamily: 'OpenSans',
+                                                                                color: Colors.transparent,
+                                                                                fontSize: 1),
                                                                           ),
                                                                         ),
                                                                         Text(
                                                                           data.get(
                                                                               "early_bird_economy_price"),
                                                                           style: TextStyle(
+                                                                              fontFamily: 'OpenSans',
                                                                               color: Colors.transparent,
                                                                               fontSize: 1),
                                                                         ),
@@ -1091,14 +1149,17 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                           child:
                                                                               Text(
                                                                             data.get("economy_price"),
-                                                                            style:
-                                                                                TextStyle(color: Colors.transparent, fontSize: 1),
+                                                                            style: TextStyle(
+                                                                                fontFamily: 'OpenSans',
+                                                                                color: Colors.transparent,
+                                                                                fontSize: 1),
                                                                           ),
                                                                         ),
                                                                         Text(
                                                                           data.get(
                                                                               "vip_price"),
                                                                           style: TextStyle(
+                                                                              fontFamily: 'OpenSans',
                                                                               color: Colors.transparent,
                                                                               fontSize: 1),
                                                                         ),
@@ -1147,6 +1208,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                 Text(
                   "5th Sept, 2022",
                   style: TextStyle(
+                    fontFamily: 'OpenSans',
                     color: Color.fromARGB(255, 154, 154, 154),
                     fontSize: 9,
                   ),
@@ -1154,6 +1216,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                 Text(
                   "Singning International",
                   style: TextStyle(
+                    fontFamily: 'OpenSans',
                     color: Colors.black,
                     fontSize: 16,
                   ),
@@ -1161,6 +1224,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                 Text(
                   "41, Jourge Coard Road, Location",
                   style: TextStyle(
+                    fontFamily: 'OpenSans',
                     color: Color.fromARGB(255, 154, 154, 154),
                     fontSize: 12,
                   ),

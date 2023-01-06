@@ -200,7 +200,9 @@ class _LocationSettingPageState extends State<LocationSettingPage> {
                                       ', ' +
                                       (country ?? ''),
                                   style: TextStyle(
-                                      color: Colors.black, fontSize: 14),
+                                      fontFamily: "OpenSans",
+                                      color: Colors.black,
+                                      fontSize: 14),
                                 ),
                               ),
                             )
@@ -225,7 +227,7 @@ class _LocationSettingPageState extends State<LocationSettingPage> {
             backgroundColor: Colors.black,
             title: Text(
               'confirm_select'.tr,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(fontFamily: "OpenSans", color: Colors.white),
               textAlign: TextAlign.center,
             ),
             content: Container(
@@ -235,7 +237,10 @@ class _LocationSettingPageState extends State<LocationSettingPage> {
                 children: [
                   Text(
                     'make_location_default'.tr,
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(
+                        fontFamily: "OpenSans",
+                        fontSize: 16,
+                        color: Colors.white),
                   ),
                   SizedBox(
                     height: 20,
@@ -256,13 +261,13 @@ class _LocationSettingPageState extends State<LocationSettingPage> {
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
-                           style: ElevatedButton.styleFrom(
-                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                side: BorderSide(color: Colors.white)),
-                            backgroundColor: Colors.black,
-                            padding: EdgeInsets.all(8.0),
-                           ),
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  side: BorderSide(color: Colors.white)),
+                              backgroundColor: Colors.black,
+                              padding: EdgeInsets.all(8.0),
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -280,13 +285,13 @@ class _LocationSettingPageState extends State<LocationSettingPage> {
                             onPressed: () {
                               _isActiveLocation(selectedLocationID);
                             },
-                           style: ElevatedButton.styleFrom(
-                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                side: BorderSide(color: Colors.white)),
-                            backgroundColor: Colors.red[900],
-                            padding: EdgeInsets.all(8.0),
-                           ),
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  side: BorderSide(color: Colors.white)),
+                              backgroundColor: Colors.red[900],
+                              padding: EdgeInsets.all(8.0),
+                            ),
                           ),
                         ),
                       ],
@@ -336,7 +341,7 @@ class _LocationSettingPageState extends State<LocationSettingPage> {
             backgroundColor: Colors.black,
             title: Text(
               'confirm_delete'.tr,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(fontFamily: "OpenSans", color: Colors.white),
               textAlign: TextAlign.center,
             ),
             content: Container(
@@ -346,7 +351,10 @@ class _LocationSettingPageState extends State<LocationSettingPage> {
                 children: [
                   Text(
                     'delete_this_location'.tr,
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(
+                        fontFamily: "OpenSans",
+                        fontSize: 16,
+                        color: Colors.white),
                   ),
                   SizedBox(
                     height: 20,
@@ -367,13 +375,13 @@ class _LocationSettingPageState extends State<LocationSettingPage> {
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
-                           style: ElevatedButton.styleFrom(
-                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                side: BorderSide(color: Colors.white)),
-                            backgroundColor: Colors.black,
-                            padding: EdgeInsets.all(8.0),
-                           ),
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  side: BorderSide(color: Colors.white)),
+                              backgroundColor: Colors.black,
+                              padding: EdgeInsets.all(8.0),
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -397,13 +405,13 @@ class _LocationSettingPageState extends State<LocationSettingPage> {
                                   .delete();
                               Navigator.of(context).pop();
                             },
-                           style: ElevatedButton.styleFrom(
-                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                side: BorderSide(color: Colors.white)),
-                            backgroundColor: Colors.red[900],
-                            padding: EdgeInsets.all(8.0),
-                           ),
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  side: BorderSide(color: Colors.white)),
+                              backgroundColor: Colors.red[900],
+                              padding: EdgeInsets.all(8.0),
+                            ),
                           ),
                         ),
                       ],
@@ -434,7 +442,7 @@ class _LocationSettingPageState extends State<LocationSettingPage> {
           alignment: Alignment.center,
           child: Text(
             'location'.tr,
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(fontFamily: "OpenSans", color: Colors.black),
           ),
         ),
         leading: IconButton(
@@ -508,6 +516,7 @@ class _LocationSettingPageState extends State<LocationSettingPage> {
                                         ? Text(
                                             'my_location',
                                             style: TextStyle(
+                                                fontFamily: "OpenSans",
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold),
                                           )

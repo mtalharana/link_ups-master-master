@@ -60,6 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
                             child: Text(
                               "Linking Caribbean and Latin American \n                 People Everywhere.",
                               style: TextStyle(
+                                fontFamily: "OpenSans",
                                 color: Color.fromARGB(255, 56, 171, 216),
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,

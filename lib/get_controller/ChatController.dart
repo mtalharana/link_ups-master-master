@@ -283,7 +283,7 @@ class ChatController extends BaseController {
   //                       ),
   //                       Text(
   //                         'Bingo!',
-  //                         style: TextStyle(
+  //                        style: TextStyle(
   //                             color: Colors.tealAccent[400],
   //                             fontSize: 100,
   //                             fontWeight: FontWeight.bold,
@@ -294,7 +294,7 @@ class ChatController extends BaseController {
   //                       ),
   //                       Text(
   //                         "You've got a Match!",
-  //                         style: TextStyle(
+  //                        style: TextStyle(
   //                             color: Colors.tealAccent[400],
   //                             fontSize: 20,
   //                             fontWeight: FontWeight.bold),

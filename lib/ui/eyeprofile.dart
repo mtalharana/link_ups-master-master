@@ -63,6 +63,7 @@ class CassiusStuart extends StatelessWidget {
                       Text(
                         "${authController.user!.value.firstName}",
                         style: TextStyle(
+                          fontFamily: "OpenSans",
                           color: Color.fromARGB(255, 56, 171, 216),
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -73,7 +74,7 @@ class CassiusStuart extends StatelessWidget {
                       ),
                       Text(
                         "40",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontFamily: "OpenSans", fontSize: 20),
                       ),
                     ],
                   ),
@@ -99,7 +100,8 @@ class CassiusStuart extends StatelessWidget {
                             Image.asset("assets/image/male-gender (1).png"),
                             Text(
                               "Straight Man",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                  fontFamily: "OpenSans", fontSize: 12),
                             ),
                           ],
                         ),
@@ -123,7 +125,8 @@ class CassiusStuart extends StatelessWidget {
                             Image.asset("assets/image/distance (1).png"),
                             Text(
                               "Lives in Bahamas",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                  fontFamily: "OpenSans", fontSize: 12),
                             )
                           ],
                         ),
@@ -148,7 +151,8 @@ class CassiusStuart extends StatelessWidget {
                         Image.asset("assets/image/location(4) (3).png"),
                         Text(
                           "53 Miles away",
-                          style: TextStyle(fontSize: 12),
+                          style:
+                              TextStyle(fontFamily: "OpenSans", fontSize: 12),
                         )
                       ],
                     ),
@@ -164,6 +168,7 @@ class CassiusStuart extends StatelessWidget {
                   const Text(
                     "Photos",
                     style: TextStyle(
+                      fontFamily: "OpenSans",
                       fontSize: 20,
                       color: Color.fromARGB(255, 56, 171, 216),
                     ),
@@ -175,7 +180,6 @@ class CassiusStuart extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  
                   Divider(
                     color: Color.fromARGB(255, 219, 239, 246),
                     indent: 10,
@@ -184,6 +188,7 @@ class CassiusStuart extends StatelessWidget {
                   Text(
                     "Interests",
                     style: TextStyle(
+                      fontFamily: "OpenSans",
                       fontSize: 20,
                       color: Color.fromARGB(255, 56, 171, 216),
                     ),
@@ -209,7 +214,8 @@ class CassiusStuart extends StatelessWidget {
                           children: [
                             Text(
                               "Photography",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                  fontFamily: "OpenSans", fontSize: 12),
                             )
                           ],
                         ),
@@ -229,7 +235,8 @@ class CassiusStuart extends StatelessWidget {
                           children: [
                             Text(
                               "Cooking",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                  fontFamily: "OpenSans", fontSize: 12),
                             )
                           ],
                         ),
@@ -249,7 +256,8 @@ class CassiusStuart extends StatelessWidget {
                           children: [
                             Text(
                               "Dancing",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                  fontFamily: "OpenSans", fontSize: 12),
                             )
                           ],
                         ),
@@ -269,7 +277,8 @@ class CassiusStuart extends StatelessWidget {
                           children: [
                             Text(
                               "Shopping",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                  fontFamily: "OpenSans", fontSize: 12),
                             ),
                           ],
                         ),
@@ -287,6 +296,7 @@ class CassiusStuart extends StatelessWidget {
                   Text(
                     "University",
                     style: TextStyle(
+                      fontFamily: "OpenSans",
                       fontSize: 20,
                       color: Color.fromARGB(255, 56, 171, 216),
                     ),
@@ -308,7 +318,8 @@ class CassiusStuart extends StatelessWidget {
                       children: [
                         Text(
                           "FDU",
-                          style: TextStyle(fontSize: 12),
+                          style:
+                              TextStyle(fontFamily: "OpenSans", fontSize: 12),
                         ),
                       ],
                     ),
@@ -324,6 +335,7 @@ class CassiusStuart extends StatelessWidget {
                   Text(
                     "Job",
                     style: TextStyle(
+                      fontFamily: "OpenSans",
                       fontSize: 20,
                       color: Color.fromARGB(255, 56, 171, 216),
                     ),
@@ -345,7 +357,8 @@ class CassiusStuart extends StatelessWidget {
                       children: [
                         Text(
                           "Boss",
-                          style: TextStyle(fontSize: 12),
+                          style:
+                              TextStyle(fontFamily: "OpenSans", fontSize: 12),
                         ),
                       ],
                     ),

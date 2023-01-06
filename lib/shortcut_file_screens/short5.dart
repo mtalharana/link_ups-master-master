@@ -16,42 +16,42 @@ class _Short5State extends State<Short5> {
         Stack(
           children: [
             Image.asset("assets/appbar-removebg-preview.png"),
-                Column(
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 127, top: 0),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        "assets/Vector Smart Object 2.png",
+                        width: 130,
+                        height: 130,
+                      ),
+                      SizedBox(
+                        width: 60,
+                      ),
+                      Image.asset(
+                        "assets/filter-search.png",
+                        width: 30,
+                        height: 30,
+                      ),
+                    ],
+                  ),
+                ),
+                // SizedBox(height: 35),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 28.0),
+                  child: Image.asset("assets/Group 163981.png"),
+                ),
+                // SizedBox(
+                //   height: 5,
+                // ),
+                Stack(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 127, top: 0),
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            "assets/Vector Smart Object 2.png",
-                            width: 130,
-                            height: 130,
-                          ),
-                          SizedBox(
-                            width: 60,
-                          ),
-                          Image.asset(
-                            "assets/filter-search.png",
-                            width: 30,
-                            height: 30,
-                          ),
-                        ],
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Image.asset("assets/Layer 31.png"),
                     ),
-                  // SizedBox(height: 35),
-                 Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 28.0),
-                      child: Image.asset("assets/Group 163981.png"),
-                    ),
-                  // SizedBox(
-                  //   height: 5,
-                  // ),
-                  Stack(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Image.asset("assets/Layer 31.png"),
-                      ),
                     Padding(
                       padding:
                           const EdgeInsets.only(left: 28, top: 420, right: 13),
@@ -81,13 +81,16 @@ class _Short5State extends State<Short5> {
                                   child: Text(
                                     "Which Caribbean or Latin country are you linked with?",
                                     style: TextStyle(
-                                        color: Colors.grey, fontSize: 15),
+                                        fontFamily: "OpenSans",
+                                        color: Colors.grey,
+                                        fontSize: 15),
                                   ),
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 18, right: 18, top: 10),
+                              padding: const EdgeInsets.only(
+                                  left: 18, right: 18, top: 10),
                               child: Row(
                                 children: [
                                   Image.asset("assets/Ellipse 2117.jpg"),
@@ -97,7 +100,9 @@ class _Short5State extends State<Short5> {
                                   Text(
                                     "Brasil",
                                     style: TextStyle(
-                                        color: Colors.grey, fontSize: 15),
+                                        fontFamily: "OpenSans",
+                                        color: Colors.grey,
+                                        fontSize: 15),
                                   ),
                                 ],
                               ),
@@ -116,13 +121,16 @@ class _Short5State extends State<Short5> {
                                   child: Text(
                                     "Which Caribbean or Latin country would you like to meet people from?",
                                     style: TextStyle(
-                                        color: Colors.grey, fontSize: 15),
+                                        fontFamily: "OpenSans",
+                                        color: Colors.grey,
+                                        fontSize: 15),
                                   ),
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 18, top: 10,right: 18),
+                              padding: const EdgeInsets.only(
+                                  left: 18, top: 10, right: 18),
                               child: Row(
                                 children: [
                                   Image.asset("assets/Ellipse 2117.jpg"),
@@ -132,7 +140,9 @@ class _Short5State extends State<Short5> {
                                   Text(
                                     "All",
                                     style: TextStyle(
-                                        color: Colors.grey, fontSize: 15),
+                                        fontFamily: "OpenSans",
+                                        color: Colors.grey,
+                                        fontSize: 15),
                                   ),
                                   SizedBox(
                                     width: 18,
@@ -144,7 +154,9 @@ class _Short5State extends State<Short5> {
                                   Text(
                                     "Other",
                                     style: TextStyle(
-                                        color: Colors.grey, fontSize: 15),
+                                        fontFamily: "OpenSans",
+                                        color: Colors.grey,
+                                        fontSize: 15),
                                   ),
                                 ],
                               ),
@@ -163,7 +175,8 @@ class _Short5State extends State<Short5> {
                             padding: const EdgeInsets.only(top: 10, left: 120),
                             child: Text(
                               "Apply",
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(
+                                  fontFamily: "OpenSans", color: Colors.white),
                             ),
                           ),
                         ],

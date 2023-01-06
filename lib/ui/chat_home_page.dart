@@ -62,6 +62,7 @@ class _ChatHomePageState extends State<ChatHomePage> {
                         child: Text(
                           'new_matches'.tr,
                           style: TextStyle(
+                            fontFamily: "OpenSans",
                             color: Colors.red,
                             fontWeight: FontWeight.bold,
                           ),
@@ -114,6 +115,7 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                     Text(
                                       _endUser.firstName,
                                       style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         fontSize: (_endUser.firstName).length <
                                                 10
                                             ? 16
@@ -138,6 +140,7 @@ class _ChatHomePageState extends State<ChatHomePage> {
                       child: Text(
                         'messages'.tr,
                         style: TextStyle(
+                          fontFamily: "OpenSans",
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
                         ),
@@ -153,7 +156,8 @@ class _ChatHomePageState extends State<ChatHomePage> {
                         child: Center(
                           child: Text(
                             'there_is_no_message'.tr,
-                            style: TextStyle(fontSize: 16),
+                            style:
+                                TextStyle(fontFamily: "OpenSans", fontSize: 16),
                           ),
                         ),
                       ),
@@ -307,6 +311,7 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                   _recentChatModel.withName[0]
                                                       .toUpperCase(),
                                                   style: TextStyle(
+                                                      fontFamily: "OpenSans",
                                                       color: Colors.blue[700],
                                                       fontSize: 16,
                                                       fontWeight:
@@ -315,7 +320,9 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                               ),
                                         title: Text(
                                           _recentChatModel.withName,
-                                          style: TextStyle(color: Colors.black),
+                                          style: TextStyle(
+                                              fontFamily: "OpenSans",
+                                              color: Colors.black),
                                         ),
                                         subtitle: Text(
                                           _recentChatModel.lastText.length < 30
@@ -348,6 +355,7 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                           _recentChatModel
                                                               .timestamp),
                                                   style: TextStyle(
+                                                      fontFamily: "OpenSans",
                                                       color: Colors.black54),
                                                 ),
                                                 SizedBox(
@@ -377,6 +385,8 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                               .data!.docs.length
                                                               .toString(),
                                                           style: TextStyle(
+                                                            fontFamily:
+                                                                "OpenSans",
                                                             color: Colors.white,
                                                           ),
                                                         ),

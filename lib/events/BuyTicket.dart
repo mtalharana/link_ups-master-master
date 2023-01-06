@@ -113,8 +113,6 @@ class _BuyTicketState extends State<BuyTicket> {
                   fit: BoxFit.fill),
             ),
           ),
-         
-
           SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
@@ -358,7 +356,7 @@ class _BuyTicketState extends State<BuyTicket> {
 
                 //  Text(
                 //   "Event Latitude/Longitude",
-                //   style: TextStyle(
+                //  style: TextStyle(
                 //     color: Color.fromARGB(255, 56, 171, 216),
                 //     fontSize: 22,
                 //     fontWeight: FontWeight.w600,

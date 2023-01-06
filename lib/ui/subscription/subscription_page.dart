@@ -98,7 +98,7 @@ class _SubscriptionPage1State extends State<SubscriptionPage1> {
                         //   child: Container(
                         //     child: Text(
                         //       'no_thank'.tr.toUpperCase(),
-                        //       style: TextStyle(
+                        //      style: TextStyle(
                         //         fontSize: 22,
                         //         color: Colors.white70,
                         //         fontWeight: FontWeight.bold,
@@ -111,7 +111,7 @@ class _SubscriptionPage1State extends State<SubscriptionPage1> {
                           height: 40,
                         ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             Get.to(HomePage());
                           },
                           child: Center(

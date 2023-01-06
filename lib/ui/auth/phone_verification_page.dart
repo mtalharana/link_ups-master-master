@@ -323,6 +323,7 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
                                   Text(
                                     'is_your_phone_number'.tr,
                                     style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         fontSize: 17,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black),
@@ -330,6 +331,7 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
                                   Text(
                                     phoneNumber,
                                     style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.greenAccent[700]),
@@ -378,6 +380,7 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
                                             Text(
                                               "i_didnt_received_code".tr,
                                               style: TextStyle(
+                                                  fontFamily: "OpenSans",
                                                   fontSize: 14,
                                                   color:
                                                       Colors.greenAccent[700]),
@@ -389,6 +392,7 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
                                               child: Text(
                                                 'resend'.tr,
                                                 style: TextStyle(
+                                                    fontFamily: "OpenSans",
                                                     color: Colors.red,
                                                     fontSize: 16,
                                                     fontWeight:
@@ -408,6 +412,7 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
                                               '$_start' +
                                               'seconds'.tr,
                                           style: TextStyle(
+                                              fontFamily: "OpenSans",
                                               fontSize: 14,
                                               color: Colors.black87),
                                         ),
@@ -430,7 +435,9 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
                                     child: Text(
                                       'next'.tr,
                                       style: TextStyle(
-                                          color: Colors.white, fontSize: 16),
+                                          fontFamily: "OpenSans",
+                                          color: Colors.white,
+                                          fontSize: 16),
                                     ),
                                   ),
                                 ],
@@ -441,6 +448,7 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
                                   Text(
                                     "Phone number",
                                     style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         color: Colors.black,
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500),
@@ -484,6 +492,7 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
                                   Text(
                                     'we_will_send_verification_code'.tr,
                                     style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         fontSize: 14,
                                         color: Color(0xff38ABD8),
                                         fontWeight: FontWeight.w500),
@@ -503,6 +512,7 @@ class _PhoneVerificationPageState extends State<PhoneVerificationPage> {
                                           child: Text(
                                             'get_an_sms'.tr,
                                             style: TextStyle(
+                                                fontFamily: "OpenSans",
                                                 color: Colors.white,
                                                 fontSize: 14),
                                           ),

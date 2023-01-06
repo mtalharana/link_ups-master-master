@@ -92,7 +92,7 @@ class LoginSettingState extends State<LoginSetting> {
                         padding: const EdgeInsets.only(bottom: 25),
                         // child: Text(
                         //   "Settings",
-                        //   style: TextStyle(color: Colors.white, fontSize: 30),
+                        //  style: TextStyle(color: Colors.white, fontSize: 30),
                         // ),
                         child: Image.asset("assets/Vector Smart Object 2.png",
                             width: 150, height: 50)),
@@ -136,7 +136,7 @@ class LoginSettingState extends State<LoginSetting> {
                               //             SizedBox(width: 5),
                               //             Text(
                               //               "location".tr,
-                              //               style: TextStyle(
+                              //              style: TextStyle(
                               //                   fontSize: 16,
                               //                   fontWeight: FontWeight.w500),
                               //             ),
@@ -153,7 +153,7 @@ class LoginSettingState extends State<LoginSetting> {
                               //           children: [
                               //             Text(
                               //               'my_location'.tr,
-                              //               style: TextStyle(
+                              //              style: TextStyle(
                               //                 fontSize: 14,
                               //               ),
                               //             ),
@@ -161,7 +161,7 @@ class LoginSettingState extends State<LoginSetting> {
                               //                 location != '')
                               //               Text(
                               //                 location,
-                              //                 style: TextStyle(fontSize: 12),
+                              //                style: TextStyle(fontSize: 12),
                               //               ),
                               //           ],
                               //         ),
@@ -260,7 +260,7 @@ class LoginSettingState extends State<LoginSetting> {
                               //             Text(
                               //               // "age".tr,
                               //               "Age",
-                              //               style: TextStyle(
+                              //              style: TextStyle(
                               //                   fontSize: 16,
                               //                   fontWeight: FontWeight.w500),
                               //             ),
@@ -312,7 +312,7 @@ class LoginSettingState extends State<LoginSetting> {
                               //       left: 18.0, top: 10),
                               //   child: Text(
                               //     "like_me_with".tr,
-                              //     style: TextStyle(
+                              //    style: TextStyle(
                               //       fontSize: 18,
                               //     ),
                               //   ),
@@ -817,7 +817,7 @@ class LoginSettingState extends State<LoginSetting> {
                               //               SizedBox(width: 5),
                               //               Text(
                               //                 "live_streaming".tr,
-                              //                 style: TextStyle(
+                              //                style: TextStyle(
                               //                   fontSize: 17,
                               //                 ),
                               //                 textAlign: TextAlign.center,
@@ -886,7 +886,7 @@ class LoginSettingState extends State<LoginSetting> {
                               //               SizedBox(width: 5),
                               //               Text(
                               //                 "top_shelf".tr,
-                              //                 style: TextStyle(
+                              //                style: TextStyle(
                               //                   fontSize: 17,
                               //                 ),
                               //                 textAlign: TextAlign.center,
@@ -955,7 +955,7 @@ class LoginSettingState extends State<LoginSetting> {
                               //               SizedBox(width: 5),
                               //               Text(
                               //                 "restaurants".tr,
-                              //                 style: TextStyle(
+                              //                style: TextStyle(
                               //                   fontSize: 17,
                               //                 ),
                               //                 textAlign: TextAlign.center,
@@ -1025,7 +1025,7 @@ class LoginSettingState extends State<LoginSetting> {
                               //               SizedBox(width: 5),
                               //               Text(
                               //                 "clubs_and_fates".tr,
-                              //                 style: TextStyle(
+                              //                style: TextStyle(
                               //                   fontSize: 17,
                               //                 ),
                               //                 textAlign: TextAlign.center,
@@ -1132,7 +1132,7 @@ class LoginSettingState extends State<LoginSetting> {
                         //     alignment: Alignment.center,
                         //     child: Text(
                         //       "update".tr,
-                        //       style: TextStyle(
+                        //      style: TextStyle(
                         //           color: Colors.white,
                         //           fontSize: 18,
                         //           fontWeight: FontWeight.bold),

@@ -306,7 +306,7 @@ class _Short1State extends State<Short1> {
                   //             children: [
                   //               Text(
                   //                 "Link Up",
-                  //                 style: TextStyle(
+                  //                style: TextStyle(
                   //                     fontSize: 15,
                   //                     color: Colors.black,
                   //                     fontWeight: FontWeight.bold),
@@ -336,7 +336,7 @@ class _Short1State extends State<Short1> {
                   //               children: [
                   //                 Text(
                   //                   "Show me",
-                  //                   style: TextStyle(
+                  //                  style: TextStyle(
                   //                       fontSize: 15,
                   //                       color: Colors.black,
                   //                       fontWeight: FontWeight.bold),
@@ -371,7 +371,7 @@ class _Short1State extends State<Short1> {
                   //               children: [
                   //                 Text(
                   //                   "Age range",
-                  //                   style: TextStyle(
+                  //                  style: TextStyle(
                   //                       color: Colors.black,
                   //                       fontWeight: FontWeight.bold,
                   //                       fontSize: 15),
@@ -408,7 +408,7 @@ class _Short1State extends State<Short1> {
                   //               children: [
                   //                 Text(
                   //                   "Distance (M)",
-                  //                   style: TextStyle(
+                  //                  style: TextStyle(
                   //                       color: Colors.black,
                   //                       fontWeight: FontWeight.bold,
                   //                       fontSize: 15),
@@ -445,7 +445,7 @@ class _Short1State extends State<Short1> {
                   //               children: [
                   //                 Text(
                   //                   "Additional options",
-                  //                   style: TextStyle(
+                  //                  style: TextStyle(
                   //                       color: Colors.black,
                   //                       fontWeight: FontWeight.bold,
                   //                       fontSize: 15),

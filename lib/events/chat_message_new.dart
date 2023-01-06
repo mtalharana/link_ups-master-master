@@ -21,10 +21,10 @@ class _EventsChatScreenState extends State<EventsChatScreen> {
       // appBar: AppBar(
       //   title: Text("data"),
       // ),
-       drawer: Drawer(
-              backgroundColor: Color(0XFF4E5B81),
-              child: DrawerScreen(),
-            ),
+      drawer: Drawer(
+        backgroundColor: Color(0XFF4E5B81),
+        child: DrawerScreen(),
+      ),
       body: Column(
         children: <Widget>[
           Container(
@@ -77,6 +77,7 @@ class _EventsChatScreenState extends State<EventsChatScreen> {
                   "FLORAL SINGING \nINTERNATIONAL PARTY",
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                    fontFamily: "OpenSans",
                     color: Color(0xff38ABD8),
                     fontSize: 24,
                     fontWeight: FontWeight.w500,
@@ -106,7 +107,8 @@ class _EventsChatScreenState extends State<EventsChatScreen> {
                           child: const Text(
                             "Lorem ipsum dolor sit  amet, \n consectetuer adipiscing elit. \n Aen",
                             textAlign: TextAlign.right,
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                                fontFamily: "OpenSans", color: Colors.white),
                           ),
                         ),
                         const SizedBox(
@@ -120,7 +122,8 @@ class _EventsChatScreenState extends State<EventsChatScreen> {
                             ),
                             Text(
                               "Vida Stuart",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                  fontFamily: "OpenSans", fontSize: 12),
                             )
                           ],
                         ),
@@ -134,7 +137,7 @@ class _EventsChatScreenState extends State<EventsChatScreen> {
                 padding: const EdgeInsets.only(left: 120.0),
                 child: const Text(
                   "01:07 PM",
-                  style: TextStyle(fontSize: 12),
+                  style: TextStyle(fontFamily: "OpenSans", fontSize: 12),
                 ),
               ),
               const SizedBox(
@@ -158,7 +161,8 @@ class _EventsChatScreenState extends State<EventsChatScreen> {
                           ),
                           const Text(
                             "Name",
-                            style: TextStyle(fontSize: 12),
+                            style:
+                                TextStyle(fontFamily: "OpenSans", fontSize: 12),
                           )
                         ],
                       ),
@@ -197,7 +201,7 @@ class _EventsChatScreenState extends State<EventsChatScreen> {
                 padding: const EdgeInsets.only(left: 180.0),
                 child: const Text(
                   "02:13 PM",
-                  style: TextStyle(fontSize: 12),
+                  style: TextStyle(fontFamily: "OpenSans", fontSize: 12),
                 ),
               ),
               const SizedBox(
@@ -221,7 +225,8 @@ class _EventsChatScreenState extends State<EventsChatScreen> {
                           ),
                           const Text(
                             "Name",
-                            style: TextStyle(fontSize: 12),
+                            style:
+                                TextStyle(fontFamily: "OpenSans", fontSize: 12),
                           )
                         ],
                       ),
@@ -260,7 +265,7 @@ class _EventsChatScreenState extends State<EventsChatScreen> {
                 padding: const EdgeInsets.only(left: 250.0),
                 child: const Text(
                   "02:13 PM",
-                  style: TextStyle(fontSize: 12),
+                  style: TextStyle(fontFamily: "OpenSans", fontSize: 12),
                 ),
               ),
               Padding(
@@ -308,7 +313,8 @@ class _EventsChatScreenState extends State<EventsChatScreen> {
                             ),
                             Text(
                               "Vida Stuart",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                  fontFamily: "OpenSans", fontSize: 12),
                             )
                           ],
                         ),
@@ -335,7 +341,7 @@ class _EventsChatScreenState extends State<EventsChatScreen> {
                 padding: const EdgeInsets.only(left: 50.0),
                 child: const Text(
                   "02:15 PM",
-                  style: TextStyle(fontSize: 12),
+                  style: TextStyle(fontFamily: "OpenSans", fontSize: 12),
                 ),
               ),
             ],

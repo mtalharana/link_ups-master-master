@@ -91,7 +91,7 @@
 //                               snapshot.data?.docs[0]['call_type'] == "Video"
 //                                   ? "Incoming video call"
 //                                   : "Incoming audio call",
-//                               style: TextStyle(
+//                              style: TextStyle(
 //                                   fontSize: 25, fontWeight: FontWeight.bold),
 //                             ),
 //                             AnimatedBuilder(
@@ -138,13 +138,13 @@
 //                               children: <Widget>[
 //                                 Text(
 //                                   "${widget.callInfo['caller_name']} ",
-//                                   style: TextStyle(
+//                                  style: TextStyle(
 //                                       fontSize: 25,
 //                                       fontWeight: FontWeight.bold),
 //                                 ),
 //                                 Text(
 //                                   "just_calling_you".tr,
-//                                   style: TextStyle(
+//                                  style: TextStyle(
 //                                       fontSize: 20,
 //                                       fontWeight: FontWeight.bold),
 //                                 ),

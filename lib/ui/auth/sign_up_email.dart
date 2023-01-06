@@ -108,6 +108,7 @@ class _SignUpUsingEmailState extends State<SignUpUsingEmail> {
                                   Text(
                                     "Email",
                                     style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500),
                                   ),
@@ -140,6 +141,7 @@ class _SignUpUsingEmailState extends State<SignUpUsingEmail> {
                                   Text(
                                     "Password",
                                     style: TextStyle(
+                                        fontFamily: "OpenSans",
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500),
                                   ),
@@ -196,6 +198,7 @@ class _SignUpUsingEmailState extends State<SignUpUsingEmail> {
                                           child: Text(
                                             'sign_up'.tr,
                                             style: TextStyle(
+                                                fontFamily: "OpenSans",
                                                 color: Colors.white,
                                                 fontSize: 18),
                                           ),
@@ -217,7 +220,9 @@ class _SignUpUsingEmailState extends State<SignUpUsingEmail> {
                                     children: <Widget>[
                                       Text(
                                         "already_have_an_account".tr,
-                                        style: TextStyle(color: Colors.grey),
+                                        style: TextStyle(
+                                            fontFamily: "OpenSans",
+                                            color: Colors.grey),
                                       ),
                                       GestureDetector(
                                         onTap: () {
@@ -226,6 +231,7 @@ class _SignUpUsingEmailState extends State<SignUpUsingEmail> {
                                         child: Text(
                                           'sign_in'.tr,
                                           style: TextStyle(
+                                            fontFamily: "OpenSans",
                                             color: Color(0xff38ABD8),
                                             fontWeight: FontWeight.bold,
                                           ),

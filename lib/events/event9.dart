@@ -44,7 +44,7 @@ class Event9 extends StatefulWidget {
 }
 
 class _Event9State extends State<Event9> {
-  String totalprice1='';
+  String totalprice1 = '';
 
   // final _paymentItems = [
   //   PaymentItem(
@@ -54,7 +54,7 @@ class _Event9State extends State<Event9> {
   //   )
   // ];
 
-    final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   var checkOutUrl;
   var executeUrl;
@@ -62,30 +62,31 @@ class _Event9State extends State<Event9> {
 
   @override
   void initState() {
-   totalprice1=widget.totalprice!.toDouble().toString();
-print(totalprice1);
+    totalprice1 = widget.totalprice!.toDouble().toString();
+    print(totalprice1);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final _paymentItems = [
-    PaymentItem(
-      label: 'Total',
-      amount: totalprice1.toString(),
-      status: PaymentItemStatus.final_price,
-    )
-  ];
-  
+      PaymentItem(
+        label: 'Total',
+        amount: totalprice1.toString(),
+        status: PaymentItemStatus.final_price,
+      )
+    ];
+
     void onGooglePayResult(paymentResult) {
       debugPrint(paymentResult.toString());
     }
+
 // totalprice1=widget.totalprice!.toDouble().toString();
 // print(totalprice1);
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 245, 245, 245),
       drawer: Drawer(
-      child: DrawerScreen(),
+        child: DrawerScreen(),
       ),
       key: _scaffoldKey,
       body: Column(
@@ -106,8 +107,8 @@ print(totalprice1);
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   InkWell(
-                    onTap: (){
-                        _scaffoldKey.currentState!.openDrawer();
+                    onTap: () {
+                      _scaffoldKey.currentState!.openDrawer();
                     },
                     child: Icon(
                       Icons.menu,
@@ -176,7 +177,7 @@ print(totalprice1);
                               "EKQwWNBS7OhPl_wXUTWJOXPbQwGLs1Bq93hdSyFJOxpPaC71MVPpw2G_IeS2vXt1BdOCdy9V4w5PZ_kj",
                           returnURL: "https://samplesite.com/return",
                           cancelURL: "https://samplesite.com/cancel",
-                          transactions:  [
+                          transactions: [
                             {
                               "amount": {
                                 "total": '10.12',
@@ -517,7 +518,7 @@ print(totalprice1);
                                 //         },
                                 //         child: Text(
                                 //           "View",
-                                //           style: TextStyle(color: Colors.white),
+                                //          style: TextStyle(color: Colors.white),
                                 //         ),
                                 //         style: ElevatedButton.styleFrom(
                                 //           backgroundColor: Color(0xff38ABD8),
@@ -555,5 +556,4 @@ print(totalprice1);
       ),
     );
   }
-  
 }

@@ -10,7 +10,7 @@ Future exitConfirmDialog(BuildContext context) {
           backgroundColor: Colors.black,
           title: Text(
             'confirm_exit'.tr,
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(fontFamily: "OpenSans", color: Colors.white),
             textAlign: TextAlign.center,
           ),
           content: Container(
@@ -19,7 +19,10 @@ Future exitConfirmDialog(BuildContext context) {
               children: [
                 Text(
                   'are_you_sure_exit'.tr,
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  style: TextStyle(
+                      fontFamily: "OpenSans",
+                      fontSize: 16,
+                      color: Colors.white),
                 ),
                 SizedBox(
                   height: 20,
@@ -33,18 +36,21 @@ Future exitConfirmDialog(BuildContext context) {
                         child: ElevatedButton(
                           child: Text(
                             "no".tr,
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),  
+                            style: TextStyle(
+                                fontFamily: "OpenSans",
+                                fontSize: 20,
+                                color: Colors.white),
+                          ),
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
-                         style: ElevatedButton.styleFrom(
-                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              side: BorderSide(color: Colors.white)),
-                          backgroundColor: Colors.black,
-                          padding: EdgeInsets.all(8.0),
-                         ),
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                side: BorderSide(color: Colors.white)),
+                            backgroundColor: Colors.black,
+                            padding: EdgeInsets.all(8.0),
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -56,19 +62,22 @@ Future exitConfirmDialog(BuildContext context) {
                         child: ElevatedButton(
                           child: Text(
                             "yes".tr,
-                            style: TextStyle(fontSize: 20, color: Colors.white),
+                            style: TextStyle(
+                                fontFamily: "OpenSans",
+                                fontSize: 20,
+                                color: Colors.white),
                           ),
                           onPressed: () {
                             SystemChannels.platform
                                 .invokeMethod('SystemNavigator.pop');
                           },
-                         style: ElevatedButton.styleFrom(
-                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              side: BorderSide(color: Colors.white)),
-                          backgroundColor: Colors.red[900],
-                          padding: EdgeInsets.all(8.0),
-                         ),
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                side: BorderSide(color: Colors.white)),
+                            backgroundColor: Colors.red[900],
+                            padding: EdgeInsets.all(8.0),
+                          ),
                         ),
                       ),
                     ],

@@ -29,6 +29,7 @@ class _OnboardingScreenFourState extends State<OnboardingScreenFour> {
             Text(
               "Linkup to the club",
               style: TextStyle(
+                  fontFamily: "OpenSans",
                   color: Color(0xff38ABD8),
                   fontSize: 17,
                   fontWeight: FontWeight.bold),
@@ -41,6 +42,7 @@ class _OnboardingScreenFourState extends State<OnboardingScreenFour> {
               'Want to linkupat the club? With Linkup, you can \n see all the club in your area not matter what \ncountry you are in. Send the location to a friend \nand start the party.',
               textAlign: TextAlign.center,
               style: TextStyle(
+                fontFamily: "OpenSans",
                 fontSize: 14,
                 color: Color(0xff2E2E2E),
                 fontWeight: FontWeight.w400,

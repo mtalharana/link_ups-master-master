@@ -29,6 +29,7 @@ class _OnboardingScreenThreeState extends State<OnboardingScreenThree> {
             Text(
               "Linkup Vibes!",
               style: TextStyle(
+                  fontFamily: "OpenSans",
                   color: Color(0xff38ABD8),
                   fontSize: 17,
                   fontWeight: FontWeight.bold),
@@ -41,6 +42,7 @@ class _OnboardingScreenThreeState extends State<OnboardingScreenThree> {
               'Go Live at your favorite Fete, party, club or festival \n Show the World how party on linkup.',
               textAlign: TextAlign.center,
               style: TextStyle(
+                fontFamily: "OpenSans",
                 fontSize: 14,
                 color: Color(0xff2E2E2E),
                 fontWeight: FontWeight.w400,

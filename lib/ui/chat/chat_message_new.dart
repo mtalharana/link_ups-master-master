@@ -93,7 +93,7 @@
 //                           child: const Text(
 //                             "Lorem ipsum dolor sit  amet, \n consectetuer adipiscing elit. \n Aen",
 //                             textAlign: TextAlign.right,
-//                             style: TextStyle(color: Colors.white),
+//                            style: TextStyle(color: Colors.white),
 //                           ),
 //                         ),
 //                         const SizedBox(
@@ -107,7 +107,7 @@
 //                             ),
 //                             Text(
 //                               "Vida Stuart",
-//                               style: TextStyle(fontSize: 12),
+//                              style: TextStyle(fontSize: 12),
 //                             )
 //                           ],
 //                         ),
@@ -121,7 +121,7 @@
 //                 padding: const EdgeInsets.only(left: 120.0),
 //                 child: const Text(
 //                   "01:07 PM",
-//                   style: TextStyle(fontSize: 12),
+//                  style: TextStyle(fontSize: 12),
 //                 ),
 //               ),
 //               const SizedBox(
@@ -145,7 +145,7 @@
 //                           ),
 //                           const Text(
 //                             "Name",
-//                             style: TextStyle(fontSize: 12),
+//                            style: TextStyle(fontSize: 12),
 //                           )
 //                         ],
 //                       ),
@@ -159,7 +159,7 @@
 //                             borderRadius: BorderRadius.circular(20.0)),
 //                         child: const Text(
 //                           "Lorem ipsum dolor sit  am",
-//                           style: TextStyle(color: Colors.black),
+//                          style: TextStyle(color: Colors.black),
 //                         ),
 //                       ),
 //                     ],
@@ -184,7 +184,7 @@
 //                 padding: const EdgeInsets.only(left: 180.0),
 //                 child: const Text(
 //                   "02:13 PM",
-//                   style: TextStyle(fontSize: 12),
+//                  style: TextStyle(fontSize: 12),
 //                 ),
 //               ),
 //               const SizedBox(
@@ -208,7 +208,7 @@
 //                           ),
 //                           const Text(
 //                             "Name",
-//                             style: TextStyle(fontSize: 12),
+//                            style: TextStyle(fontSize: 12),
 //                           )
 //                         ],
 //                       ),
@@ -222,7 +222,7 @@
 //                             borderRadius: BorderRadius.circular(20.0)),
 //                         child: const Text(
 //                           "Lorem ipsum dolor sit  amet, consect",
-//                           style: TextStyle(color: Colors.black),
+//                          style: TextStyle(color: Colors.black),
 //                         ),
 //                       ),
 //                     ],
@@ -247,7 +247,7 @@
 //                 padding: const EdgeInsets.only(left: 220.0),
 //                 child: const Text(
 //                   "02:13 PM",
-//                   style: TextStyle(fontSize: 12),
+//                  style: TextStyle(fontSize: 12),
 //                 ),
 //               ),
 //               const SizedBox(
@@ -272,7 +272,7 @@
 //                           child: const Text(
 //                             "Lorem ipsum dolor sit  amet,  consectetuer \nadipiscing elit Aen",
 //                             textAlign: TextAlign.right,
-//                             style: TextStyle(
+//                            style: TextStyle(
 //                               color: Colors.white,
 //                             ),
 //                           ),
@@ -288,7 +288,7 @@
 //                             ),
 //                             Text(
 //                               "Vida Stuart",
-//                               style: TextStyle(fontSize: 12),
+//                              style: TextStyle(fontSize: 12),
 //                             )
 //                           ],
 //                         ),
@@ -315,7 +315,7 @@
 //                 padding: const EdgeInsets.only(left: 50.0),
 //                 child: const Text(
 //                   "02:15 PM",
-//                   style: TextStyle(fontSize: 12),
+//                  style: TextStyle(fontSize: 12),
 //                 ),
 //               ),
 //             ],
@@ -393,25 +393,28 @@ class _ChatHomePageState extends State<ChatHomePage> {
         return false;
       },
       child: Scaffold(
-         key: _scaffoldKey,
+        key: _scaffoldKey,
         drawer: Drawer(
           backgroundColor: Color.fromARGB(255, 211, 228, 212),
           child: DrawerScreen(),
         ),
-        body: Stack(
-          children: [
+        body: Stack(children: [
           Image.asset("assets/image/Group 163959 (2).png"),
           Padding(
-            padding: const EdgeInsets.only(top: 40,left: 10),
+            padding: const EdgeInsets.only(top: 40, left: 10),
             child: InkWell(
-              onTap: () {
-               _scaffoldKey.currentState!.openDrawer();
-              },
-              child: Icon(Icons.menu,color: Colors.white,)),
+                onTap: () {
+                  _scaffoldKey.currentState!.openDrawer();
+                },
+                child: Icon(
+                  Icons.menu,
+                  color: Colors.white,
+                )),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 40,left: 50),
-            child: Text("Chat Now",style: TextStyle(color: Colors.white,fontSize: 18)),
+            padding: const EdgeInsets.only(top: 40, left: 50),
+            child: Text("Chat Now",
+                style: TextStyle(color: Colors.white, fontSize: 18)),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 130),
@@ -468,7 +471,8 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                           });
                                     },
                                     child: Container(
-                                      margin: EdgeInsets.symmetric(horizontal: 0),
+                                      margin:
+                                          EdgeInsets.symmetric(horizontal: 0),
                                       child: Column(
                                         children: [
                                           if (_endUser.avatar != '')
@@ -484,14 +488,16 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                               radius: 40,
                                               backgroundColor: Colors.grey,
                                               child: Text(
-                                                _endUser.firstName[0].toUpperCase(),
+                                                _endUser.firstName[0]
+                                                    .toUpperCase(),
                                               ),
                                             ),
                                           Text(
                                             _endUser.firstName,
                                             style: TextStyle(
                                               fontSize:
-                                                  (_endUser.firstName).length < 10
+                                                  (_endUser.firstName).length <
+                                                          10
                                                       ? 16
                                                       : ((_endUser.firstName)
                                                                   .length <
@@ -551,21 +557,23 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                     itemBuilder: (context, index) {
                                       RecentChatModel _recentChatModel =
                                           RecentChatModel.fromJson(
-                                              chatController.recentChatList[index]
+                                              chatController
+                                                      .recentChatList[index]
                                                   as Map<String, dynamic>);
                                       return Slidable(
                                         key: const ValueKey(0),
                                         startActionPane: ActionPane(
                                           motion: const ScrollMotion(),
-                                          dismissible:
-                                              DismissiblePane(onDismissed: () {}),
+                                          dismissible: DismissiblePane(
+                                              onDismissed: () {}),
                                           dragDismissible: false,
                                           children: [
                                             SlidableAction(
                                               onPressed: (context) async {
                                                 FirebaseFirestore.instance
                                                     .collection('chats')
-                                                    .doc(_recentChatModel.chatId)
+                                                    .doc(
+                                                        _recentChatModel.chatId)
                                                     .collection('message')
                                                     .get()
                                                     .then((value) {
@@ -584,7 +592,8 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                     .doc(authController
                                                         .user?.value.uid)
                                                     .collection('messages')
-                                                    .doc(_recentChatModel.chatId)
+                                                    .doc(
+                                                        _recentChatModel.chatId)
                                                     .delete();
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
@@ -602,7 +611,8 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                               onPressed: (context) {
                                                 FirebaseFirestore.instance
                                                     .collection('chats')
-                                                    .doc(_recentChatModel.chatId)
+                                                    .doc(
+                                                        _recentChatModel.chatId)
                                                     .collection('message')
                                                     .get()
                                                     .then((value) {
@@ -621,7 +631,8 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                     .doc(authController
                                                         .user?.value.uid)
                                                     .collection('messages')
-                                                    .doc(_recentChatModel.chatId)
+                                                    .doc(
+                                                        _recentChatModel.chatId)
                                                     .delete();
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
@@ -634,7 +645,8 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                     .doc(authController
                                                         .user?.value.uid)
                                                     .collection('matches')
-                                                    .doc(_recentChatModel.chatId)
+                                                    .doc(
+                                                        _recentChatModel.chatId)
                                                     .update({
                                                   'friend': false,
                                                   'me': false,
@@ -644,7 +656,8 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
                                                   SnackBar(
-                                                    content: Text('un_match'.tr),
+                                                    content:
+                                                        Text('un_match'.tr),
                                                   ),
                                                 );
                                               },
@@ -670,7 +683,8 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       color: Colors.black12,
-                                                      image: new DecorationImage(
+                                                      image:
+                                                          new DecorationImage(
                                                         fit: BoxFit.fill,
                                                         image: NetworkImage(
                                                             _recentChatModel
@@ -687,10 +701,12 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                       color: Colors.black12,
                                                     ),
                                                     child: Text(
-                                                      _recentChatModel.withName[0]
+                                                      _recentChatModel
+                                                          .withName[0]
                                                           .toUpperCase(),
                                                       style: TextStyle(
-                                                          color: Colors.blue[700],
+                                                          color:
+                                                              Colors.blue[700],
                                                           fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.bold),
@@ -698,8 +714,8 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                   ),
                                             title: Text(
                                               _recentChatModel.withName,
-                                              style:
-                                                  TextStyle(color: Colors.black),
+                                              style: TextStyle(
+                                                  color: Colors.black),
                                             ),
                                             subtitle: Text(
                                               _recentChatModel.lastText.length <
@@ -717,11 +733,13 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                   .collection('message')
                                                   .where('senderID',
                                                       isEqualTo:
-                                                          _recentChatModel.withId)
+                                                          _recentChatModel
+                                                              .withId)
                                                   .where('isRead',
                                                       isEqualTo: false)
                                                   .snapshots(),
-                                              builder: (context, unReadSnapshot) {
+                                              builder:
+                                                  (context, unReadSnapshot) {
                                                 return Column(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.start,
@@ -735,7 +753,8 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                               _recentChatModel
                                                                   .timestamp),
                                                       style: TextStyle(
-                                                          color: Colors.black54),
+                                                          color:
+                                                              Colors.black54),
                                                     ),
                                                     SizedBox(
                                                       height: 5.0,
@@ -748,24 +767,26 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                                     0) >
                                                                 0
                                                         ? Container(
-                                                            alignment:
-                                                                Alignment.center,
+                                                            alignment: Alignment
+                                                                .center,
                                                             width: 20.0,
                                                             height: 20.0,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              shape:
-                                                                  BoxShape.circle,
+                                                              shape: BoxShape
+                                                                  .circle,
                                                               color: Colors
                                                                   .blue[700],
                                                             ),
                                                             child: Text(
-                                                              unReadSnapshot.data!
-                                                                  .docs.length
+                                                              unReadSnapshot
+                                                                  .data!
+                                                                  .docs
+                                                                  .length
                                                                   .toString(),
                                                               style: TextStyle(
-                                                                color:
-                                                                    Colors.white,
+                                                                color: Colors
+                                                                    .white,
                                                               ),
                                                             ),
                                                           )
@@ -784,7 +805,8 @@ class _ChatHomePageState extends State<ChatHomePage> {
                                                     'end_user_id':
                                                         _recentChatModel.withId,
                                                     'end_user_name':
-                                                        _recentChatModel.withName,
+                                                        _recentChatModel
+                                                            .withName,
                                                     'chat_id':
                                                         _recentChatModel.chatId
                                                   });

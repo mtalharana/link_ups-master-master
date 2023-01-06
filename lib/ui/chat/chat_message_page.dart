@@ -130,7 +130,7 @@
 // //                               child: Text(
 // //                                 endUser?.firstName[0] ??
 // //                                     '' + (endUser?.lastName[0] ?? ''),
-// //                                 style: TextStyle(
+// //                                style: TextStyle(
 // //                                     color: Colors.blue[800],
 // //                                     fontWeight: FontWeight.bold,
 // //                                     fontSize: 15),
@@ -341,7 +341,7 @@
 // //                               children: [
 // //                                 Text(
 // //                                   'no_message'.tr,
-// //                                   style: TextStyle(fontSize: 16),
+// //                                  style: TextStyle(fontSize: 16),
 // //                                 ),
 // //                                 SizedBox(
 // //                                   height: 20,
@@ -423,7 +423,7 @@
 // //                       ),
 // //                       child: Text(
 // //                         documentSnapshot['text'],
-// //                         style: TextStyle(fontSize: 15.0, color: Colors.black),
+// //                        style: TextStyle(fontSize: 15.0, color: Colors.black),
 // //                       ),
 // //                     ),
 // //             ),
@@ -450,7 +450,7 @@
 // //                       widget.endUserName[0] +
 // //                           widget
 // //                               .endUserName[widget.endUserName.indexOf(' ') + 1],
-// //                       style: TextStyle(
+// //                      style: TextStyle(
 // //                           color: Colors.blue[800],
 // //                           fontWeight: FontWeight.bold,
 // //                           fontSize: 15),
@@ -508,7 +508,7 @@
 // //                       ),
 // //                       child: Text(
 // //                         documentSnapshot['text'],
-// //                         style: TextStyle(
+// //                        style: TextStyle(
 // //                           fontSize: 15.0,
 // //                           color: Colors.black,
 // //                         ),
@@ -620,7 +620,7 @@
 // //                     maxLines: null,
 // //                     decoration: new InputDecoration.collapsed(
 // //                         hintText: "type_message".tr),
-// //                     style: TextStyle(fontSize: 18),
+// //                    style: TextStyle(fontSize: 18),
 // //                     onTap: () {
 // //                       checkedReadMsg();
 // //                     },
@@ -691,7 +691,6 @@
 // //     });
 // //   }
 // // }
-
 
 // import 'dart:async';
 // import 'dart:convert';
@@ -804,7 +803,7 @@
 //     final height = MediaQuery.of(context).size.height;
 //     return GetBuilder(
 //         init: authController,
-        
+
 //         builder: (_) {
 //           return Scaffold(
 //             key: _scaffoldKey,
@@ -815,10 +814,9 @@
 //             // appBar: AppBar(
 //             //   backgroundColor: Colors.green.shade900,
 //             //   automaticallyImplyLeading: true,
-//             //   // title: 
+//             //   // title:
 //             //   actions: [
-                
-                
+
 //             //   ],
 //             // ),
 //             body: Stack(
@@ -856,7 +854,7 @@
 //                                 child: Text(
 //                                   endUser?.firstName[0] ??
 //                                       '' + (endUser?.lastName[0] ?? ''),
-//                                   style: TextStyle(
+//                                  style: TextStyle(
 //                                       color: Colors.blue[800],
 //                                       fontWeight: FontWeight.bold,
 //                                       fontSize: 15),
@@ -871,7 +869,7 @@
 //                             ' ' +
 //                             (endUser?.lastName ?? '')),
 //                         overflow: TextOverflow.ellipsis,
-//                         style: TextStyle(color: Colors.white,fontSize: 17),
+//                        style: TextStyle(color: Colors.white,fontSize: 17),
 //                       ),
 //                     )
 //                   ],
@@ -1074,7 +1072,7 @@
 //                                 children: [
 //                                   Text(
 //                                     'no_message'.tr,
-//                                     style: TextStyle(fontSize: 16),
+//                                    style: TextStyle(fontSize: 16),
 //                                   ),
 //                                   SizedBox(
 //                                     height: 20,
@@ -1107,7 +1105,7 @@
 //           );
 //         });
 //   }
-  
+
 //   List<Widget> generateSenderLayout(DocumentSnapshot documentSnapshot) {
 //     return <Widget>[
 //       new Expanded(
@@ -1158,7 +1156,7 @@
 //                       ),
 //                       child: Text(
 //                         documentSnapshot['text'],
-//                         style: TextStyle(fontSize: 15.0, color: Colors.black),
+//                        style: TextStyle(fontSize: 15.0, color: Colors.black),
 //                       ),
 //                     ),
 //             ),
@@ -1185,7 +1183,7 @@
 //                       widget.endUserName[0] +
 //                           widget
 //                               .endUserName[widget.endUserName.indexOf(' ') + 1],
-//                       style: TextStyle(
+//                      style: TextStyle(
 //                           color: Colors.blue[800],
 //                           fontWeight: FontWeight.bold,
 //                           fontSize: 15),
@@ -1243,7 +1241,7 @@
 //                       ),
 //                       child: Text(
 //                         documentSnapshot['text'],
-//                         style: TextStyle(
+//                        style: TextStyle(
 //                           fontSize: 15.0,
 //                           color: Colors.black,
 //                         ),
@@ -1355,7 +1353,7 @@
 //                     maxLines: null,
 //                     decoration: new InputDecoration.collapsed(
 //                         hintText: "type_message".tr),
-//                     style: TextStyle(fontSize: 18),
+//                    style: TextStyle(fontSize: 18),
 //                     onTap: () {
 //                       checkedReadMsg();
 //                     },
@@ -1578,7 +1576,6 @@ class _ChatMessagePageState extends State<ChatMessagePage> {
                 ],
               ),
               actions: [
-                
                 GestureDetector(
                   onTap: () async {
                     bool? isActiveSub = authController.user?.value.subscription
@@ -1665,7 +1662,7 @@ class _ChatMessagePageState extends State<ChatMessagePage> {
                 SizedBox(
                   width: 20,
                 ),
-               GestureDetector(
+                GestureDetector(
                   onTap: () {
                     bool? isActiveSub = authController.user?.value.subscription
                         .any((element) => DateTime.fromMillisecondsSinceEpoch(
@@ -1688,7 +1685,7 @@ class _ChatMessagePageState extends State<ChatMessagePage> {
                         "caller_picture": authController.user!.value.avatar,
                         "caller_name": authController.user!.value.firstName,
                         "caller_uid": authController.user!.value.uid,
-                                "call_type": "Audio",
+                        "call_type": "Audio",
                         "response": "Awaiting"
                       });
                       FirebaseFirestore.instance
@@ -1801,7 +1798,7 @@ class _ChatMessagePageState extends State<ChatMessagePage> {
           );
         });
   }
-  
+
   List<Widget> generateSenderLayout(DocumentSnapshot documentSnapshot) {
     return <Widget>[
       new Expanded(
@@ -1981,6 +1978,7 @@ class _ChatMessagePageState extends State<ChatMessagePage> {
           : null,
     );
   }
+
   Widget _buildTextComposer() {
     return new IconTheme(
         data: new IconThemeData(

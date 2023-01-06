@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class CreateEvent extends StatelessWidget {
   // const CreateEvent({super.key});
 
@@ -39,6 +38,7 @@ class CreateEvent extends StatelessWidget {
                             Text(
                               "Create Event",
                               style: TextStyle(
+                                  fontFamily: "OpenSans",
                                   color: Colors.white,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
@@ -59,7 +59,10 @@ class CreateEvent extends StatelessWidget {
                       ),
                       Text(
                         "Upload Cover Image",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        style: TextStyle(
+                            fontFamily: "OpenSans",
+                            color: Colors.white,
+                            fontSize: 16),
                       ),
                     ],
                   ),
@@ -157,7 +160,7 @@ class CreateEvent extends StatelessWidget {
                     SizedBox(
                       width: 220,
                     ),
-                   Image.asset("assets/Polygon 10.png")
+                    Image.asset("assets/Polygon 10.png")
                   ],
                 ),
                 Divider(
@@ -200,6 +203,7 @@ class CreateEvent extends StatelessWidget {
                       Text(
                         'Public Event',
                         style: TextStyle(
+                            fontFamily: "OpenSans",
                             fontSize: 12,
                             color: Color.fromARGB(255, 154, 154, 154)),
                       ),
@@ -217,6 +221,7 @@ class CreateEvent extends StatelessWidget {
                       Text(
                         'Private Event',
                         style: TextStyle(
+                            fontFamily: "OpenSans",
                             fontSize: 12,
                             color: Color.fromARGB(255, 154, 154, 154)),
                       ),
@@ -279,15 +284,19 @@ class CreateEvent extends StatelessWidget {
                   height: 20,
                 ),
                 Container(
-                        height: 50,
-                        width: 317,
-                         child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            elevation: 0.0,
-                            primary:Color.fromRGBO(56, 171, 216, 1)),
-                      onPressed: (){}, child: Text("PUBLISH",style: TextStyle(fontSize: 16),)),
-                       ),
-                       SizedBox(
+                  height: 50,
+                  width: 317,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0.0,
+                          primary: Color.fromRGBO(56, 171, 216, 1)),
+                      onPressed: () {},
+                      child: Text(
+                        "PUBLISH",
+                        style: TextStyle(fontSize: 16),
+                      )),
+                ),
+                SizedBox(
                   height: 20,
                 ),
               ],
@@ -306,7 +315,9 @@ class CreateEvent extends StatelessWidget {
           Text(
             name,
             style: TextStyle(
-                fontSize: 12, color: Color.fromARGB(255, 154, 154, 154)),
+                fontFamily: "OpenSans",
+                fontSize: 12,
+                color: Color.fromARGB(255, 154, 154, 154)),
           ),
         ],
       ),
@@ -320,7 +331,10 @@ class CreateEvent extends StatelessWidget {
         children: [
           Text(
             name,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            style: TextStyle(
+                fontFamily: "OpenSans",
+                fontWeight: FontWeight.bold,
+                fontSize: 16),
           ),
         ],
       ),

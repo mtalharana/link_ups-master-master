@@ -129,7 +129,7 @@ class _ProfilePageState extends State<ProfilePage> {
             //         padding: const EdgeInsets.only(top: 10, left: 35),
             //         child: Text(
             //           "Upload Photos from",
-            //           style: TextStyle(color: Colors.white, fontSize: 16),
+            //          style: TextStyle(color: Colors.white, fontSize: 16),
             //         ),
             //       ),
             //     ),
@@ -155,7 +155,7 @@ class _ProfilePageState extends State<ProfilePage> {
             //             Text(
             //               // 'browse_image'.tr,
             //               'Your Photos',
-            //               style: TextStyle(color: Colors.black),
+            //              style: TextStyle(color: Colors.black),
             //             )
             //           ],
             //         ),
@@ -177,7 +177,7 @@ class _ProfilePageState extends State<ProfilePage> {
             //             Text(
             //               // 'take_photo'.tr,
             //               'Camera',
-            //               style: TextStyle(color: Colors.black),
+            //              style: TextStyle(color: Colors.black),
             //             )
             //           ],
             //         ),
@@ -593,7 +593,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               //                   : authController
                               //                       .countryName.value
                               //                       .substring(0, 29),
-                              //               style: TextStyle(fontSize: 16),
+                              //              style: TextStyle(fontSize: 16),
                               //             ),
                               //             Icon(
                               //               Icons.arrow_drop_down,
@@ -648,7 +648,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               //           value: gender,
                               //           child: Text(
                               //             gender.toString(),
-                              //             style: TextStyle(fontSize: 15),
+                              //            style: TextStyle(fontSize: 15),
                               //           ),
                               //         );
                               //       }).toList(),

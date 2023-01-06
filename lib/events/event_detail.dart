@@ -188,10 +188,10 @@
 //                 SizedBox(
 //                   height: 60,
 //                 ),
-              
+
 //                 Text(
 //                   widget.title.toString(),
-//                   style: TextStyle(
+//                  style: TextStyle(
 //                     color: Color.fromARGB(255, 56, 171, 216),
 //                     fontSize: 20,
 //                     fontWeight: FontWeight.bold,
@@ -199,7 +199,7 @@
 //                 ),
 //                 // Text(
 //                 //   "INTERNATIONAL",
-//                 //   style: TextStyle(
+//                 //  style: TextStyle(
 //                 //     color: Color.fromARGB(255, 56, 171, 216),
 //                 //     fontSize: 20,
 //                 //     fontWeight: FontWeight.bold,
@@ -225,7 +225,7 @@
 //                         children: [
 //                           Text(
 //                             "Organizer: ",
-//                             style: TextStyle(
+//                            style: TextStyle(
 //                               color: Color.fromARGB(255, 56, 171, 216),
 //                               fontSize: 20,
 //                               fontWeight: FontWeight.w600,
@@ -233,7 +233,7 @@
 //                           ),
 //                           Text(
 //                         widget.nameorganizer.toString(),
-//                         style: TextStyle(
+//                        style: TextStyle(
 //                           color: Color.fromARGB(255, 154, 154, 154)
 //                               .withOpacity(0.8),
 //                           fontSize: 14,
@@ -258,7 +258,7 @@
 //                       ),
 //                       Text(
 //                         widget.start_time.toString(),
-//                         style: TextStyle(
+//                        style: TextStyle(
 //                           color: Color.fromARGB(255, 154, 154, 154)
 //                               .withOpacity(0.8),
 //                           fontSize: 14,
@@ -281,7 +281,7 @@
 //                       ),
 //                       Text(
 //                         widget.end_time.toString(),
-//                         style: TextStyle(
+//                        style: TextStyle(
 //                           color: Color.fromARGB(255, 154, 154, 154)
 //                               .withOpacity(0.8),
 //                           fontSize: 14,
@@ -304,7 +304,7 @@
 //                       ),
 //                       Text(
 //                         widget.venue.toString(),
-//                         style: TextStyle(
+//                        style: TextStyle(
 //                           color: Color.fromARGB(255, 154, 154, 154)
 //                               .withOpacity(0.8),
 //                           fontSize: 14,
@@ -313,7 +313,7 @@
 //                       ),
 //                       Text(
 //                         ",",
-//                         style: TextStyle(
+//                        style: TextStyle(
 //                           color: Color.fromARGB(255, 154, 154, 154)
 //                               .withOpacity(0.8),
 //                           fontSize: 14,
@@ -322,7 +322,7 @@
 //                       ),
 //                       Text(
 //                         widget.country.toString(),
-//                         style: TextStyle(
+//                        style: TextStyle(
 //                           color: Color.fromARGB(255, 154, 154, 154)
 //                               .withOpacity(0.8),
 //                           fontSize: 14,
@@ -337,7 +337,7 @@
 //                 ),
 //                 Text(
 //                   "MEMBERS",
-//                   style: TextStyle(
+//                  style: TextStyle(
 //                     color: Color.fromARGB(255, 56, 171, 216),
 //                     fontSize: 22,
 //                     fontWeight: FontWeight.w600,
@@ -360,7 +360,7 @@
 //                 ),
 //                 Text(
 //                   "About Event",
-//                   style: TextStyle(
+//                  style: TextStyle(
 //                     color: Color.fromARGB(255, 56, 171, 216),
 //                     fontSize: 22,
 //                     fontWeight: FontWeight.w600,
@@ -372,7 +372,7 @@
 //                 Text(
 //                   stripHtmlIfNeededd(widget.description.toString()),
 //                   textAlign: TextAlign.center,
-//                   style: TextStyle(
+//                  style: TextStyle(
 //                       color: Color.fromRGBO(154, 154, 154, 1), fontSize: 12),
 //                 ),
 //                 SizedBox(
@@ -388,7 +388,7 @@
 //                 ),
 //                 Text(
 //                   "About Disclaimer",
-//                   style: TextStyle(
+//                  style: TextStyle(
 //                     color: Color.fromARGB(255, 56, 171, 216),
 //                     fontSize: 22,
 //                     fontWeight: FontWeight.w600,
@@ -400,7 +400,7 @@
 //                 Text(
 //                   stripHtmlIfNeededd(widget.disclai.toString()),
 //                   textAlign: TextAlign.center,
-//                   style: TextStyle(
+//                  style: TextStyle(
 //                       color: Color.fromRGBO(154, 154, 154, 1), fontSize: 12),
 //                 ),
 //                  SizedBox(
@@ -416,7 +416,7 @@
 //                 ),
 //                 Text(
 //                   "Sponsers",
-//                   style: TextStyle(
+//                  style: TextStyle(
 //                     color: Color.fromARGB(255, 56, 171, 216),
 //                     fontSize: 22,
 //                     fontWeight: FontWeight.w600,
@@ -459,7 +459,7 @@
 //                 // Text(
 //                 //   stripHtmlIfNeededd(widget.uuid.toString()),
 //                 //   textAlign: TextAlign.center,
-//                 //   style: TextStyle(
+//                 //  style: TextStyle(
 //                 //       color: Color.fromRGBO(154, 154, 154, 1), fontSize: 12),
 //                 // ),
 
@@ -471,7 +471,7 @@
 //                 // Text(
 //                 //   "Nam facere velit id nostrum quas sed quidem repellendus in pariatur fugiat in voluptas asperiores non rerum numquam fuga nesciunt! Aut cupiditate eaque .",
 //                 //   textAlign: TextAlign.center,
-//                 //   style: TextStyle(
+//                 //  style: TextStyle(
 //                 //       color: Color.fromRGBO(154, 154, 154, 1), fontSize: 12),
 //                 // ),
 //                 SizedBox(
@@ -489,7 +489,7 @@
 //                       },
 //                       child: Text(
 //                         "MASSEGE",
-//                         style: TextStyle(fontSize: 16),
+//                        style: TextStyle(fontSize: 16),
 //                       )),
 //                 ),
 //                 SizedBox(
@@ -713,7 +713,7 @@ class _EventDetailState extends State<EventDetail> {
                 ),
                 // Text(
                 //   "INTERNATIONAL",
-                //   style: TextStyle(
+                //  style: TextStyle(
                 //     color: Color.fromARGB(255, 56, 171, 216),
                 //     fontSize: 20,
                 //     fontWeight: FontWeight.bold,
@@ -975,7 +975,7 @@ class _EventDetailState extends State<EventDetail> {
                 // Text(
                 //   stripHtmlIfNeededd(widget.uuid.toString()),
                 //   textAlign: TextAlign.center,
-                //   style: TextStyle(
+                //  style: TextStyle(
                 //       color: Color.fromRGBO(154, 154, 154, 1), fontSize: 12),
                 // ),
 
@@ -987,7 +987,7 @@ class _EventDetailState extends State<EventDetail> {
                 // Text(
                 //   "Nam facere velit id nostrum quas sed quidem repellendus in pariatur fugiat in voluptas asperiores non rerum numquam fuga nesciunt! Aut cupiditate eaque .",
                 //   textAlign: TextAlign.center,
-                //   style: TextStyle(
+                //  style: TextStyle(
                 //       color: Color.fromRGBO(154, 154, 154, 1), fontSize: 12),
                 // ),
                 SizedBox(
@@ -1019,4 +1019,3 @@ class _EventDetailState extends State<EventDetail> {
     );
   }
 }
-

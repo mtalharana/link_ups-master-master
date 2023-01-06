@@ -25,8 +25,8 @@ class _AllEventsState extends State<AllEvents> {
 
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
   List show = [];
- late final _subscription;
-void getsubsciptiondata() {
+  late final _subscription;
+  void getsubsciptiondata() {
     _subscription = FirebaseFirestore.instance
         .collection('events')
         .snapshots()
@@ -41,13 +41,11 @@ void getsubsciptiondata() {
     });
   }
 
-   
   @override
   void initState() {
     getsubsciptiondata();
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +63,7 @@ void getsubsciptiondata() {
         //   centerTitle: true,
         //   title: Text(
         //     "All Events",
-        //     style: TextStyle(color: Colors.white),
+        //    style: TextStyle(color: Colors.white),
         //   ),
         //   actions: [
         //     Padding(
@@ -128,153 +126,160 @@ void getsubsciptiondata() {
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, index) {
                           final data = snapshot.data!.docs[index];
-                          return (show[index]==1)? Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Container(
-                              height: appSize.height * 0.4,
-                              width: appSize.width * 0.5,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: ListView(
-                                scrollDirection: Axis.vertical,
-                                physics: NeverScrollableScrollPhysics(),
-                                children: [
-                                  FutureBuilder(
-                                      future: imagesRef
-                                          .child(data
-                                              .get("image_object")
-                                              .split('/')[1])
-                                          .getData(),
-                                      builder: (context, snapshot) {
-                                        snapshott1 = snapshot.data;
-                                        if (snapshot.hasData) {
-                                          return Container(
-                                            height: appSize.height * 0.21,
+                          return (show[index] == 1)
+                              ? Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Container(
+                                    height: appSize.height * 0.4,
+                                    width: appSize.width * 0.5,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: ListView(
+                                      scrollDirection: Axis.vertical,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      children: [
+                                        FutureBuilder(
+                                            future: imagesRef
+                                                .child(data
+                                                    .get("image_object")
+                                                    .split('/')[1])
+                                                .getData(),
+                                            builder: (context, snapshot) {
+                                              snapshott1 = snapshot.data;
+                                              if (snapshot.hasData) {
+                                                return Container(
+                                                  height: appSize.height * 0.21,
+                                                  width: appSize.width * 0.2,
+                                                  decoration: BoxDecoration(
+                                                      image: DecorationImage(
+                                                          image: MemoryImage(
+                                                              snapshot.data
+                                                                  as Uint8List),
+                                                          fit: BoxFit.cover)),
+                                                );
+                                              } else
+                                                return SizedBox();
+                                            }),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 0),
+                                          child: Container(
+                                            height: appSize.height * 0.15,
                                             width: appSize.width * 0.2,
                                             decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: MemoryImage(snapshot
-                                                        .data as Uint8List),
-                                                    fit: BoxFit.cover)),
-                                          );
-                                        } else
-                                          return SizedBox();
-                                      }),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 0),
-                                    child: Container(
-                                      height: appSize.height * 0.15,
-                                      width: appSize.width * 0.2,
-                                      decoration: BoxDecoration(
-                                        color: Colors.blue,
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(20),
-                                          bottomRight: Radius.circular(20),
-                                        ),
-                                      ),
-                                      child: ListView(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Text(
-                                                  data.get("title"),
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 18),
+                                              color: Colors.blue,
+                                              borderRadius: BorderRadius.only(
+                                                bottomLeft: Radius.circular(20),
+                                                bottomRight:
+                                                    Radius.circular(20),
+                                              ),
+                                            ),
+                                            child: ListView(
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        data.get("title"),
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 18),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 24,
+                                                    ),
+                                                    Container(
+                                                      height: 19,
+                                                      width: 60.62,
+                                                      decoration: BoxDecoration(
+                                                          image: DecorationImage(
+                                                              image: AssetImage(
+                                                                  "assets/Group 163989.png"),
+                                                              fit: BoxFit
+                                                                  .cover)),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ),
-                                              SizedBox(
-                                                width: 24,
-                                              ),
-                                              Container(
-                                                height: 19,
-                                                width: 60.62,
-                                                decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                        image: AssetImage(
-                                                            "assets/Group 163989.png"),
-                                                        fit: BoxFit.cover)),
-                                              ),
-                                            ],
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              stripHtmlIfNeededd(
-                                                data.get("description"),
-                                              ),
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 16),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    stripHtmlIfNeededd(
+                                                      data.get("description"),
+                                                    ),
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 16),
+                                                  ),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        "Location",
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 16),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      data.get("venue"),
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 15),
+                                                    ),
+                                                    Text(
+                                                      ",",
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 12),
+                                                    ),
+                                                    Text(
+                                                      data.get("country"),
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 15),
+                                                    ),
+                                                    // Text(
+                                                    //   data.get("phone"),
+                                                    //  style: TextStyle(
+                                                    //     color: Colors.white,
+
+                                                    //   ),
+                                                    // ),
+                                                    Text(
+                                                      ",",
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 12,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      data.get("type"),
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 15),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                          Row(
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Text(
-                                                  "Location",
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 16),
-                                                ),
-                                              ),
-                                              Text(
-                                                                data.get(
-                                                                    "venue"),
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontSize:
-                                                                        15),
-                                                              ),
-                                                              Text(",",
-                                                              style: TextStyle(color: Colors.white,fontSize: 12),),
-                                                              Text(
-                                                                data.get(
-                                                                    "country"),
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontSize:
-                                                                        15),
-                                                              ),
-                                              // Text(
-                                              //   data.get("phone"),
-                                              //   style: TextStyle(
-                                              //     color: Colors.white,
-
-                                              //   ),
-                                              // ),
-                                              Text(
-                                                ",",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 12,
-                                                ),
-                                              ),
-                                              Text(
-                                                data.get("type"),
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 15
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-                          ):Container();
+                                )
+                              : Container();
                         },
                       );
                     }
@@ -373,47 +378,47 @@ void getsubsciptiondata() {
           //                                                   8.0),
           //                                           child: Text(
           //                                             data.get("title"),
-          //                                             style: TextStyle(
+          //                                            style: TextStyle(
           //                                                 color: Colors.white,
           //                                                 fontSize: 18),
           //                                           ),
           //                                         ),
           //                                         Text(
           //                                           data.get("disclaimer"),
-          //                                           style: TextStyle(
+          //                                          style: TextStyle(
           //                                               color:
           //                                                   Colors.transparent,
           //                                               fontSize: 1),
           //                                         ),
           //                                         Text(
           //                                           data.get("event_fee"),
-          //                                           style: TextStyle(
+          //                                          style: TextStyle(
           //                                               color:
           //                                                   Colors.transparent,
           //                                               fontSize: 1),
           //                                         ),
           //                                         Text(
           //                                           data.get("latitude"),
-          //                                           style: TextStyle(
+          //                                          style: TextStyle(
           //                                               color:
           //                                                   Colors.transparent,
           //                                               fontSize: 1),
           //                                         ),Text(
           //                                           data.get("longtitude"),
-          //                                           style: TextStyle(
+          //                                          style: TextStyle(
           //                                               color:
           //                                                   Colors.transparent,
           //                                               fontSize: 1),
           //                                         ),Text(
           //                                           data.get("early_bird_vip_price"),
-          //                                           style: TextStyle(
+          //                                          style: TextStyle(
           //                                               color:
           //                                                   Colors.transparent,
           //                                               fontSize: 1),
           //                                         ),
           //                                         Text(
           //                                           data.get("early_bird_economy_price"),
-          //                                           style: TextStyle(
+          //                                          style: TextStyle(
           //                                               color:
           //                                                   Colors.transparent,
           //                                               fontSize: 1),
@@ -440,7 +445,7 @@ void getsubsciptiondata() {
           //                                         stripHtmlIfNeededd(
           //                                           data.get("description"),
           //                                         ),
-          //                                         style: TextStyle(
+          //                                        style: TextStyle(
           //                                             color: Colors.white,
           //                                             fontSize: 16),
           //                                       ),
@@ -453,38 +458,38 @@ void getsubsciptiondata() {
           //                                                   8.0),
           //                                           child: Text(
           //                                             "Location",
-          //                                             style: TextStyle(
+          //                                            style: TextStyle(
           //                                                 color: Colors.white,
           //                                                 fontSize: 16),
           //                                           ),
           //                                         ),
           //                                         Text(
           //                                           data.get("country"),
-          //                                           style: TextStyle(
+          //                                          style: TextStyle(
           //                                             color: Colors.white,
           //                                           ),
           //                                         ),
           //                                         Text(
           //                                           ",",
-          //                                           style: TextStyle(
+          //                                          style: TextStyle(
           //                                             color: Colors.white,
           //                                           ),
           //                                         ),
           //                                         Text(
           //                                           data.get("type"),
-          //                                           style: TextStyle(
+          //                                          style: TextStyle(
           //                                             color: Colors.white,
           //                                           ),
           //                                         ),
           //                                         Text(
           //                                           data.get("venue"),
-          //                                           style: TextStyle(
+          //                                          style: TextStyle(
           //                                               color: Colors.white,
           //                                               fontSize: 1),
           //                                         ),
           //                                         Text(
           //                                           data.get("organizer_name"),
-          //                                           style: TextStyle(
+          //                                          style: TextStyle(
           //                                               color: Colors.white,
           //                                               fontSize: 1),
           //                                         ),
@@ -507,7 +512,7 @@ void getsubsciptiondata() {
           //             children: [
           //               Text(
           //                 "Please add events from Admin Pannel",
-          //                 style: TextStyle(color: Colors.white, fontSize: 17),
+          //                style: TextStyle(color: Colors.white, fontSize: 17),
           //               )
           //             ],
           //           );

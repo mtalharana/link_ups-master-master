@@ -172,7 +172,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 //             backgroundColor: Colors.orange,
                 //             child: Text(
                 //               authController.user!.value.firstName,
-                //               style: TextStyle(fontSize: 30.0),
+                //              style: TextStyle(fontSize: 30.0),
                 //             ),
                 //           ),
                 //   ),

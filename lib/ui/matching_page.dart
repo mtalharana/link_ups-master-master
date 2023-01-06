@@ -171,6 +171,7 @@ class _MatchingPageState extends State<MatchingPage> {
                               Text(
                                 'bingo'.tr,
                                 style: TextStyle(
+                                    fontFamily: "OpenSans",
                                     color: Colors.tealAccent[400],
                                     fontSize: 100,
                                     fontWeight: FontWeight.bold,
@@ -182,6 +183,7 @@ class _MatchingPageState extends State<MatchingPage> {
                               Text(
                                 "you_got_match".tr,
                                 style: TextStyle(
+                                    fontFamily: "OpenSans",
                                     color: Colors.tealAccent[400],
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold),
@@ -214,7 +216,9 @@ class _MatchingPageState extends State<MatchingPage> {
                                               new InputDecoration.collapsed(
                                             hintText: "chat_me_up".tr,
                                           ),
-                                          style: TextStyle(fontSize: 20),
+                                          style: TextStyle(
+                                              fontFamily: "OpenSans",
+                                              fontSize: 20),
                                           onTap: () {
                                             // FocusManager.instance.primaryFocus.unfocus();
                                             // FocusScope.of(context).unfocus();
@@ -238,6 +242,7 @@ class _MatchingPageState extends State<MatchingPage> {
                                       child: Text(
                                         'send'.tr,
                                         style: TextStyle(
+                                            fontFamily: "OpenSans",
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold,
                                             color:
@@ -277,7 +282,9 @@ class _MatchingPageState extends State<MatchingPage> {
                                                 color: Colors.white, width: 2)),
                                         child: Text(
                                           '👋',
-                                          style: TextStyle(fontSize: 22),
+                                          style: TextStyle(
+                                              fontFamily: "OpenSans",
+                                              fontSize: 22),
                                         ),
                                       ),
                                     ),
@@ -299,7 +306,9 @@ class _MatchingPageState extends State<MatchingPage> {
                                                 color: Colors.white, width: 2)),
                                         child: Text(
                                           '😒',
-                                          style: TextStyle(fontSize: 22),
+                                          style: TextStyle(
+                                              fontFamily: "OpenSans",
+                                              fontSize: 22),
                                         ),
                                       ),
                                     ),
@@ -321,7 +330,9 @@ class _MatchingPageState extends State<MatchingPage> {
                                                 color: Colors.white, width: 2)),
                                         child: Text(
                                           '❤',
-                                          style: TextStyle(fontSize: 22),
+                                          style: TextStyle(
+                                              fontFamily: "OpenSans",
+                                              fontSize: 22),
                                         ),
                                       ),
                                     ),
@@ -343,7 +354,9 @@ class _MatchingPageState extends State<MatchingPage> {
                                                 color: Colors.white, width: 2)),
                                         child: Text(
                                           '😍',
-                                          style: TextStyle(fontSize: 22),
+                                          style: TextStyle(
+                                              fontFamily: "OpenSans",
+                                              fontSize: 22),
                                         ),
                                       ),
                                     ),

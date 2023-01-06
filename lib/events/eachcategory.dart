@@ -570,8 +570,7 @@ class EachCategoryState extends State<EachCategory> {
                                                       ),
                                                     ),
                                                     Text(
-                                                      data.get(
-                                                          "category"),
+                                                      data.get("category"),
                                                       style: TextStyle(
                                                         color:
                                                             Colors.transparent,

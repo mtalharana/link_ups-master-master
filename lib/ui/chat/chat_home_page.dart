@@ -70,7 +70,7 @@
 //                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
 //                     child: Text(
 //                       "chat_now".tr,
-//                       style: TextStyle(color: Colors.white, fontSize: 26),
+//                      style: TextStyle(color: Colors.white, fontSize: 26),
 //                     ),
 //                   ),
 //                 ],
@@ -93,7 +93,7 @@
 //                             alignment: Alignment.centerLeft,
 //                             child: Text(
 //                               'new_matches'.tr,
-//                               style: TextStyle(
+//                              style: TextStyle(
 //                                 color: Colors.red,
 //                                 fontWeight: FontWeight.bold,
 //                               ),
@@ -145,7 +145,7 @@
 //                                           ),
 //                                         Text(
 //                                           _endUser.firstName,
-//                                           style: TextStyle(
+//                                          style: TextStyle(
 //                                             fontSize:
 //                                                 (_endUser.firstName).length < 10
 //                                                     ? 16
@@ -176,7 +176,7 @@
 //                             children: [
 //                               Text(
 //                                 "New Matches",
-//                                 style: TextStyle(
+//                                style: TextStyle(
 //                                     color: Color(0xff38ABD8),
 //                                     fontSize: 24,
 //                                     fontWeight: FontWeight.w500),
@@ -198,19 +198,19 @@
 //                                 children: [
 //                                   Text(
 //                                     "Jane",
-//                                     style: TextStyle(color: Colors.grey),
+//                                    style: TextStyle(color: Colors.grey),
 //                                   ),
 //                                   Text(
 //                                     "Amber",
-//                                     style: TextStyle(color: Colors.grey),
+//                                    style: TextStyle(color: Colors.grey),
 //                                   ),
 //                                   Text(
 //                                     "Jane",
-//                                     style: TextStyle(color: Colors.grey),
+//                                    style: TextStyle(color: Colors.grey),
 //                                   ),
 //                                   Text(
 //                                     "Amber",
-//                                     style: TextStyle(color: Colors.grey),
+//                                    style: TextStyle(color: Colors.grey),
 //                                   ),
 //                                 ],
 //                               ),
@@ -235,7 +235,7 @@
 //                           child: Text(
 //                             "Message",
 //                             // 'messages'.tr,
-//                             style: TextStyle(
+//                            style: TextStyle(
 //                                 color: Color(0xff38ABD8),
 //                                 fontWeight: FontWeight.bold,
 //                                 fontSize: 24.0),
@@ -256,7 +256,7 @@
 //                             subtitle: Text("How are you"),
 //                             trailing: Text(
 //                               "Yesterday",
-//                               style: TextStyle(color: Colors.grey),
+//                              style: TextStyle(color: Colors.grey),
 //                             ),
 //                             tileColor: Colors.white,
 //                           ),
@@ -275,7 +275,7 @@
 //                             subtitle: Text("hu"),
 //                             trailing: Text(
 //                               "Yesterday",
-//                               style: TextStyle(color: Colors.grey),
+//                              style: TextStyle(color: Colors.grey),
 //                             ),
 //                             tileColor: Colors.white,
 //                           ),
@@ -287,7 +287,7 @@
 //                     //           child: Text(
 //                     //             "  ",
 //                     //             // 'there_is_no_message'.tr,
-//                     //             style: TextStyle(fontSize: 16),
+//                     //            style: TextStyle(fontSize: 16),
 //                     //           ),
 //                     //         ),
 //                     //       ),
@@ -450,7 +450,7 @@
 //                     //                                   _recentChatModel
 //                     //                                       .withName[0]
 //                     //                                       .toUpperCase(),
-//                     //                                   style: TextStyle(
+//                     //                                  style: TextStyle(
 //                     //                                       color:
 //                     //                                           Colors.blue[700],
 //                     //                                       fontSize: 16,
@@ -460,7 +460,7 @@
 //                     //                               ),
 //                     //                         title: Text(
 //                     //                           _recentChatModel.withName,
-//                     //                           style: TextStyle(
+//                     //                          style: TextStyle(
 //                     //                               color: Colors.black),
 //                     //                         ),
 //                     //                         subtitle: Text(
@@ -498,7 +498,7 @@
 //                     //                                       .timeStampToDateTime(
 //                     //                                           _recentChatModel
 //                     //                                               .timestamp),
-//                     //                                   style: TextStyle(
+//                     //                                  style: TextStyle(
 //                     //                                       color:
 //                     //                                           Colors.black54),
 //                     //                                 ),
@@ -530,7 +530,7 @@
 //                     //                                               .docs
 //                     //                                               .length
 //                     //                                               .toString(),
-//                     //                                           style: TextStyle(
+//                     //                                          style: TextStyle(
 //                     //                                             color: Colors
 //                     //                                                 .white,
 //                     //                                           ),

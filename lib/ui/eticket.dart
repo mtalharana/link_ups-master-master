@@ -75,7 +75,10 @@ class ETicket extends StatelessWidget {
                   child: Center(
                       child: Text(
                     "E-Ticket",
-                    style: TextStyle(fontSize: 22, color: Colors.white),
+                    style: TextStyle(
+                        fontFamily: "OpenSans",
+                        fontSize: 22,
+                        color: Colors.white),
                   )),
                 ),
                 Padding(
@@ -86,6 +89,7 @@ class ETicket extends StatelessWidget {
                       Text(
                         'Event Name',
                         style: TextStyle(
+                            fontFamily: "OpenSans",
                             fontSize: 18,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
@@ -127,6 +131,7 @@ class ETicket extends StatelessWidget {
                       Text(
                         "Date and Hour",
                         style: TextStyle(
+                            fontFamily: "OpenSans",
                             fontSize: 18,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
@@ -163,6 +168,7 @@ class ETicket extends StatelessWidget {
                       Text(
                         "Event Location",
                         style: TextStyle(
+                            fontFamily: "OpenSans",
                             fontSize: 18,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
@@ -205,6 +211,7 @@ class ETicket extends StatelessWidget {
                       Text(
                         "Ticket Details",
                         style: TextStyle(
+                            fontFamily: "OpenSans",
                             fontSize: 18,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
@@ -451,7 +458,9 @@ class ETicket extends StatelessWidget {
                               child: Text(
                                 'Download Ticket',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 30),
+                                    fontFamily: "OpenSans",
+                                    color: Colors.white,
+                                    fontSize: 30),
                               ),
                             ),
                           ),
@@ -472,7 +481,8 @@ class ETicket extends StatelessWidget {
   Text SmallText(String name) {
     return Text(
       name,
-      style: TextStyle(fontSize: 16, color: Colors.black38),
+      style: TextStyle(
+          fontFamily: "OpenSans", fontSize: 16, color: Colors.black38),
     );
   }
 }
