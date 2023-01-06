@@ -23,7 +23,7 @@ class BuyTicket extends StatefulWidget {
   String? vip_price;
   String? Latitude;
   String? longitude;
-  String? fees;
+  double? fees;
   String? object;
   String? image;
   String? category;

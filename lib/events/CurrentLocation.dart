@@ -115,6 +115,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
 
   @override
   Widget build(BuildContext context) {
+    late double? eventfee;
     // // print("GetTime");
     // gettime();
     // getTrxnn();
@@ -415,6 +416,21 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                 itemBuilder: (context, index) {
                                   final data = snapshot.data!.docs[index];
                                   final dataa = snapshot.data!.docs[index].id;
+                                  // Try to parse the string as a double
+                                  double? parsed =
+                                      double.tryParse(data.get('event_fee'));
+
+// Check if the string was successfully parsed and if the double is less than 1
+                                  if (parsed != null && parsed < 1) {
+                                    double parsedagain = double.parse(
+                                        '0' + data.get('event_fee'));
+                                    print('parsedagain');
+                                    print(parsedagain);
+                                    eventfee = parsedagain;
+                                  } else {
+                                    eventfee =
+                                        double.parse(data.get('event_fee'));
+                                  }
                                   String description = stripHtmlIfNeededd(
                                       "${data.get("description")}");
                                   String descriptiontrimmed =
@@ -533,8 +549,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                   "latitude"),
                                                               longitude: data.get(
                                                                   "longtitude"),
-                                                              fees: data.get(
-                                                                  "event_fee"),
+                                                              fees: eventfee,
                                                               image: data.get(
                                                                   "image_object"),
                                                               category: data.get(

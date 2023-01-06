@@ -25,7 +25,7 @@ class TicketType extends StatefulWidget {
   String? organizer;
   String? economy;
   String? vip_price;
-  String? fees;
+  double? fees;
 
   Uint8List? image;
   String? discount;
@@ -66,7 +66,7 @@ class _TicketTypeState extends State<TicketType> {
   int? butn = 0;
   int? equal = 0;
   double? equal2;
-  int? fee;
+  double? fee;
   double? tax1;
   String? total;
   String? tax = "7.5";
@@ -98,6 +98,8 @@ class _TicketTypeState extends State<TicketType> {
 
   @override
   void initState() {
+    print(widget.vip_price);
+    print(widget.economy);
     print('ralha'); // Get a reference to the collection
     var _collection = FirebaseFirestore.instance
         .collection('coupons')
@@ -125,11 +127,15 @@ class _TicketTypeState extends State<TicketType> {
 
     vip = int.parse(widget.vip_price.toString());
     ecnmy = int.parse(widget.economy.toString());
+
     tax1 = double.parse(tax.toString());
+
     tax3 = tax1!.toInt();
+    print(widget.fees);
 // resultfes=widget.fees!.replaceFirst("%","");
-    fee = int.parse(widget.fees.toString());
+    fee = widget.fees!;
     total2 = total1!.toInt();
+
     // getsubsciptiondata();
     // button = '';
     // dropdownvalue = "" + widget.earlybrdVip.toString();
