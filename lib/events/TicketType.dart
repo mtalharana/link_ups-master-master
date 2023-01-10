@@ -1,5 +1,8 @@
+// ignore_for_file: non_constant_identifier_names, unused_field, unused_element
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -33,6 +36,7 @@ class TicketType extends StatefulWidget {
   String? momo;
   String? dicountcode;
   TicketType({
+    this.ticket_id,
     this.momo,
     this.category,
     this.discount,
@@ -58,7 +62,10 @@ class TicketType extends StatefulWidget {
 }
 
 class _TicketTypeState extends State<TicketType> {
-  String? ticket_id;
+  List earlybirdcheck = [];
+  late int earlybirdchecknew;
+  late final _subscription2;
+  late final _subscription;
   String? pop = '';
   int? discountt = 0;
   int? vip = 0;
@@ -81,11 +88,42 @@ class _TicketTypeState extends State<TicketType> {
   String? dropdownvalue2;
   EventController entcontroller = Get.put(EventController());
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  late var _collection;
 
   void _incrementCounter() {
     setState(() {
       _counter++;
     });
+  }
+
+  void getearlybrddata() {
+    print('talha uid hai yeh is event ki');
+    print(widget.uid);
+    _subscription2 = FirebaseFirestore.instance
+        .collection('events')
+        .doc(widget.uid)
+        .get()
+        .then((value) {
+      print('talha value hai yeh');
+      if (value['early_bird_price_date_limit'].runtimeType == Timestamp) {
+        earlybirdchecknew =
+            value['early_bird_price_date_limit'].compareTo(Timestamp.now());
+        print(earlybirdchecknew);
+      }
+    });
+
+    //   print(data!['early_bird_price_date_limit']);
+
+    //     Timestamp earlydate =
+    //         data['early_bird_price_date_limit'] as Timestamp;
+
+    //     // print(earlydate.compareTo(Timestamp.now()));
+    //     earlybirdcheck.add(earlydate.compareTo(Timestamp.now()));
+    //   } else {
+    //     earlybirdcheck.add(0);
+    //   }
+    // });
+    // print(earlybirdcheck);
   }
 
   void _decrementCounter() {
@@ -96,34 +134,36 @@ class _TicketTypeState extends State<TicketType> {
     });
   }
 
-  @override
-  void initState() {
-    print(widget.vip_price);
-    print(widget.economy);
-    print('ralha'); // Get a reference to the collection
-    var _collection = FirebaseFirestore.instance
-        .collection('coupons')
-        .where('ticket_id', isEqualTo: ticket_id)
-        .where('code',
-            isEqualTo: entcontroller.selecteddiscountcode.value.toString());
-    // Get the data from the collection
-    _collection.get().then((snapshot) {
-      snapshot.docs.forEach((doc) {
-        print(doc.data());
-        if (doc.data()['discount_type'] == "amount") {
-          entcontroller.discount!.value = doc.data()['discount'];
-          entcontroller.percentage!.value = '';
-
-          print('amount');
-          print(entcontroller.discount!.value);
-        } else if (doc.data()['discount_type'] == "percentage") {
-          entcontroller.percentage!.value = doc.data()['discount'];
-          entcontroller.discount!.value = '';
-          print('percentage');
-          print(entcontroller.percentage!.value);
+  getcoupondata() async {
+    _collection = FirebaseFirestore.instance
+        .collection('tickets')
+        .where('event_id', isEqualTo: widget.uid)
+        .snapshots()
+        .listen((event) {
+      event.docs.forEach((element) async {
+        entcontroller.ticketid!.value = element.id;
+        print(entcontroller.ticketid!.value);
+        if (entcontroller.ticketid!.value != null) {
+          var collection = await FirebaseFirestore.instance
+              .collection('coupons')
+              .where('ticket_id', isEqualTo: entcontroller.ticketid!.value)
+              .get();
+          collection.docs.forEach((element) {
+            print(element.data());
+          });
+        } else {
+          print('no  ticket id data');
         }
       });
     });
+  }
+
+  @override
+  void initState() {
+    getcoupondata();
+    getearlybrddata();
+
+    // get discount code with single document in firestore
 
     vip = int.parse(widget.vip_price.toString());
     ecnmy = int.parse(widget.economy.toString());
@@ -131,7 +171,7 @@ class _TicketTypeState extends State<TicketType> {
     tax1 = double.parse(tax.toString());
 
     tax3 = tax1!.toInt();
-    print(widget.fees);
+    // print(widget.fees);
 // resultfes=widget.fees!.replaceFirst("%","");
     fee = widget.fees!;
     total2 = total1!.toInt();
@@ -144,678 +184,305 @@ class _TicketTypeState extends State<TicketType> {
   }
 
   @override
+  void dispose() {
+    entcontroller.ticketid = ''.toString().obs;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    setState(() {
-      try {
-        discountt = int.parse(entcontroller.discount.toString());
-        // // print(discountt);
-      } catch (e) {
-        // Handle the exception here
-      }
-    });
-    // // print(discountt);
-    // // print(entcontroller.discount.toString());
+    print(entcontroller.percentage!.value.toString());
+
     setState(() {
       equal = butn! * _counter;
       equal2 = (butn! * _counter * (100 - discountt!)) / 100;
-      // print(equal2);
+      // // print(equal2);
     });
     setState(() {
       total1 = equal2! + ((equal! * tax3!) / 100) + ((equal! * fee!) / 100);
-      // print(total1);
+      // // print(total1);
     });
-
-    // var items = [
-    //   // "" + widget.earlybrdVip.toString(),
-    //   // "" + widget.earlybirtheconomy.toString(),
-    // ];
-
-    // var items2 = [
-    //   // "" + widget.economy_price.toString(),
-    //   // "" + widget.vip_price.toString(),
-    // ];
 
     var appSize = MediaQuery.of(context).size;
     var appSize2 = MediaQuery.of(context).size;
     return Scaffold(
-      key: _scaffoldKey,
-      drawer: Drawer(
-        backgroundColor: Color(0XFF4E5B81),
-        child: DrawerScreen(),
+      appBar: AppBar(
+        toolbarHeight: 100,
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        flexibleSpace: FlexibleSpaceBar(
+          background: Image.asset(
+            'assets/image/bacgroundlinkup.png',
+            fit: BoxFit.fill,
+          ),
+        ),
+        leadingWidth: 20,
+        leading: Padding(
+          padding: const EdgeInsets.only(bottom: 50, left: 10),
+          child: Icon(Icons.menu),
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(bottom: 50, left: 10),
+          child: Text('Ticket Type'),
+        ),
       ),
-      backgroundColor: Colors.white,
-      body: Stack(children: [
-        Container(
-          height: 150,
-          width: double.infinity,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/Group 163959 (1).jpg"),
-                  fit: BoxFit.cover)),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 30, left: 10),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: IconButton(
-                    onPressed: () {
-                      _scaffoldKey.currentState!.openDrawer();
-                    },
-                    icon: const Icon(Icons.menu),
-                    color: Colors.white,
-                    iconSize: 35,
+      body: SafeArea(
+          child: ListView(children: [
+        SizedBox(
+          height: 20,
+        ),
+        (earlybirdchecknew == 1)
+            ? Column(
+                children: [
+                  blueContainer(
+                      'Early Bird General Tickets \$15.00',
+                      '\$15.00',
+                      ' + \$3.46 Fees + \$0.00 Taxes',
+                      'Sales end on Jan 7, 2023',
+                      'This RSVP guarantees entrance to The Shrine before 11pm.',
+                      Color.fromARGB(253, 56, 171, 216)),
+                  SizedBox(
+                    height: 20,
                   ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  'Ticket Type',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255), fontSize: 18),
-                ),
-              ],
+                  blueContainer(
+                      'Early Bird VIP   \$30.00',
+                      '\$30.00',
+                      ' + \$2.56 Fees + \$0.00 Taxes',
+                      'Sales end on Jan 7, 2023',
+                      'This Ticket is a VIP seating Ticket',
+                      Color.fromARGB(253, 56, 171, 216)),
+                  SizedBox(
+                    height: 20,
+                  ),
+                ],
+              )
+            : Column(
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  blueContainer(
+                      'VIP',
+                      '\$40.00',
+                      ' + \$3.45 Fees + \$0.00 Taxes',
+                      '',
+                      'This is a VIP seating Ticket ',
+                      Color.fromARGB(253, 56, 171, 216)),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  blueContainer(
+                      'General Admission',
+                      '\$20.00',
+                      ' + \$3.45 Fees + \$0.00 Taxes',
+                      '',
+                      'This Ticket is for General admission only',
+                      Color.fromARGB(255, 213, 220, 22)),
+                ],
+              ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            smallContainer(
+                'Event Coupon',
+                Color.fromARGB(255, 213, 220, 22),
+                Image.asset(
+                  'assets/image/arrowgreen.png',
+                  height: 20,
+                )),
+            smallContainer(
+                'Pay From wallet ',
+                Color.fromARGB(255, 56, 171, 216),
+                Image.asset(
+                  'assets/image/arrowblue.png',
+                  height: 20,
+                )),
+          ],
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        Center(
+          child: Text(
+            'Total   \$250.00',
+            style: TextStyle(
+                fontSize: 18, color: Color.fromARGB(255, 110, 110, 110)),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Center(
+          child: Container(
+            height: 40,
+            width: 170,
+            decoration: BoxDecoration(
+                color: Color.fromARGB(255, 213, 220, 22),
+                borderRadius: BorderRadius.circular(6)),
+            child: Center(
+              child: Text(
+                'Checkout',
+                style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
           ),
         ),
-        ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 130),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    width: 100,
-                    color: Color.fromARGB(255, 56, 171, 216),
-                    child: TextButton(
-                        onPressed: () {
-                          setState(() {
-                            butn = vip;
-                          });
-                        },
-                        child: Text(
-                          "\$${vip.toString()}",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        )),
-                  ),
-                  Container(
-                    width: 100,
-                    color: Color.fromRGBO(214, 220, 22, 1),
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          butn = ecnmy;
-                        });
-                      },
-                      child: Text(
-                        "\$${ecnmy.toString()}",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            // (widget.earlybrdVip.toString()==null || widget.earlybirtheconomy.toString()==null)?
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 140),
-            //   child: Row(
-            //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //       children: [
-            //         Text(widget.vip_price.toString()),
-            //         Text(widget.economy_price.toString()),
-            //       ]
-            //       ),
-            // ):
-            //  Padding(
-            //   padding: const EdgeInsets.only(top: 140),
-            //   child: Row(
-            //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //       children: [
-            //         Text(widget.earlybirtheconomy.toString()),
-            //         Text(widget.earlybrdVip.toString()),
-            //       ]
-            //       ),
-            // ),
-
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 190),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //     children: [
-            //       Container(
-            //         color: Color.fromARGB(255, 56, 171, 216),
-            //         child: DropdownButton(
-            //             value: dropdownvalue,
-            //             icon: const Icon(Icons.keyboard_arrow_down),
-            //             items: items.map((String items) {
-            //               return DropdownMenuItem(
-            //                 value: items,
-            //                 child: Text(items),
-            //               );
-            //             }).toList(),
-            //             onChanged: (String? newValue) {
-            //               setState(() {
-            //                 button = dropdownvalue = newValue.toString();
-            //                 // print(button);
-            //               });
-            //             }),
-            //       ),
-
-            //       SizedBox(
-            //         width: 5,
-            //       ),
-            //       Container(
-            //         color: Color.fromRGBO(214, 220, 22, 1),
-            //         child: DropdownButton(
-            //             value: dropdownvalue2,
-            //             icon: const Icon(Icons.keyboard_arrow_down),
-            //             items: items2.map((String items2) {
-            //               return DropdownMenuItem(
-            //                 value: items2,
-            //                 child: Text(items2),
-            //               );
-            //             }).toList(),
-            //             onChanged: (String? newValue) {
-            //               setState(() {
-            //                 button = dropdownvalue2 = newValue.toString();
-            //                 // print(button);
-            //               });
-            //             }),
-            //       ),
-
-            // GestureDetector(
-            //   onTap: () {
-            //     setState(() {
-            //       button = widget.earlybrdVip.toString();
-            //       // print(button);
-            //     });
-            //   },
-            //   child: Container(
-            //     height: 40,
-            //     width: 160,
-            //     decoration: BoxDecoration(
-            //         color: Color.fromARGB(255, 56, 171, 216),
-            //         borderRadius: BorderRadius.circular(3)),
-            //     child: Row(
-            //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //       children: [
-            //         Text(
-            //           "Early Bird VIP",
-            //          style: TextStyle(color: Colors.white, fontSize: 16),
-            //         ),
-            //         SizedBox(
-            //           width: 10,
-            //         ),
-            //         // Text(widget.earlybrdVip.toString(),
-            //             // style:
-            //                 // TextStyle(color: Colors.white, fontSize: 15)),
-            //         Icon(
-            //           Icons.arrow_drop_down,
-            //           color: Colors.white,
-            //           size: 30,
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
-            //  SizedBox(
-            //   width: 10,
-            //  ),
-            // GestureDetector(
-            //   onTap: () {
-            //     setState(() {
-            //       button = widget.earlybirtheconomy.toString();
-            //       // print(button);
-            //     });
-            //   },
-            //   child: Container(
-            //     height: 40,
-            //     width: 160,
-            //     decoration: BoxDecoration(
-            //         color: Color.fromRGBO(214, 220, 22, 1),
-            //         borderRadius: BorderRadius.circular(3)),
-            //     child: Row(
-            //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //       children: [
-            //         Text(
-            //           "Regular VIP",
-            //          style: TextStyle(color: Colors.white, fontSize: 16),
-            //         ),
-            //         SizedBox(
-            //           width: 10,
-            //         ),
-            //         // Icon(
-            //         //   Icons.arrow_drop_down,
-            //         //   color: Colors.white,
-            //         //   size: 30,
-            //         // ),
-            //         Text(widget.earlybirtheconomy.toString(),
-            //             style:
-            //                 TextStyle(color: Colors.white, fontSize: 15)),
-            //       ],
-            //     ),
-            //   ),
-            // )
-            //     ],
-            //   ),
-            // ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: InkWell(
-                    onTap: _decrementCounter,
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(251, 217, 217, 217),
-                          borderRadius: BorderRadius.circular(3)),
-                      child: Center(
-                          child: Text(
-                        '-',
-                        style: TextStyle(fontSize: 30),
-                      )),
-                    ),
-                  ),
-                ),
-                Text(
-                  '$_counter',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: InkWell(
-                    onTap: _incrementCounter,
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(251, 217, 217, 217),
-                          borderRadius: BorderRadius.circular(3)),
-                      child: Icon(Icons.add),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Divider(
-              indent: 20,
-              endIndent: 20,
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 20),
-                  child: Text(
-                    "Event Category:",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: Text(
-                    widget.category.toString(),
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-
-            SizedBox(
-              height: 30,
-              width: double.infinity,
-              child: FutureBuilder(
-                future: _firestore
-                    .collection('tickets')
-                    .where('event_id', isEqualTo: widget.uid)
-                    .get(),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if (snapshot.hasData) {
-                    print(snapshot);
-                    if (snapshot.data.docs.length == 0) {
-                      return Padding(
-                        padding: const EdgeInsets.only(left: 30),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "no Coupon Available",
-                              style: TextStyle(
-                                  fontSize: 14, color: Colors.black38),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: Icon(
-                                Icons.arrow_right,
-                                color: Color.fromARGB(255, 56, 171, 216),
-                                size: 30,
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    } else {
-                      return InkWell(
-                        onTap: () {
-                          print(ticket_id);
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) {
-                            return CouponScreen(
-                              id: ticket_id.toString(),
-                            );
-                          }));
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 30),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Apply Coupon",
-                                style: TextStyle(
-                                    fontSize: 14, color: Colors.black38),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: Icon(
-                                  Icons.arrow_right,
-                                  color: Color.fromARGB(255, 56, 171, 216),
-                                  size: 30,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    }
-                    ticket_id = snapshot.data.docs[0].id;
-                    print(ticket_id);
-
-                    return InkWell(
-                      onTap: () {
-                        print(ticket_id);
-                        Navigator.push(context, MaterialPageRoute(builder: (_) {
-                          return CouponScreen(
-                            id: ticket_id.toString(),
-                          );
-                        }));
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 30),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Apply Coupon",
-                              style: TextStyle(
-                                  fontSize: 14, color: Colors.black38),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: Icon(
-                                Icons.arrow_right,
-                                color: Color.fromARGB(255, 56, 171, 216),
-                                size: 30,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  } else {
-                    return Center(child: CircularProgressIndicator());
-                  }
-                },
-              ),
-            ),
-            Divider(
-              indent: 20,
-              endIndent: 20,
-            ),
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 30, left: 20),
-            //   child: Row(
-            //     crossAxisAlignment: CrossAxisAlignment.end,
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     textBaseline: TextBaseline.alphabetic,
-            //     children: [
-            //       Text(
-            //         "Pay from wallet\nLinkup Event Balance",
-            //        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            //       ),
-            //       Padding(
-            //         padding: const EdgeInsets.only(right: 10),
-            //         child: Icon(
-            //           Icons.arrow_right,
-            //           color: Color.fromARGB(255, 56, 171, 216),
-            //           size: 30,
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 10, left: 20),
-            //   child: Text(
-            //     "Available for Payment \$65.0",
-            //    style: TextStyle(fontSize: 14, color: Colors.black38),
-            //   ),
-            // ),
-            // Divider(
-            //   indent: 20,
-            //   endIndent: 20,
-            // ),
-            SizedBox(
-              height: 10,
-            ),
-            (discountt == 0)
-                ? SizedBox()
-                : Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Text(
-                          "Coupon Discount",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 50,
-                      ),
-
-                      Obx(
-                        () => Text("-" +
-                                    " \$ " +
-                                    entcontroller.discount!.value.toString() ==
-                                ''
-                            ? entcontroller.percentage!.value.toString()
-                            : entcontroller.discount!.value.toString()),
-                      )
-                      // Text(FirebaseAuth.instance.currentUser!.uid.toString()),
-                    ],
-                  ),
-            (discountt == 0)
-                ? SizedBox()
-                : Divider(
-                    indent: 20,
-                    endIndent: 20,
-                  ),
-            SizedBox(
-              height: 80,
-            ),
-            Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  (total1 == 0.0)
-                      ? SizedBox()
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Total",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 56, 171, 216),
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              "\$" + equal2.toString(),
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 56, 171, 216),
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                  (total1 == 0.0)
-                      ? SizedBox()
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              "!Tax:",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 56, 171, 216),
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "%",
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 56, 171, 216),
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  tax1.toString(),
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 56, 171, 216),
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                  (total1 == 0.0)
-                      ? SizedBox()
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              "!Fees:",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 56, 171, 216),
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              "%${fee}",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 56, 171, 216),
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
-                  (total1 == 0.0)
-                      ? SizedBox()
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              "Total:",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 56, 171, 216),
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              "\$" + total1.toString(),
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 56, 171, 216),
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            // Text(widget.uid.toString()),
-            Center(
-              child: InkWell(
-                  onTap: () {
-                    if (total1 == 0.0) {
-                      Text(":");
-                    } else {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) {
-                        return Event9(
-                          totalprice: total1,
-                          title: widget.title,
-                          description: widget.description,
-                          end_time: widget.end_time,
-                          start_time: widget.start_time,
-                          country: widget.country,
-                          state: widget.state,
-                          uid: widget.uid,
-                          Disclaimer: widget.disclaimer,
-                          venue: widget.venue,
-                          Organizer: widget.organizer,
-                          image: widget.image,
-                        );
-                      }));
-                    }
-                  },
-                  child: Container(
-                    height: 40,
-                    width: 260,
-                    decoration: BoxDecoration(
-                        color: total1 == 0.0
-                            ? Colors.red
-                            : Color.fromRGBO(214, 220, 22, 1),
-                        borderRadius: BorderRadius.circular(3)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Text(
-                            total1 == 0.0 ? "Select Ticket Price" : "CONTINUE",
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )),
-            )
-          ],
-        ),
-      ]),
+      ])),
     );
   }
+}
+
+Container smallContainer(
+  String text,
+  Color color,
+  Image image,
+) {
+  return Container(
+    height: 40,
+    width: 170,
+    decoration:
+        BoxDecoration(color: color, borderRadius: BorderRadius.circular(6)),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Text(
+          text,
+          style: TextStyle(
+              fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        image,
+      ],
+    ),
+  );
+}
+
+Padding blueContainer(
+  String text1,
+  String text2,
+  String text3,
+  String text4,
+  String text5,
+  Color color,
+) {
+  return Padding(
+    padding: const EdgeInsets.only(left: 15, right: 15),
+    child: Container(
+      height: 140,
+      decoration: BoxDecoration(
+          border: Border.all(color: color),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 5,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Text(
+              text1,
+              style: TextStyle(
+                  fontSize: 20, color: color, fontWeight: FontWeight.bold),
+            ),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            height: 40,
+            color: color,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Row(
+                children: [
+                  RichText(
+                      text: TextSpan(children: [
+                    TextSpan(
+                        text: text2,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold)),
+                    TextSpan(
+                        text: text3,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                        )),
+                  ])),
+                  SizedBox(
+                    width: 45,
+                  ),
+                  Container(
+                    height: 25,
+                    width: 25,
+                    decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 219, 239, 246),
+                        borderRadius: BorderRadius.circular(6)),
+                    child: Center(
+                      child: Text(
+                        '-',
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    '0',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 25,
+                    width: 25,
+                    decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 219, 239, 246),
+                        borderRadius: BorderRadius.circular(6)),
+                    child: Center(
+                      child: Text(
+                        '+',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Text(text4,
+                style: TextStyle(
+                  color: Color.fromARGB(255, 110, 110, 110),
+                  fontSize: 16,
+                )),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Text(text5,
+                style: TextStyle(
+                  color: Color.fromARGB(255, 110, 110, 110),
+                  fontSize: 12,
+                )),
+          ),
+        ],
+      ),
+    ),
+  );
 }

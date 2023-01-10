@@ -1,3 +1,5 @@
+// ignore_for_file: unrelated_type_equality_checks
+import 'package:auto_size_text/auto_size_text.dart';
 import 'dart:typed_data';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -28,47 +30,11 @@ class _CurrentLocationState extends State<CurrentLocation> {
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
   TextEditingController controller = TextEditingController();
 
-  // dynamic datatime()async{
-  // DateTime temp = DateTime.now();
-  // DateTime d1 = DateTime(temp.year,temp.month,temp.day);
-  // DateTime d2 =     //you can add today's date here
-  // if(d2.compareTo(d1)==0){
-  //   // print('true');
-  // }
-  // else
-  //   // print('false');
-  // }
-  // }
-
-  DateTime dt1 = DateTime.parse("2022-12-27 14:00:00");
-  DateTime dt2 = DateTime.parse("2022-12-27 14:00:00");
-
   //  String string = DateFormat.Format(DateTime.now());
   List endtimecheck = [];
   List earlybirdcheck = [];
-  late final _subscription;
   late final _subscription2;
-
-  void getsubsciptiondata() {
-    _subscription = FirebaseFirestore.instance
-        .collection('events')
-        .snapshots()
-        .listen((event) {
-      event.docs.forEach((element) {
-        if (element.data()['end_time'].runtimeType == Timestamp) {
-          print(element.data()['end_time']);
-          Timestamp enddate = element.data()['end_time'];
-
-          // print(enddate);
-          print(enddate.compareTo(Timestamp.now()));
-          endtimecheck.add(enddate.compareTo(Timestamp.now()));
-        } else {
-          endtimecheck.add(0);
-        }
-      });
-      print(endtimecheck);
-    });
-  }
+  late final _subscription;
 
   void getearlybrddata() {
     _subscription2 = FirebaseFirestore.instance
@@ -78,25 +44,46 @@ class _CurrentLocationState extends State<CurrentLocation> {
       event.docs.forEach((element) {
         if (element.data()['early_bird_price_date_limit'].runtimeType ==
             Timestamp) {
-          print(element.data()['early_bird_price_date_limit']);
+          // print(element.data()['early_bird_price_date_limit']);
 
           Timestamp earlydate = element.data()['early_bird_price_date_limit'];
 
           element.data()['title'];
-          print(earlydate.compareTo(Timestamp.now()));
+          // print(earlydate.compareTo(Timestamp.now()));
           earlybirdcheck.add(earlydate.compareTo(Timestamp.now()));
         } else {
           earlybirdcheck.add(0);
         }
       });
-      print(earlybirdcheck);
+      // print(earlybirdcheck);
+    });
+  }
+
+  void getsubsciptiondata() {
+    _subscription = FirebaseFirestore.instance
+        .collection('events')
+        .snapshots()
+        .listen((event) {
+      event.docs.forEach((element) {
+        if (element.data()['end_time'].runtimeType == Timestamp) {
+          //   print(element.data()['end_time']);
+          Timestamp enddate = element.data()['end_time'];
+
+          // print(enddate);
+          // print(enddate.compareTo(Timestamp.now()));
+          endtimecheck.add(enddate.compareTo(Timestamp.now()));
+        } else {
+          endtimecheck.add(0);
+        }
+      });
+      // print(endtimecheck);
     });
   }
 
   @override
   void initState() {
     getsubsciptiondata();
-    getearlybrddata();
+
     super.initState();
   }
 
@@ -116,12 +103,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
   @override
   Widget build(BuildContext context) {
     late double? eventfee;
-    // // print("GetTime");
-    // gettime();
-    // getTrxnn();
-    // // print("Hanan Saleem");
-    // // print(getTrxnn());
-    // // print(myDateTime.toString());
+
     final _scaffoldKey = GlobalKey<ScaffoldState>();
     AuthController authController = Get.find(tag: AuthController().toString());
     HomeController homeController = Get.find(tag: HomeController().toString());
@@ -424,8 +406,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                   if (parsed != null && parsed < 1) {
                                     double parsedagain = double.parse(
                                         '0' + data.get('event_fee'));
-                                    print('parsedagain');
-                                    print(parsedagain);
+
                                     eventfee = parsedagain;
                                   } else {
                                     eventfee =
@@ -466,8 +447,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                       if (snapshot.hasData) {
                                                         snapshott =
                                                             snapshot.data!;
-                                                        // print("MontiiBoy");
-                                                        // print(snapshott);
+
                                                         return Container(
                                                           height:
                                                               appSize.height *
@@ -567,7 +547,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                           const EdgeInsets.all(
                                                                               8.0),
                                                                       child:
-                                                                          Text(
+                                                                          AutoSizeText(
                                                                         data
                                                                             .get("title")
                                                                             .toString(),
@@ -580,6 +560,8 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                                 15,
                                                                             fontWeight:
                                                                                 FontWeight.w600),
+                                                                        maxLines:
+                                                                            2,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -868,300 +850,131 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                           ),
                                                         ),
                                                       ),
-                                                      InkWell(
-                                                        onTap: () {
-                                                          Get.to(
-                                                            BuyTicket(
-                                                              // earlybirtheconomy: data.get(
-                                                              //     "early_bird_economy_price"),
-                                                              // earlybrdVip: data.get(
-                                                              //     "early_bird_vip_price"),
-                                                              vip_price: earlybirdcheck[
-                                                                          index] ==
-                                                                      1
-                                                                  ? data.get(
-                                                                      "early_bird_vip_price")
-                                                                  : data.get(
-                                                                      "vip_price"),
-                                                              economy: earlybirdcheck[
-                                                                          index] ==
-                                                                      1
-                                                                  ? data.get(
-                                                                      "early_bird_economy_price")
-                                                                  : data.get(
-                                                                      "economy_price"),
-                                                              title: snapshot
-                                                                  .data!
-                                                                  .docs[index]
-                                                                  .get("title"),
-                                                              start_time: snapshot
-                                                                  .data!
-                                                                  .docs[index]
-                                                                  .get(
-                                                                      "start_time"),
-                                                              end_time: snapshot
-                                                                  .data!
-                                                                  .docs[index]
-                                                                  .get(
-                                                                      "end_time"),
-
-                                                              venue: snapshot
-                                                                  .data!
-                                                                  .docs[index]
-                                                                  .get("venue"),
-                                                              description: snapshot
-                                                                  .data!
-                                                                  .docs[index]
-                                                                  .get(
-                                                                      "description"),
-                                                              country: snapshot
-                                                                  .data!
-                                                                  .docs[index]
-                                                                  .get(
-                                                                      "country"),
-                                                              disclaimer: snapshot
-                                                                  .data!
-                                                                  .docs[index]
-                                                                  .get(
-                                                                      "disclaimer"),
-                                                              id: dataaaa
-                                                                  .toString(),
-                                                              organizername:
-                                                                  snapshot
-                                                                      .data!
-                                                                      .docs[
-                                                                          index]
-                                                                      .get(
-                                                                          "organizer_name"),
-                                                              Latitude: data.get(
-                                                                  "latitude"),
-                                                              longitude: data.get(
-                                                                  "longtitude"),
-                                                              fees: data.get(
-                                                                  "event_fee"),
-                                                              // vip_price: data.get(
-                                                              //     "vip_price"),
-                                                              // economy_price: data.get(
-                                                              //     "economy_price"),
-                                                              image: data.get(
-                                                                  "image_object")!,
-                                                              category: data.get(
-                                                                  "category"),
-                                                            ),
-                                                          );
-                                                        },
-                                                        child: Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Row(
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: const EdgeInsets
-                                                                            .only(
-                                                                        left:
-                                                                            15),
-                                                                    child: Text(
-                                                                      data.get(
-                                                                          "start_time"),
-                                                                      style: TextStyle(
-                                                                          fontFamily:
-                                                                              'OpenSans',
-                                                                          color: Colors
-                                                                              .grey,
-                                                                          fontSize:
-                                                                              13),
-                                                                    ),
-                                                                  ),
-                                                                  Text(
-                                                                    data.get(
-                                                                        "category"),
-                                                                    style: TextStyle(
-                                                                        fontFamily:
-                                                                            'OpenSans',
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        fontSize:
-                                                                            1),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: const EdgeInsets
-                                                                            .only(
-                                                                        left:
-                                                                            1),
-                                                                    child: Text(
-                                                                        data
-                                                                            .get(
-                                                                                "end_time")
-                                                                            .toString(),
-                                                                        style: TextStyle(
-                                                                            fontFamily:
-                                                                                'OpenSans',
-                                                                            color:
-                                                                                Colors.transparent,
-                                                                            fontSize: 1)),
-                                                                  ),
-                                                                  Text(
-                                                                    data.get(
-                                                                        "early_bird_economy_price"),
-                                                                    style: TextStyle(
-                                                                        fontFamily:
-                                                                            'OpenSans',
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        fontSize:
-                                                                            1),
-                                                                  ),
-                                                                  Text(
-                                                                    data.get(
-                                                                        "vip_price"),
-                                                                    style: TextStyle(
-                                                                        fontFamily:
-                                                                            'OpenSans',
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        fontSize:
-                                                                            1),
-                                                                  ),
-                                                                  Text(
-                                                                    data.get(
-                                                                        "economy_price"),
-                                                                    style: TextStyle(
-                                                                        fontFamily:
-                                                                            'OpenSans',
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        fontSize:
-                                                                            1),
-                                                                  ),
-                                                                  Text(
-                                                                    data.get(
-                                                                        "early_bird_vip_price"),
-                                                                    style: TextStyle(
-                                                                        fontFamily:
-                                                                            'OpenSans',
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        fontSize:
-                                                                            1),
-                                                                  ),
-                                                                  Text(
-                                                                    data
+                                                      (endtimecheck[index] == 1)
+                                                          ? InkWell(
+                                                              onTap: () {
+                                                                Get.to(
+                                                                  BuyTicket(
+                                                                    // earlybirtheconomy: data.get(
+                                                                    //     "early_bird_economy_price"),
+                                                                    // earlybrdVip: data.get(
+                                                                    //     "early_bird_vip_price"),
+                                                                    vip_price: earlybirdcheck[index] ==
+                                                                            1
+                                                                        ? data.get(
+                                                                            "early_bird_vip_price")
+                                                                        : data.get(
+                                                                            "vip_price"),
+                                                                    economy: earlybirdcheck[index] ==
+                                                                            1
+                                                                        ? data.get(
+                                                                            "early_bird_economy_price")
+                                                                        : data.get(
+                                                                            "economy_price"),
+                                                                    title: snapshot
+                                                                        .data!
+                                                                        .docs[
+                                                                            index]
                                                                         .get(
-                                                                            "event_fee")
+                                                                            "title"),
+                                                                    start_time: snapshot
+                                                                        .data!
+                                                                        .docs[
+                                                                            index]
+                                                                        .get(
+                                                                            "start_time"),
+                                                                    end_time: snapshot
+                                                                        .data!
+                                                                        .docs[
+                                                                            index]
+                                                                        .get(
+                                                                            "end_time"),
+
+                                                                    venue: snapshot
+                                                                        .data!
+                                                                        .docs[
+                                                                            index]
+                                                                        .get(
+                                                                            "venue"),
+                                                                    description: snapshot
+                                                                        .data!
+                                                                        .docs[
+                                                                            index]
+                                                                        .get(
+                                                                            "description"),
+                                                                    country: snapshot
+                                                                        .data!
+                                                                        .docs[
+                                                                            index]
+                                                                        .get(
+                                                                            "country"),
+                                                                    disclaimer: snapshot
+                                                                        .data!
+                                                                        .docs[
+                                                                            index]
+                                                                        .get(
+                                                                            "disclaimer"),
+                                                                    id: dataaaa
                                                                         .toString(),
-                                                                    style: TextStyle(
-                                                                        fontFamily:
-                                                                            'OpenSans',
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        fontSize:
-                                                                            1),
+                                                                    organizername: snapshot
+                                                                        .data!
+                                                                        .docs[
+                                                                            index]
+                                                                        .get(
+                                                                            "organizer_name"),
+                                                                    Latitude:
+                                                                        data.get(
+                                                                            "latitude"),
+                                                                    longitude:
+                                                                        data.get(
+                                                                            "longtitude"),
+                                                                    fees: data.get(
+                                                                        "event_fee"),
+                                                                    // vip_price: data.get(
+                                                                    //     "vip_price"),
+                                                                    // economy_price: data.get(
+                                                                    //     "economy_price"),
+                                                                    image: data.get(
+                                                                        "image_object")!,
+                                                                    category:
+                                                                        data.get(
+                                                                            "category"),
                                                                   ),
-                                                                ],
-                                                              ),
-                                                              SizedBox(
-                                                                height: 08,
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .only(
-                                                                        left:
-                                                                            15),
-                                                                child: Text(
-                                                                  data.get(
-                                                                      "title"),
-                                                                  style: TextStyle(
-                                                                      fontFamily:
-                                                                          'OpenSans',
-                                                                      color: Colors
-                                                                          .black,
-                                                                      fontSize:
-                                                                          20),
-                                                                ),
-                                                              ),
-                                                              SizedBox(
-                                                                height: 06,
-                                                              ),
-                                                              Row(
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: const EdgeInsets
-                                                                            .only(
-                                                                        left:
-                                                                            15),
-                                                                    child: Text(
-                                                                      data.get(
-                                                                          "venue"),
-                                                                      style: TextStyle(
-                                                                          fontFamily:
-                                                                              'OpenSans',
-                                                                          color: Colors
-                                                                              .grey,
-                                                                          fontSize:
-                                                                              15),
-                                                                    ),
-                                                                  ),
-                                                                  Text(
-                                                                    data.get(
-                                                                        "disclaimer"),
-                                                                    style: TextStyle(
-                                                                        fontFamily:
-                                                                            'OpenSans',
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        fontSize:
-                                                                            1),
-                                                                  ),
-                                                                  // Text(
-                                                                  //   data.get(
-                                                                  //       "latitude"),
-                                                                  //  style: TextStyle(
-                                                                  //  fontFamily: 'OpenSans',
-                                                                  //       color: Colors
-                                                                  //           .transparent,
-                                                                  //       fontSize: 1),
-                                                                  // ),
-                                                                  // Text(
-                                                                  //   data.get(
-                                                                  //       "longtitude"),
-                                                                  //  style: TextStyle(
-//fontFamily: 'OpenSans',
-                                                                  //       color: Colors
-                                                                  //           .transparent,
-                                                                  //       fontSize: 1),
-                                                                  // ),
-                                                                  Text(
-                                                                    data.get(
-                                                                        "organizer_name"),
-                                                                    style: TextStyle(
-                                                                        fontFamily:
-                                                                            'OpenSans',
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        fontSize:
-                                                                            1),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              (earlybirdcheck[
-                                                                          index] ==
-                                                                      1)
-                                                                  ? Row(
+                                                                );
+                                                              },
+                                                              child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Row(
                                                                       children: [
                                                                         Padding(
                                                                           padding:
-                                                                              const EdgeInsets.all(8.0),
+                                                                              const EdgeInsets.only(left: 15),
                                                                           child:
                                                                               Text(
-                                                                            data.get("early_bird_vip_price"),
+                                                                            data.get("start_time"),
                                                                             style: TextStyle(
                                                                                 fontFamily: 'OpenSans',
-                                                                                color: Colors.transparent,
-                                                                                fontSize: 1),
+                                                                                color: Colors.grey,
+                                                                                fontSize: 13),
                                                                           ),
+                                                                        ),
+                                                                        Text(
+                                                                          data.get(
+                                                                              "category"),
+                                                                          style: TextStyle(
+                                                                              fontFamily: 'OpenSans',
+                                                                              color: Colors.transparent,
+                                                                              fontSize: 1),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding:
+                                                                              const EdgeInsets.only(left: 1),
+                                                                          child: Text(
+                                                                              data.get("end_time").toString(),
+                                                                              style: TextStyle(fontFamily: 'OpenSans', color: Colors.transparent, fontSize: 1)),
                                                                         ),
                                                                         Text(
                                                                           data.get(
@@ -1171,22 +984,6 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                               color: Colors.transparent,
                                                                               fontSize: 1),
                                                                         ),
-                                                                      ],
-                                                                    )
-                                                                  : Row(
-                                                                      children: [
-                                                                        Padding(
-                                                                          padding:
-                                                                              const EdgeInsets.all(8.0),
-                                                                          child:
-                                                                              Text(
-                                                                            data.get("economy_price"),
-                                                                            style: TextStyle(
-                                                                                fontFamily: 'OpenSans',
-                                                                                color: Colors.transparent,
-                                                                                fontSize: 1),
-                                                                          ),
-                                                                        ),
                                                                         Text(
                                                                           data.get(
                                                                               "vip_price"),
@@ -1195,10 +992,143 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                               color: Colors.transparent,
                                                                               fontSize: 1),
                                                                         ),
+                                                                        Text(
+                                                                          data.get(
+                                                                              "economy_price"),
+                                                                          style: TextStyle(
+                                                                              fontFamily: 'OpenSans',
+                                                                              color: Colors.transparent,
+                                                                              fontSize: 1),
+                                                                        ),
+                                                                        Text(
+                                                                          data.get(
+                                                                              "early_bird_vip_price"),
+                                                                          style: TextStyle(
+                                                                              fontFamily: 'OpenSans',
+                                                                              color: Colors.transparent,
+                                                                              fontSize: 1),
+                                                                        ),
+                                                                        Text(
+                                                                          data
+                                                                              .get("event_fee")
+                                                                              .toString(),
+                                                                          style: TextStyle(
+                                                                              fontFamily: 'OpenSans',
+                                                                              color: Colors.transparent,
+                                                                              fontSize: 1),
+                                                                        ),
                                                                       ],
                                                                     ),
-                                                            ]),
-                                                      ),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          08,
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: const EdgeInsets
+                                                                              .only(
+                                                                          left:
+                                                                              15),
+                                                                      child:
+                                                                          Text(
+                                                                        data.get(
+                                                                            "title"),
+                                                                        style: TextStyle(
+                                                                            fontFamily:
+                                                                                'OpenSans',
+                                                                            color:
+                                                                                Colors.black,
+                                                                            fontSize: 20),
+                                                                      ),
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          06,
+                                                                    ),
+                                                                    Row(
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding:
+                                                                              const EdgeInsets.only(left: 15),
+                                                                          child:
+                                                                              Text(
+                                                                            data.get("venue"),
+                                                                            style: TextStyle(
+                                                                                fontFamily: 'OpenSans',
+                                                                                color: Colors.grey,
+                                                                                fontSize: 15),
+                                                                          ),
+                                                                        ),
+                                                                        Text(
+                                                                          data.get(
+                                                                              "disclaimer"),
+                                                                          style: TextStyle(
+                                                                              fontFamily: 'OpenSans',
+                                                                              color: Colors.transparent,
+                                                                              fontSize: 1),
+                                                                        ),
+                                                                        // Text(
+                                                                        //   data.get(
+                                                                        //       "latitude"),
+                                                                        //  style: TextStyle(
+                                                                        //  fontFamily: 'OpenSans',
+                                                                        //       color: Colors
+                                                                        //           .transparent,
+                                                                        //       fontSize: 1),
+                                                                        // ),
+                                                                        // Text(
+                                                                        //   data.get(
+                                                                        //       "longtitude"),
+                                                                        //  style: TextStyle(
+//fontFamily: 'OpenSans',
+                                                                        //       color: Colors
+                                                                        //           .transparent,
+                                                                        //       fontSize: 1),
+                                                                        // ),
+                                                                        Text(
+                                                                          data.get(
+                                                                              "organizer_name"),
+                                                                          style: TextStyle(
+                                                                              fontFamily: 'OpenSans',
+                                                                              color: Colors.transparent,
+                                                                              fontSize: 1),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    (earlybirdcheck[index] ==
+                                                                            1)
+                                                                        ? Row(
+                                                                            children: [
+                                                                              Padding(
+                                                                                padding: const EdgeInsets.all(8.0),
+                                                                                child: Text(
+                                                                                  data.get("early_bird_vip_price"),
+                                                                                  style: TextStyle(fontFamily: 'OpenSans', color: Colors.transparent, fontSize: 1),
+                                                                                ),
+                                                                              ),
+                                                                              Text(
+                                                                                data.get("early_bird_economy_price"),
+                                                                                style: TextStyle(fontFamily: 'OpenSans', color: Colors.transparent, fontSize: 1),
+                                                                              ),
+                                                                            ],
+                                                                          )
+                                                                        : Row(
+                                                                            children: [
+                                                                              Padding(
+                                                                                padding: const EdgeInsets.all(8.0),
+                                                                                child: Text(
+                                                                                  data.get("economy_price"),
+                                                                                  style: TextStyle(fontFamily: 'OpenSans', color: Colors.transparent, fontSize: 1),
+                                                                                ),
+                                                                              ),
+                                                                              Text(
+                                                                                data.get("vip_price"),
+                                                                                style: TextStyle(fontFamily: 'OpenSans', color: Colors.transparent, fontSize: 1),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                  ]),
+                                                            )
+                                                          : Container(),
                                                     ],
                                                   ),
                                                 ],

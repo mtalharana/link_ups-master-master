@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:http/http.dart';
 import 'package:link_up/events/TicketType.dart';
 import 'package:link_up/events/getcontroller.dart';
 
@@ -27,18 +28,37 @@ class _CouponScreenState extends State<CouponScreen> {
   @override
   void initState() {
     super.initState();
-    discountcode = entcontroller.codecONTROLLER.value.text.toString();
+    //discountcode = entcontroller.codecONTROLLER.value.text.toString();
     print(widget.id);
-    // Get a reference to the collection
-    var _collection = FirebaseFirestore.instance
-        .collection('coupons')
-        .where("ticket_id", isEqualTo: widget.id);
-    // Get the data from the collection
-    _collection.get().then((snapshot) {
-      snapshot.docs.forEach((doc) {
-        entcontroller.adddiscountcode(doc.get("code"));
+    if (widget.id != null) {
+      print('not null');
+      var _collection1 = FirebaseFirestore.instance
+          .collection('coupons')
+          .where('ticket_id', isEqualTo: widget.id);
+
+      // Get the data from the collection
+      _collection1.get().then((snapshot) {
+        print(snapshot.docs.length);
+        if (snapshot.docs.length == 0) {
+          print('no coupon');
+        }
+        snapshot.docs.forEach((doc) {
+          print(doc.data());
+          entcontroller.discountcode.value = doc.data()['code'];
+          if (doc.data()['discount_type'] == "amount") {
+            entcontroller.discount!.value = doc.data()['discount'];
+            entcontroller.percentage!.value = '';
+          } else if (doc.data()['discount_type'] == "percentage") {
+            entcontroller.percentage!.value = doc.data()['discount'];
+            entcontroller.discount!.value = '';
+            print('percentage');
+            print(entcontroller.percentage!.value);
+          }
+        });
       });
-    });
+    } else {
+      print(' ticket id null');
+    }
   }
 
   @override
@@ -82,54 +102,6 @@ class _CouponScreenState extends State<CouponScreen> {
                               fontWeight: FontWeight.bold),
                         ),
                         // Text(id.toString())
-                        SizedBox(
-                          height: 40,
-                          width: 40,
-                          child: StreamBuilder<QuerySnapshot>(
-                            stream: _firestore
-                                .collection("coupons")
-                                .where("ticket_id", isEqualTo: widget.id)
-                                .snapshots(),
-                            builder: (BuildContext context,
-                                AsyncSnapshot<QuerySnapshot> snapshot) {
-                              if (snapshot.hasData) {
-                                return ListView.builder(
-                                    itemCount: snapshot.data!.docs.length,
-                                    itemBuilder: (context, index) {
-                                      final data = snapshot.data!.docs[index];
-                                      entcontroller.code!.value =
-                                          data.get("code");
-                                      entcontroller.discount!.value =
-                                          data.get("discount");
-                                      return Center(
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              entcontroller.code!.value
-                                                  .toString(),
-                                              style: TextStyle(
-                                                  fontFamily: "OpenSans",
-                                                  color: Colors.black,
-                                                  fontSize: 10),
-                                            ),
-                                            Text(
-                                              entcontroller.discount!.value
-                                                  .toString(),
-                                              style: TextStyle(
-                                                fontFamily: "OpenSans",
-                                                color: Colors.transparent,
-                                                fontSize: 1,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    });
-                              }
-                              return CircularProgressIndicator();
-                            },
-                          ),
-                        ),
                       ],
                     ),
                   ),
@@ -201,9 +173,12 @@ class _CouponScreenState extends State<CouponScreen> {
 
                       InkWell(
                         onTap: () {
-                          entcontroller.selecteddiscountcode.value =
-                              entcontroller.codecONTROLLER.value.text;
-                          Get.back();
+                          print('id passing ' + widget.id.toString());
+                          entcontroller.setdiscount(
+                              entcontroller.codecONTROLLER.value.text
+                                  .toString(),
+                              widget.id.toString());
+                          navigator!.pop();
                         },
                         child: entcontroller.getbutton(),
                       ),
