@@ -351,23 +351,6 @@ class _BuyTicketState extends State<BuyTicket> {
                   style: TextStyle(
                       color: Color.fromRGBO(154, 154, 154, 1), fontSize: 12),
                 ),
-                // Text(widget.category.toString()),
-                // Text(widget.economy.toString()),
-
-                //  Text(
-                //   "Event Latitude/Longitude",
-                //  style: TextStyle(
-                //     color: Color.fromARGB(255, 56, 171, 216),
-                //     fontSize: 22,
-                //     fontWeight: FontWeight.w600,
-                //   ),
-                // ),
-                // SizedBox(
-                //   height: 10,
-                // ),
-                // Text("Lat:"+widget.Latitude!.toString(),style: TextStyle(color: Color.fromRGBO(154, 154, 154, 1)),),
-                // Text("Long:"+widget.longitude!.toString(),style: TextStyle(color: Color.fromRGBO(154, 154, 154, 1))),
-                // Text(widget.id.toString(),),
 
                 SizedBox(
                   height: 20,
