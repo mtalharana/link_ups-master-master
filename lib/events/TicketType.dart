@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, unused_field, unused_element
+// ignore_for_file: non_constant_identifier_names, unused_field, unused_element, must_be_immutable
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:link_up/events/couponscreen.dart';
 import 'package:link_up/events/event9.dart';
 import 'package:link_up/events/getcontroller.dart';
+import 'package:link_up/events/ticketcontroller.dart';
 
 import '../ui/DrawerScreen.dart';
 
@@ -63,7 +64,7 @@ class TicketType extends StatefulWidget {
 
 class _TicketTypeState extends State<TicketType> {
   List earlybirdcheck = [];
-  late int earlybirdchecknew;
+  int earlybirdchecknew = 0;
   late final _subscription2;
   late final _subscription;
   String? pop = '';
@@ -82,19 +83,13 @@ class _TicketTypeState extends State<TicketType> {
   double? total1 = 0.0;
   int? total2 = 0;
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  int _counter = 1;
+
   String? button;
   String? dropdownvalue;
   String? dropdownvalue2;
   EventController entcontroller = Get.put(EventController());
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   late var _collection;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   void getearlybrddata() {
     print('talha uid hai yeh is event ki');
@@ -124,14 +119,6 @@ class _TicketTypeState extends State<TicketType> {
     //   }
     // });
     // print(earlybirdcheck);
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      if (_counter > 1) {
-        _counter--;
-      }
-    });
   }
 
   getcoupondata() async {
@@ -193,15 +180,16 @@ class _TicketTypeState extends State<TicketType> {
   Widget build(BuildContext context) {
     print(entcontroller.percentage!.value.toString());
 
-    setState(() {
-      equal = butn! * _counter;
-      equal2 = (butn! * _counter * (100 - discountt!)) / 100;
-      // // print(equal2);
-    });
-    setState(() {
-      total1 = equal2! + ((equal! * tax3!) / 100) + ((equal! * fee!) / 100);
-      // // print(total1);
-    });
+    TicketController ticketController = Get.put(TicketController());
+    // setState(() {
+    //   equal = butn! * _counter;
+    //   equal2 = (butn! * _counter * (100 - discountt!)) / 100;
+    //   // // print(equal2);
+    // });
+    // setState(() {
+    //   total1 = equal2! + ((equal! * tax3!) / 100) + ((equal! * fee!) / 100);
+    //   // // print(total1);
+    // });
 
     var appSize = MediaQuery.of(context).size;
     var appSize2 = MediaQuery.of(context).size;
@@ -228,29 +216,39 @@ class _TicketTypeState extends State<TicketType> {
       ),
       body: SafeArea(
           child: ListView(children: [
-        SizedBox(
-          height: 20,
-        ),
+        SizedBox(height: 20),
         (earlybirdchecknew == 1)
             ? Column(
                 children: [
-                  blueContainer(
+                  TicketTypeContainer(
                       'Early Bird General Tickets \$15.00',
                       '\$15.00',
                       ' + \$3.46 Fees + \$0.00 Taxes',
                       'Sales end on Jan 7, 2023',
                       'This RSVP guarantees entrance to The Shrine before 11pm.',
-                      Color.fromARGB(253, 56, 171, 216)),
+                      Color.fromARGB(
+                        253,
+                        56,
+                        171,
+                        216,
+                      ),
+                      (() => ticketController.incrementearlygeneral()),
+                      (() => ticketController.decrementearlygeneral()),
+                      ticketController.counterearlygeneral),
                   SizedBox(
                     height: 20,
                   ),
-                  blueContainer(
-                      'Early Bird VIP   \$30.00',
-                      '\$30.00',
-                      ' + \$2.56 Fees + \$0.00 Taxes',
-                      'Sales end on Jan 7, 2023',
-                      'This Ticket is a VIP seating Ticket',
-                      Color.fromARGB(253, 56, 171, 216)),
+                  TicketTypeContainer(
+                    'Early Bird VIP   \$30.00',
+                    '\$30.00',
+                    ' + \$2.56 Fees + \$0.00 Taxes',
+                    'Sales end on Jan 7, 2023',
+                    'This Ticket is a VIP seating Ticket',
+                    Color.fromARGB(253, 56, 171, 216),
+                    () => ticketController.incrementearlyvip(),
+                    () => ticketController.decrementearlyvip(),
+                    ticketController.counterearlyvip,
+                  ),
                   SizedBox(
                     height: 20,
                   ),
@@ -261,23 +259,34 @@ class _TicketTypeState extends State<TicketType> {
                   SizedBox(
                     height: 20,
                   ),
-                  blueContainer(
-                      'VIP',
-                      '\$40.00',
-                      ' + \$3.45 Fees + \$0.00 Taxes',
-                      '',
-                      'This is a VIP seating Ticket ',
-                      Color.fromARGB(253, 56, 171, 216)),
+                  TicketTypeContainer(
+                    'VIP',
+                    '\$40.00',
+                    ' + \$3.45 Fees + \$0.00 Taxes',
+                    '',
+                    'This is a VIP seating Ticket ',
+                    Color.fromARGB(253, 56, 171, 216),
+                    () => ticketController.incrementvip(),
+                    () => ticketController.decrementvip(),
+                    ticketController.countervip,
+                  ),
                   SizedBox(
                     height: 30,
                   ),
-                  blueContainer(
-                      'General Admission',
-                      '\$20.00',
-                      ' + \$3.45 Fees + \$0.00 Taxes',
-                      '',
-                      'This Ticket is for General admission only',
-                      Color.fromARGB(255, 213, 220, 22)),
+                  TicketTypeContainer(
+                    'General Admission',
+                    '\$20.00',
+                    ' + \$3.45 Fees + \$0.00 Taxes',
+                    '',
+                    'This Ticket is for General admission only',
+                    Color.fromARGB(255, 213, 220, 22),
+                    () => ticketController.incrementgeneral(),
+                    () => ticketController.decrementgeneral(),
+                    ticketController.countergeneral,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                 ],
               ),
         Row(
@@ -359,130 +368,163 @@ Container smallContainer(
   );
 }
 
-Padding blueContainer(
-  String text1,
-  String text2,
-  String text3,
-  String text4,
-  String text5,
-  Color color,
-) {
-  return Padding(
-    padding: const EdgeInsets.only(left: 15, right: 15),
-    child: Container(
-      height: 140,
-      decoration: BoxDecoration(
-          border: Border.all(color: color),
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 5,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Text(
-              text1,
-              style: TextStyle(
-                  fontSize: 20, color: color, fontWeight: FontWeight.bold),
+class TicketTypeContainer extends StatefulWidget {
+  TicketTypeContainer(
+      this.text1,
+      this.text2,
+      this.text3,
+      this.text4,
+      this.text5,
+      this.color,
+      this.onTapincrement,
+      this.onTapdecrement,
+      this.counter);
+  late String text1;
+  late String text2;
+  late String text3;
+  late String text4;
+  late String text5;
+  late Color color;
+  RxInt counter;
+  void Function()? onTapincrement;
+  void Function()? onTapdecrement;
+
+  @override
+  State<TicketTypeContainer> createState() => _TicketTypeContainerState();
+}
+
+class _TicketTypeContainerState extends State<TicketTypeContainer> {
+  GetxController ticketcontroller = Get.put(TicketController());
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 15, right: 15),
+      child: Container(
+        height: 140,
+        decoration: BoxDecoration(
+            border: Border.all(color: widget.color),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 5,
             ),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Container(
-            height: 40,
-            color: color,
-            child: Padding(
+            Padding(
               padding: const EdgeInsets.only(left: 10),
-              child: Row(
-                children: [
-                  RichText(
-                      text: TextSpan(children: [
-                    TextSpan(
-                        text: text2,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold)),
-                    TextSpan(
-                        text: text3,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.white,
-                        )),
-                  ])),
-                  SizedBox(
-                    width: 45,
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 219, 239, 246),
-                        borderRadius: BorderRadius.circular(6)),
-                    child: Center(
-                      child: Text(
-                        '-',
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    '0',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 219, 239, 246),
-                        borderRadius: BorderRadius.circular(6)),
-                    child: Center(
-                      child: Text(
-                        '+',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ],
+              child: Text(
+                widget.text1,
+                style: TextStyle(
+                    fontSize: 20,
+                    color: widget.color,
+                    fontWeight: FontWeight.bold),
               ),
             ),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Text(text4,
-                style: TextStyle(
-                  color: Color.fromARGB(255, 110, 110, 110),
-                  fontSize: 16,
-                )),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Text(text5,
-                style: TextStyle(
-                  color: Color.fromARGB(255, 110, 110, 110),
-                  fontSize: 12,
-                )),
-          ),
-        ],
+            SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 40,
+              color: widget.color,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Row(
+                  children: [
+                    RichText(
+                        text: TextSpan(children: [
+                      TextSpan(
+                          text: widget.text2,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold)),
+                      TextSpan(
+                          text: widget.text3,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                          )),
+                    ])),
+                    SizedBox(
+                      width: 45,
+                    ),
+                    InkWell(
+                      onTap: widget.onTapdecrement,
+                      child: Container(
+                        height: 25,
+                        width: 25,
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 219, 239, 246),
+                            borderRadius: BorderRadius.circular(6)),
+                        child: Center(
+                          child: Text(
+                            '-',
+                            style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Obx(
+                      () => Text(
+                        widget.counter.toString(),
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    InkWell(
+                      onTap: widget.onTapincrement,
+                      child: Container(
+                        height: 25,
+                        width: 25,
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 219, 239, 246),
+                            borderRadius: BorderRadius.circular(6)),
+                        child: Center(
+                          child: Text(
+                            '+',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(widget.text4,
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 110, 110, 110),
+                    fontSize: 16,
+                  )),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(widget.text5,
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 110, 110, 110),
+                    fontSize: 12,
+                  )),
+            ),
+          ],
+        ),
       ),
-    ),
-  );
+    );
+  }
 }

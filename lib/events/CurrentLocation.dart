@@ -44,7 +44,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
       event.docs.forEach((element) {
         if (element.data()['early_bird_price_date_limit'].runtimeType ==
             Timestamp) {
-          // print(element.data()['early_bird_price_date_limit']);
+          print(element.data()['early_bird_price_date_limit']);
 
           Timestamp earlydate = element.data()['early_bird_price_date_limit'];
 
@@ -55,11 +55,12 @@ class _CurrentLocationState extends State<CurrentLocation> {
           earlybirdcheck.add(0);
         }
       });
-      // print(earlybirdcheck);
+      print(earlybirdcheck);
     });
   }
 
   void getsubsciptiondata() {
+    print('get sub data');
     _subscription = FirebaseFirestore.instance
         .collection('events')
         .snapshots()
@@ -76,14 +77,14 @@ class _CurrentLocationState extends State<CurrentLocation> {
           endtimecheck.add(0);
         }
       });
-      // print(endtimecheck);
+      print(endtimecheck);
     });
   }
 
   @override
   void initState() {
     getsubsciptiondata();
-
+    getearlybrddata();
     super.initState();
   }
 
