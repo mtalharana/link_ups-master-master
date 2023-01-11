@@ -221,33 +221,38 @@ class _TicketTypeState extends State<TicketType> {
             ? Column(
                 children: [
                   TicketTypeContainer(
-                      'Early Bird General Tickets \$15.00',
-                      '\$15.00',
-                      ' + \$3.46 Fees + \$0.00 Taxes',
-                      'Sales end on Jan 7, 2023',
-                      'This RSVP guarantees entrance to The Shrine before 11pm.',
-                      Color.fromARGB(
+                      ticketname: 'Early Bird General Tickets \$15.00',
+                      Price: ticketController.earlybirdprice.value,
+                      fee: ticketController.feeearlybirdgeneral.value,
+                      tax: ticketController.earlybirdtax.value,
+                      saleendmessage: 'Sales end on Jan 7, 2023',
+                      color: Color.fromARGB(
                         253,
                         56,
                         171,
                         216,
                       ),
-                      (() => ticketController.incrementearlygeneral()),
-                      (() => ticketController.decrementearlygeneral()),
-                      ticketController.counterearlygeneral),
+                      description:
+                          'This RSVP guarantees entrance to The Shrine before 11pm.',
+                      onTapincrement: (() =>
+                          ticketController.incrementearlygeneral()),
+                      onTapdecrement: (() =>
+                          ticketController.decrementearlygeneral()),
+                      counter: ticketController.counterearlygeneral),
                   SizedBox(
                     height: 20,
                   ),
                   TicketTypeContainer(
-                    'Early Bird VIP   \$30.00',
-                    '\$30.00',
-                    ' + \$2.56 Fees + \$0.00 Taxes',
-                    'Sales end on Jan 7, 2023',
-                    'This Ticket is a VIP seating Ticket',
-                    Color.fromARGB(253, 56, 171, 216),
-                    () => ticketController.incrementearlyvip(),
-                    () => ticketController.decrementearlyvip(),
-                    ticketController.counterearlyvip,
+                    ticketname: 'Early Bird VIP   \$30.00',
+                    Price: ticketController.earlybirdvipprice.value,
+                    fee: ticketController.feeearlybirdvip.value,
+                    tax: ticketController.earlybirdviptax.value,
+                    saleendmessage: 'Sales end on Jan 7, 2023',
+                    description: 'This Ticket is a VIP seating Ticket',
+                    color: Color.fromARGB(253, 56, 171, 216),
+                    onTapincrement: () => ticketController.incrementearlyvip(),
+                    onTapdecrement: () => ticketController.decrementearlyvip(),
+                    counter: ticketController.counterearlyvip,
                   ),
                   SizedBox(
                     height: 20,
@@ -260,29 +265,31 @@ class _TicketTypeState extends State<TicketType> {
                     height: 20,
                   ),
                   TicketTypeContainer(
-                    'VIP',
-                    '\$40.00',
-                    ' + \$3.45 Fees + \$0.00 Taxes',
-                    '',
-                    'This is a VIP seating Ticket ',
-                    Color.fromARGB(253, 56, 171, 216),
-                    () => ticketController.incrementvip(),
-                    () => ticketController.decrementvip(),
-                    ticketController.countervip,
+                    ticketname: 'VIP',
+                    Price: ticketController.vipprice.value,
+                    fee: ticketController.feevip.value,
+                    tax: ticketController.viptax.value,
+                    saleendmessage: '',
+                    description: 'This is a VIP seating Ticket ',
+                    color: Color.fromARGB(253, 56, 171, 216),
+                    onTapincrement: () => ticketController.incrementvip(),
+                    onTapdecrement: () => ticketController.decrementvip(),
+                    counter: ticketController.countervip,
                   ),
                   SizedBox(
                     height: 30,
                   ),
                   TicketTypeContainer(
-                    'General Admission',
-                    '\$20.00',
-                    ' + \$3.45 Fees + \$0.00 Taxes',
-                    '',
-                    'This Ticket is for General admission only',
-                    Color.fromARGB(255, 213, 220, 22),
-                    () => ticketController.incrementgeneral(),
-                    () => ticketController.decrementgeneral(),
-                    ticketController.countergeneral,
+                    ticketname: 'General Admission',
+                    Price: ticketController.generalprice.value,
+                    fee: ticketController.feegeneral.value,
+                    tax: ticketController.generaltax.value,
+                    saleendmessage: '',
+                    description: 'This Ticket is for General admission only',
+                    color: Color.fromARGB(255, 213, 220, 22),
+                    onTapincrement: () => ticketController.incrementgeneral(),
+                    onTapdecrement: () => ticketController.decrementgeneral(),
+                    counter: ticketController.countergeneral,
                   ),
                   SizedBox(
                     height: 20,
@@ -370,24 +377,27 @@ Container smallContainer(
 
 class TicketTypeContainer extends StatefulWidget {
   TicketTypeContainer(
-      this.text1,
-      this.text2,
-      this.text3,
-      this.text4,
-      this.text5,
-      this.color,
-      this.onTapincrement,
-      this.onTapdecrement,
-      this.counter);
-  late String text1;
-  late String text2;
-  late String text3;
-  late String text4;
-  late String text5;
-  late Color color;
+      {required this.ticketname,
+      required this.saleendmessage,
+      required this.description,
+      required this.color,
+      required this.onTapincrement,
+      required this.onTapdecrement,
+      required this.counter,
+      required this.Price,
+      required this.fee,
+      required this.tax});
+  String ticketname;
+
+  String saleendmessage;
+  String description;
+  Color color;
   RxInt counter;
   void Function()? onTapincrement;
   void Function()? onTapdecrement;
+  double Price;
+  double fee;
+  double tax;
 
   @override
   State<TicketTypeContainer> createState() => _TicketTypeContainerState();
@@ -415,7 +425,7 @@ class _TicketTypeContainerState extends State<TicketTypeContainer> {
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(
-                widget.text1,
+                widget.ticketname,
                 style: TextStyle(
                     fontSize: 20,
                     color: widget.color,
@@ -432,24 +442,33 @@ class _TicketTypeContainerState extends State<TicketTypeContainer> {
                 padding: const EdgeInsets.only(left: 10),
                 child: Row(
                   children: [
-                    RichText(
-                        text: TextSpan(children: [
-                      TextSpan(
-                          text: widget.text2,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold)),
-                      TextSpan(
-                          text: widget.text3,
-                          style: TextStyle(
-                            fontSize: 12,
+                    Row(children: [
+                      Text(
+                        '\$' + widget.Price.toString(),
+                        style: TextStyle(
                             color: Colors.white,
-                          )),
-                    ])),
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        ' + \$' + widget.fee.toString() + ' Fee',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        ' + \$' + widget.tax.toString() + ' Tax',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ]),
                     SizedBox(
                       width: 45,
                     ),
+                    Spacer(),
                     InkWell(
                       onTap: widget.onTapdecrement,
                       child: Container(
@@ -496,6 +515,9 @@ class _TicketTypeContainerState extends State<TicketTypeContainer> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      width: 20,
+                    ),
                   ],
                 ),
               ),
@@ -505,7 +527,7 @@ class _TicketTypeContainerState extends State<TicketTypeContainer> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10),
-              child: Text(widget.text4,
+              child: Text(widget.saleendmessage,
                   style: TextStyle(
                     color: Color.fromARGB(255, 110, 110, 110),
                     fontSize: 16,
@@ -516,7 +538,7 @@ class _TicketTypeContainerState extends State<TicketTypeContainer> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10),
-              child: Text(widget.text5,
+              child: Text(widget.description,
                   style: TextStyle(
                     color: Color.fromARGB(255, 110, 110, 110),
                     fontSize: 12,

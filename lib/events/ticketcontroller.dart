@@ -6,6 +6,20 @@ class TicketController extends GetxController {
   RxInt countergeneral = 1.obs;
   RxInt counterearlyvip = 1.obs;
   RxInt counterearlygeneral = 1.obs;
+  RxDouble earlybirdprice = 0.0.obs;
+  RxDouble generalprice = 0.0.obs;
+  RxDouble earlybirdvipprice = 0.0.obs;
+  RxDouble vipprice = 0.0.obs;
+  RxDouble totalprice = 0.0.obs;
+  RxDouble earlybirdtax = 0.0.obs;
+  RxDouble generaltax = 0.0.obs;
+  RxDouble earlybirdviptax = 0.0.obs;
+  RxDouble viptax = 0.0.obs;
+  RxDouble totaltax = 0.0.obs;
+  RxDouble feeearlybirdgeneral = 0.0.obs;
+  RxDouble feegeneral = 0.0.obs;
+  RxDouble feeearlybirdvip = 0.0.obs;
+  RxDouble feevip = 0.0.obs;
 
   // increment counter
   void incrementvip() {
