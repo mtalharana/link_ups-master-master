@@ -213,6 +213,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   @override
   void initState() {
+    print('WElcome Home');
     WidgetsBinding.instance.addObserver(this);
     checkToken(context);
     fetchProfiles();
@@ -292,6 +293,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     return GetBuilder(
       init: authController,
       builder: (_) {
+        print('talha init');
         if (authController.user?.value == null) {
           return Scaffold(
             body: Center(child: CircularProgressIndicator()),
