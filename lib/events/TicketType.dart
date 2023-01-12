@@ -100,25 +100,16 @@ class _TicketTypeState extends State<TicketType> {
         .get()
         .then((value) {
       print('talha value hai yeh');
+      print(value['early_bird_price_date_limit']);
       if (value['early_bird_price_date_limit'].runtimeType == Timestamp) {
-        earlybirdchecknew =
-            value['early_bird_price_date_limit'].compareTo(Timestamp.now());
+        setState(() {
+          earlybirdchecknew =
+              value['early_bird_price_date_limit'].compareTo(Timestamp.now());
+        });
+
         print(earlybirdchecknew);
       }
     });
-
-    //   print(data!['early_bird_price_date_limit']);
-
-    //     Timestamp earlydate =
-    //         data['early_bird_price_date_limit'] as Timestamp;
-
-    //     // print(earlydate.compareTo(Timestamp.now()));
-    //     earlybirdcheck.add(earlydate.compareTo(Timestamp.now()));
-    //   } else {
-    //     earlybirdcheck.add(0);
-    //   }
-    // });
-    // print(earlybirdcheck);
   }
 
   getcoupondata() async {
@@ -147,8 +138,8 @@ class _TicketTypeState extends State<TicketType> {
 
   @override
   void initState() {
-    getcoupondata();
     getearlybrddata();
+    getcoupondata();
 
     // get discount code with single document in firestore
 
@@ -238,8 +229,8 @@ class _TicketTypeState extends State<TicketType> {
                     () => TicketTypeContainer(
                         ticketname: 'Early Bird General Tickets \$15.00',
                         Price: ticketController.earlybirdpricenew.value,
-                        fee: ticketController.feeearlybirdgeneral.value,
-                        tax: ticketController.earlybirdtax.value,
+                        fee: ticketController.feeearlybirdgeneralnew.value,
+                        tax: ticketController.earlybirdtaxnew.value,
                         saleendmessage: 'Sales end on Jan 7, 2023',
                         color: Color.fromARGB(
                           253,
@@ -262,8 +253,8 @@ class _TicketTypeState extends State<TicketType> {
                     () => TicketTypeContainer(
                       ticketname: 'Early Bird VIP   \$30.00',
                       Price: ticketController.earlybirdvippricenew.value,
-                      fee: ticketController.feeearlybirdvip.value,
-                      tax: ticketController.earlybirdviptax.value,
+                      fee: ticketController.feeearlybirdvipnew.value,
+                      tax: ticketController.earlybirdviptaxnew.value,
                       saleendmessage: 'Sales end on Jan 7, 2023',
                       description: 'This Ticket is a VIP seating Ticket',
                       color: Color.fromARGB(253, 56, 171, 216),
@@ -288,8 +279,8 @@ class _TicketTypeState extends State<TicketType> {
                     () => TicketTypeContainer(
                       ticketname: 'VIP',
                       Price: ticketController.vippricenew.value,
-                      fee: ticketController.feevip.value,
-                      tax: ticketController.viptax.value,
+                      fee: ticketController.feevipnew.value,
+                      tax: ticketController.viptaxnew.value,
                       saleendmessage: '',
                       description: 'This is a VIP seating Ticket ',
                       color: Color.fromARGB(253, 56, 171, 216),
@@ -305,8 +296,8 @@ class _TicketTypeState extends State<TicketType> {
                     () => TicketTypeContainer(
                       ticketname: 'General Admission',
                       Price: ticketController.generalpricenew.value,
-                      fee: ticketController.feegeneral.value,
-                      tax: ticketController.generaltax.value,
+                      fee: ticketController.feegeneralnew.value,
+                      tax: ticketController.generaltaxnew.value,
                       saleendmessage: '',
                       description: 'This Ticket is for General admission only',
                       color: Color.fromARGB(255, 213, 220, 22),
@@ -342,11 +333,18 @@ class _TicketTypeState extends State<TicketType> {
         SizedBox(
           height: 30,
         ),
-        Center(
-          child: Text(
-            'Total   \$250.00',
-            style: TextStyle(
-                fontSize: 18, color: Color.fromARGB(255, 110, 110, 110)),
+        Obx(
+          () => Center(
+            child: Text(
+              earlybirdchecknew == 1
+                  ? 'Total   \$' +
+                      ticketController.totalearlyticket.value.toStringAsFixed(2)
+                  : 'Total   \$' +
+                      ticketController.totalgeneralticket.value
+                          .toStringAsFixed(2),
+              style: TextStyle(
+                  fontSize: 18, color: Color.fromARGB(255, 110, 110, 110)),
+            ),
           ),
         ),
         SizedBox(
@@ -475,13 +473,11 @@ class _TicketTypeContainerState extends State<TicketTypeContainer> {
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
                         ),
-                        GetBuilder(
-                          builder: (TicketController) => Text(
-                            '+ \$' + widget.fee.toString() + ' Fee',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                            ),
+                        Text(
+                          '+ \$' + widget.fee.toString() + ' Fee',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
                           ),
                         ),
                         Text(

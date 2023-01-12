@@ -17,105 +17,93 @@ class TicketController extends GetxController {
   RxDouble earlybirdvippricenew = 0.0.obs;
   RxDouble vippricenew = 0.0.obs;
 
-  RxDouble earlybirdtax = 0.0.obs;
-  RxDouble generaltax = 0.0.obs;
-  RxDouble earlybirdviptax = 0.0.obs;
-  RxDouble viptax = 0.0.obs;
-  RxDouble totaltax = 0.0.obs;
+  RxDouble earlybirdtax = 12.0.obs;
+  RxDouble generaltax = 12.0.obs;
+  RxDouble earlybirdviptax = 12.0.obs;
+  RxDouble viptax = 12.0.obs;
 
-  RxDouble feeearlybirdgeneral = 0.0.obs;
-  RxDouble feegeneral = 0.0.obs;
-  RxDouble feeearlybirdvip = 0.0.obs;
-  RxDouble feevip = 0.0.obs;
+  RxDouble earlybirdtaxnew = 1.8.obs;
+  RxDouble generaltaxnew = 0.6.obs;
+  RxDouble earlybirdviptaxnew = 3.6.obs;
+  RxDouble viptaxnew = 1.2.obs;
 
-  void updatePricegeneral(double value) {
-    generalpriceorignal.value = value;
-    update();
-  }
+  RxDouble feeearlybirdgeneralorignal = 7.5.obs;
+  RxDouble feegeneralorignal = 7.5.obs;
+  RxDouble feeearlybirdviporignal = 7.5.obs;
+  RxDouble feeviporignal = 7.5.obs;
 
-  void updatePriceEarlyBirdgeneral(double value) {
-    earlybirdpriceorignal.value = value;
-    update();
-  }
+  RxDouble feeearlybirdgeneralnew = 1.125.obs;
+  RxDouble feegeneralnew = 0.375.obs;
+  RxDouble feeearlybirdvipnew = 2.25.obs;
+  RxDouble feevipnew = 0.75.obs;
 
-  void updatepricevip(double value) {
-    feevip.value = value;
-    update();
-  }
-
-  void updatepricealybirdvip(double value) {
-    earlybirdvippriceorignal.value = value;
-    update();
-  }
-
-  void updateTaxgeneral(double value) {
-    generaltax.value = value;
-    update();
-  }
-
-  void updateTaxEarlyBirdgeneral(double value) {
-    earlybirdtax.value = value;
-    update();
-  }
-
-  void updateTaxvip(double value) {
-    viptax.value = value;
-    update();
-  }
-
-  void updateTaxEarlyBirdvip(double value) {
-    earlybirdviptax.value = value;
-    update();
-  }
-
-  void updatefeegeneral(double value) {
-    feegeneral.value = value;
-    update();
-  }
-
-  void updatefeeearlybirdgeneral(double value) {
-    feeearlybirdgeneral.value = value;
-    update();
-  }
-
-  void updatefeevip(double value) {
-    feevip.value = value;
-    update();
-  }
-
-  void updateearlybirdfeevip(double value) {
-    feeearlybirdvip.value = value;
-    update();
-  }
+  RxDouble totalgeneral = 5.975.obs;
+  RxDouble totalearlygeneral = 17.925.obs;
+  RxDouble totalvip = 11.95.obs;
+  RxDouble totalearlyvip = 35.85.obs;
+  RxDouble totalearlyticket = 53.775.obs;
+  RxDouble totalgeneralticket = 17.925.obs;
 
   // increment counter
   void incrementvip() {
     countervip.value++;
     vippricenew.value = vippriceorignal.value * countervip.value;
+    feevipnew.value = (vippricenew.value * feeviporignal.value) / 100;
+    viptaxnew.value = (vippricenew.value * viptax.value) / 100;
+    totalvip.value = viptaxnew.value + feevipnew.value + vippricenew.value;
+
+    totalgeneralticket.value = totalgeneral.value + totalvip.value;
+    print(totalgeneralticket.value);
   }
 
   void incrementgeneral() {
     countergeneral.value++;
     generalpricenew.value = generalpriceorignal.value * countergeneral.value;
-    print(generalpricenew.value);
+    feegeneralnew.value =
+        (generalpricenew.value * feegeneralorignal.value) / 100;
+    generaltaxnew.value = (generalpricenew.value * generaltax.value) / 100;
+    totalgeneral.value =
+        generaltaxnew.value + feegeneralnew.value + generalpricenew.value;
+    totalgeneralticket.value = totalgeneral.value + totalvip.value;
   }
 
   void incrementearlyvip() {
     counterearlyvip.value++;
     earlybirdvippricenew.value =
         earlybirdvippriceorignal.value * counterearlyvip.value;
+    feeearlybirdvipnew.value =
+        (earlybirdvippricenew.value * feeearlybirdviporignal.value) / 100;
+    earlybirdviptaxnew.value =
+        (earlybirdvippricenew.value * earlybirdviptax.value) / 100;
+    totalearlyvip.value = earlybirdviptaxnew.value +
+        feeearlybirdvipnew.value +
+        earlybirdvippricenew.value;
+    totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
   }
 
   void incrementearlygeneral() {
     counterearlygeneral.value++;
     earlybirdpricenew.value =
         earlybirdpriceorignal.value * counterearlygeneral.value;
+    feeearlybirdgeneralnew.value =
+        (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
+    earlybirdtaxnew.value =
+        (earlybirdpricenew.value * earlybirdtax.value) / 100;
+    totalearlygeneral.value = earlybirdtaxnew.value +
+        feeearlybirdgeneralnew.value +
+        earlybirdpricenew.value;
+    totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
   }
 
   // decrement counter
   void decrementvip() {
     countervip.value > 1 ? countervip.value-- : print('cannot decrement');
     vippricenew.value = vippriceorignal.value * countervip.value;
+    feevipnew.value = (vippricenew.value * feeviporignal.value) / 100;
+    viptaxnew.value = (vippricenew.value * viptax.value) / 100;
+    totalvip.value = viptaxnew.value + feevipnew.value + vippricenew.value;
+
+    totalgeneralticket.value = totalgeneral.value + totalvip.value;
   }
 
   void decrementgeneral() {
@@ -123,6 +111,16 @@ class TicketController extends GetxController {
         ? countergeneral.value--
         : print('cannot decrement');
     generalpricenew.value = generalpriceorignal.value * countergeneral.value;
+    feegeneralnew.value =
+        (generalpricenew.value * feegeneralorignal.value) / 100;
+    generaltaxnew.value = (generalpricenew.value * generaltax.value) / 100;
+    totalgeneral.value =
+        generaltaxnew.value + feegeneralnew.value + generalpricenew.value;
+    totalgeneralticket.value = totalgeneral.value + totalvip.value;
+    totalearlygeneral.value = earlybirdtaxnew.value +
+        feeearlybirdgeneralnew.value +
+        earlybirdpricenew.value;
+    totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
   }
 
   void decrementearlyvip() {
@@ -131,6 +129,14 @@ class TicketController extends GetxController {
         : print('cannot decrement');
     earlybirdvippricenew.value =
         earlybirdvippriceorignal.value * counterearlyvip.value;
+    feeearlybirdvipnew.value =
+        (earlybirdvippricenew.value * feeearlybirdviporignal.value) / 100;
+    earlybirdviptaxnew.value =
+        (earlybirdvippricenew.value * earlybirdviptax.value) / 100;
+    totalearlyvip.value = earlybirdviptaxnew.value +
+        feeearlybirdvipnew.value +
+        earlybirdvippricenew.value;
+    totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
   }
 
   void decrementearlygeneral() {
@@ -139,5 +145,17 @@ class TicketController extends GetxController {
         : print('cannot decrement');
     earlybirdpricenew.value =
         earlybirdpriceorignal.value * counterearlygeneral.value;
+    feeearlybirdgeneralnew.value =
+        (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
+    earlybirdtaxnew.value =
+        (earlybirdpricenew.value * earlybirdtax.value) / 100;
+    totalearlyvip.value = earlybirdviptaxnew.value +
+        feeearlybirdvipnew.value +
+        earlybirdvippricenew.value;
+    totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
+    totalearlygeneral.value = earlybirdtaxnew.value +
+        feeearlybirdgeneralnew.value +
+        earlybirdpricenew.value;
+    totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
   }
 }
