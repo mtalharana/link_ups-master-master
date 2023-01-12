@@ -172,10 +172,10 @@ class _TicketTypeState extends State<TicketType> {
     print(entcontroller.percentage!.value.toString());
 
     TicketController ticketController = Get.put(TicketController());
-    ticketController.counterearlyvip.value = 1;
-    ticketController.counterearlygeneral.value = 1;
-    ticketController.countergeneral.value = 1;
-    ticketController.countervip.value = 1;
+    ticketController.counterearlyvip.value = 0;
+    ticketController.counterearlygeneral.value = 0;
+    ticketController.countergeneral.value = 0;
+    ticketController.countervip.value = 0;
     ticketController.earlybirdpriceorignal.value = 15;
     ticketController.earlybirdpricenew.value = 15;
     ticketController.earlybirdvippriceorignal.value = 30;
@@ -337,11 +337,18 @@ class _TicketTypeState extends State<TicketType> {
           () => Center(
             child: Text(
               earlybirdchecknew == 1
-                  ? 'Total   \$' +
-                      ticketController.totalearlyticket.value.toStringAsFixed(2)
-                  : 'Total   \$' +
-                      ticketController.totalgeneralticket.value
-                          .toStringAsFixed(2),
+                  ? ticketController.counterearlyvip.value == 0 &&
+                          ticketController.counterearlygeneral.value == 0
+                      ? 'Total   \$ 0.0 '
+                      : 'Total   \$' +
+                          ticketController.totalearlyticket.value
+                              .toStringAsFixed(2)
+                  : ticketController.countergeneral.value == 0 &&
+                          ticketController.countervip.value == 0
+                      ? 'Total   \$ 0.0 '
+                      : 'Total   \$' +
+                          ticketController.totalgeneralticket.value
+                              .toStringAsFixed(2),
               style: TextStyle(
                   fontSize: 18, color: Color.fromARGB(255, 110, 110, 110)),
             ),

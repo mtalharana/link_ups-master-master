@@ -2,11 +2,11 @@ import 'package:get/get.dart';
 
 class TicketController extends GetxController {
   RxString ticketId = "".obs;
-
-  RxInt countervip = 1.obs;
-  RxInt countergeneral = 1.obs;
-  RxInt counterearlyvip = 1.obs;
-  RxInt counterearlygeneral = 1.obs;
+  RxBool ticketavailable = false.obs;
+  RxInt countervip = 0.obs;
+  RxInt countergeneral = 0.obs;
+  RxInt counterearlyvip = 0.obs;
+  RxInt counterearlygeneral = 0.obs;
 
   RxDouble earlybirdpriceorignal = 0.0.obs;
   RxDouble generalpriceorignal = 0.0.obs;
@@ -41,8 +41,8 @@ class TicketController extends GetxController {
   RxDouble totalearlygeneral = 17.925.obs;
   RxDouble totalvip = 11.95.obs;
   RxDouble totalearlyvip = 35.85.obs;
-  RxDouble totalearlyticket = 53.775.obs;
-  RxDouble totalgeneralticket = 17.925.obs;
+  RxDouble totalearlyticket = 0.0.obs;
+  RxDouble totalgeneralticket = 0.0.obs;
 
   // increment counter
   void incrementvip() {
@@ -79,6 +79,7 @@ class TicketController extends GetxController {
         feeearlybirdvipnew.value +
         earlybirdvippricenew.value;
     totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
+    print(totalearlyvip.value.toString());
   }
 
   void incrementearlygeneral() {
@@ -107,7 +108,7 @@ class TicketController extends GetxController {
   }
 
   void decrementgeneral() {
-    countergeneral.value > 1
+    countergeneral.value > 0
         ? countergeneral.value--
         : print('cannot decrement');
     generalpricenew.value = generalpriceorignal.value * countergeneral.value;
@@ -124,7 +125,7 @@ class TicketController extends GetxController {
   }
 
   void decrementearlyvip() {
-    counterearlyvip.value > 1
+    counterearlyvip.value > 0
         ? counterearlyvip.value--
         : print('cannot decrement');
     earlybirdvippricenew.value =
@@ -140,7 +141,7 @@ class TicketController extends GetxController {
   }
 
   void decrementearlygeneral() {
-    counterearlygeneral.value > 1
+    counterearlygeneral.value > 0
         ? counterearlygeneral.value--
         : print('cannot decrement');
     earlybirdpricenew.value =

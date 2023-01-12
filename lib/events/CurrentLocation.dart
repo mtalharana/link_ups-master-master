@@ -10,6 +10,7 @@ import 'package:intl/intl.dart';
 import 'package:link_up/events/AllEvents.dart';
 import 'package:link_up/events/eachcategory.dart';
 import 'package:link_up/events/getcontroller.dart';
+import 'package:link_up/events/ticketcontroller.dart';
 import 'package:link_up/ui/DrawerScreen.dart';
 import 'package:link_up/ui/why_we_are_here.dart';
 import '../get_controller/ChatController.dart';
@@ -109,6 +110,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
     AuthController authController = Get.find(tag: AuthController().toString());
     HomeController homeController = Get.find(tag: HomeController().toString());
     ChatController chatController = Get.find(tag: ChatController().toString());
+
     var appSize = MediaQuery.of(context).size;
     EventController entcontroller = Get.put(EventController());
     entcontroller.getCurrentLocation();
@@ -851,7 +853,11 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                           ),
                                                         ),
                                                       ),
-                                                      (endtimecheck[index] == 1)
+                                                      (endtimecheck[index] ==
+                                                                  1 &&
+                                                              earlybirdcheck[
+                                                                      index] ==
+                                                                  1)
                                                           ? InkWell(
                                                               onTap: () {
                                                                 Get.to(

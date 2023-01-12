@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:link_up/events/TicketType.dart';
+import 'package:link_up/events/ticketcontroller.dart';
 import '../ui/DrawerScreen.dart';
 import 'getcontroller.dart';
 
@@ -54,6 +55,7 @@ class BuyTicket extends StatefulWidget {
 }
 
 class _BuyTicketState extends State<BuyTicket> {
+  TicketController ticketController = Get.put(TicketController());
   // late var date;
   dynamic snapshott;
   EventController entcontroller = Get.put(EventController());
@@ -77,12 +79,35 @@ class _BuyTicketState extends State<BuyTicket> {
   }
 
   var date;
+  getticketinfo(String uid) async {
+    print('uid is $uid');
+    await FirebaseFirestore.instance
+        .collection('tickets')
+        .where('event_id', isEqualTo: uid)
+        .get()
+        .then((value) {
+      if (value.docs.length == 0) {
+        print('no tickets');
+        ticketController.ticketavailable.value = false;
+      } else if (value.docs.length == 1) {
+        print('tickets available');
+        ticketController.ticketavailable.value = true;
+        ticketController.ticketId.value = value.docs[0].id;
+        print('ticket id is ${ticketController.ticketId.value}');
+      }
+      if (value.docs.length > 1) {
+        print('more than one ticket');
+      }
+    });
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    getticketinfo(widget.id!);
     getData();
+    getticketinfo(widget.id!);
   }
 
   @override
@@ -92,7 +117,7 @@ class _BuyTicketState extends State<BuyTicket> {
     DateTime dateTime = date; // your DateTime object
     String formattedDate =
         DateFormat('EEEE, MMMM d, yyyy – h:mm a').format(dateTime);
-    print(formattedDate);
+
     var appSize = MediaQuery.of(context).size;
 
     final storageRef = FirebaseStorage.instance.ref();
@@ -358,39 +383,48 @@ class _BuyTicketState extends State<BuyTicket> {
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  height: 50,
-                  width: 317,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          elevation: 0.0,
-                          primary: Color.fromRGBO(56, 171, 216, 1)),
-                      onPressed: () {
-                        Get.to(
-                          TicketType(
-                            fees: widget.fees,
-                            title: widget.title,
-                            description: widget.description,
-                            end_time: widget.end_time,
-                            start_time: widget.start_time,
-                            country: widget.country,
-                            state: widget.state,
-                            uid: widget.id,
-                            disclaimer: widget.disclaimer,
-                            venue: widget.venue,
-                            organizer: widget.organizername,
-                            vip_price: widget.vip_price,
-                            economy: widget.economy,
-                            image: snapshott,
-                            category: widget.category,
-                          ),
-                        );
-                      },
-                      child: Text(
-                        "Buy Ticket",
-                        style: TextStyle(fontSize: 16),
-                      )),
-                ),
+                ticketController.ticketavailable == true
+                    ? Container(
+                        height: 50,
+                        width: 317,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                elevation: 0.0,
+                                primary: Color.fromRGBO(56, 171, 216, 1)),
+                            onPressed: () {
+                              Get.to(
+                                TicketType(
+                                  fees: widget.fees,
+                                  title: widget.title,
+                                  description: widget.description,
+                                  end_time: widget.end_time,
+                                  start_time: widget.start_time,
+                                  country: widget.country,
+                                  state: widget.state,
+                                  uid: widget.id,
+                                  disclaimer: widget.disclaimer,
+                                  venue: widget.venue,
+                                  organizer: widget.organizername,
+                                  vip_price: widget.vip_price,
+                                  economy: widget.economy,
+                                  image: snapshott,
+                                  category: widget.category,
+                                ),
+                              );
+                            },
+                            child: Text(
+                              "Buy Ticket",
+                              style: TextStyle(fontSize: 16),
+                            )),
+                      )
+                    : Text(
+                        'Tickets are not available at the Moment.',
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                 SizedBox(
                   height: 10,
                 ),
