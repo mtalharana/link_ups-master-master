@@ -24,6 +24,7 @@ class CurrentLocation extends StatefulWidget {
 }
 
 class _CurrentLocationState extends State<CurrentLocation> {
+  AuthController authController = Get.find(tag: AuthController().toString());
   String stripHtmlIfNeededd(String text) {
     return text.replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ');
   }
@@ -40,6 +41,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
   void getearlybrddata() {
     _subscription2 = FirebaseFirestore.instance
         .collection('events')
+        .where("country", isEqualTo: authController.countryName.value)
         .snapshots()
         .listen((event) {
       event.docs.forEach((element) {
@@ -64,6 +66,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
     print('get sub data');
     _subscription = FirebaseFirestore.instance
         .collection('events')
+        .where("country", isEqualTo: authController.countryName.value)
         .snapshots()
         .listen((event) {
       event.docs.forEach((element) {
@@ -107,7 +110,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
     late double? eventfee;
 
     final _scaffoldKey = GlobalKey<ScaffoldState>();
-    AuthController authController = Get.find(tag: AuthController().toString());
+
     HomeController homeController = Get.find(tag: HomeController().toString());
     ChatController chatController = Get.find(tag: ChatController().toString());
 
@@ -399,8 +402,10 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                 itemCount: snapshot.data!.docs.length,
                                 primary: false,
                                 itemBuilder: (context, index) {
+                                  print("index $index");
                                   final data = snapshot.data!.docs[index];
                                   final dataa = snapshot.data!.docs[index].id;
+                                  print("dataa $dataa");
                                   // Try to parse the string as a double
                                   double? parsed =
                                       double.tryParse(data.get('event_fee'));
@@ -1068,8 +1073,9 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                           ),
                                                                         ),
                                                                         Text(
-                                                                          data.get(
-                                                                              "disclaimer").toString(),
+                                                                          data
+                                                                              .get("disclaimer")
+                                                                              .toString(),
                                                                           style: TextStyle(
                                                                               fontFamily: 'OpenSans',
                                                                               color: Colors.transparent,

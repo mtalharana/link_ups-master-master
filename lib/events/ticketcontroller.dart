@@ -38,10 +38,10 @@ class TicketController extends GetxController {
   RxDouble feeearlybirdvipnew = 0.0.obs;
   RxDouble feevipnew = 0.0.obs;
 
-  RxDouble totalgeneral = 5.975.obs;
-  RxDouble totalearlygeneral = 17.925.obs;
-  RxDouble totalvip = 11.95.obs;
-  RxDouble totalearlyvip = 35.85.obs;
+  RxDouble totalgeneral = 0.0.obs;
+  RxDouble totalearlygeneral = 0.0.obs;
+  RxDouble totalvip = 0.0.obs;
+  RxDouble totalearlyvip = 0.0.obs;
   RxDouble totalearlyticket = 0.0.obs;
   RxDouble totalgeneralticket = 0.0.obs;
 
@@ -83,19 +83,21 @@ class TicketController extends GetxController {
 
   // increment counter
   void incrementvip() {
+    print('vip');
     countervip.value++;
     vippricenew.value = vippriceorignal.value * countervip.value;
     feevipnew.value = (vippricenew.value * feeviporignal.value) / 100;
     viptaxnew.value = (vippricenew.value * viptax.value) / 100;
     totalvip.value = viptaxnew.value + feevipnew.value + vippricenew.value;
-
+    print('vip' + totalvip.value.toString());
+    print('gen' + totalgeneral.value.toString());
     totalgeneralticket.value = totalgeneral.value + totalvip.value;
     print(totalgeneralticket.value);
   }
 
   void incrementgeneral() {
     countergeneral.value++;
-    print(generalpriceorignal.value);
+
     generalpricenew.value = generalpriceorignal.value * countergeneral.value;
     feegeneralnew.value =
         (generalpricenew.value * feegeneralorignal.value) / 100;
