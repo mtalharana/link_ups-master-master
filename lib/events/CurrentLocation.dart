@@ -511,8 +511,10 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                   .get("title"),
                                                               description: data.get(
                                                                   "description"),
-                                                              start_time: data.get(
-                                                                  "start_time"),
+                                                              start_time: data
+                                                                  .get(
+                                                                      "start_time")
+                                                                  .toString(),
                                                               end_time: data.get(
                                                                   "end_time"),
                                                               country: data.get(
@@ -961,7 +963,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                               const EdgeInsets.only(left: 15),
                                                                           child:
                                                                               Text(
-                                                                            data.get("start_time"),
+                                                                            data.get("start_time").toString(),
                                                                             style: TextStyle(
                                                                                 fontFamily: 'OpenSans',
                                                                                 color: Colors.grey,
@@ -1067,7 +1069,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                         ),
                                                                         Text(
                                                                           data.get(
-                                                                              "disclaimer"),
+                                                                              "disclaimer").toString(),
                                                                           style: TextStyle(
                                                                               fontFamily: 'OpenSans',
                                                                               color: Colors.transparent,

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 class TicketController extends GetxController {
@@ -22,20 +23,20 @@ class TicketController extends GetxController {
   RxDouble earlybirdviptax = 12.0.obs;
   RxDouble viptax = 12.0.obs;
 
-  RxDouble earlybirdtaxnew = 1.8.obs;
-  RxDouble generaltaxnew = 0.6.obs;
-  RxDouble earlybirdviptaxnew = 3.6.obs;
-  RxDouble viptaxnew = 1.2.obs;
+  RxDouble earlybirdtaxnew = 0.0.obs;
+  RxDouble generaltaxnew = 0.0.obs;
+  RxDouble earlybirdviptaxnew = 0.0.obs;
+  RxDouble viptaxnew = 0.0.obs;
 
   RxDouble feeearlybirdgeneralorignal = 7.5.obs;
   RxDouble feegeneralorignal = 7.5.obs;
   RxDouble feeearlybirdviporignal = 7.5.obs;
   RxDouble feeviporignal = 7.5.obs;
 
-  RxDouble feeearlybirdgeneralnew = 1.125.obs;
-  RxDouble feegeneralnew = 0.375.obs;
-  RxDouble feeearlybirdvipnew = 2.25.obs;
-  RxDouble feevipnew = 0.75.obs;
+  RxDouble feeearlybirdgeneralnew = 0.0.obs;
+  RxDouble feegeneralnew = 0.0.obs;
+  RxDouble feeearlybirdvipnew = 0.0.obs;
+  RxDouble feevipnew = 0.0.obs;
 
   RxDouble totalgeneral = 5.975.obs;
   RxDouble totalearlygeneral = 17.925.obs;
@@ -43,6 +44,42 @@ class TicketController extends GetxController {
   RxDouble totalearlyvip = 35.85.obs;
   RxDouble totalearlyticket = 0.0.obs;
   RxDouble totalgeneralticket = 0.0.obs;
+
+  void getprices(String ticketId) {
+    var _subscription = FirebaseFirestore.instance
+        .collection('tickets')
+        .doc(ticketId)
+        .get()
+        .then((value) {
+      vippriceorignal.value =
+          double.parse(int.parse(value['price_vip']).toString());
+
+      generalpriceorignal.value =
+          double.parse(int.parse(value['price_economy']).toString());
+      earlybirdvippriceorignal.value =
+          double.parse(int.parse(value['early_bird_vip_price']).toString());
+      earlybirdpriceorignal.value =
+          double.parse(int.parse(value['early_bird_economy_price']).toString());
+      print('asd');
+      var _subscrption2 = FirebaseFirestore.instance
+          .collection('events')
+          .doc(value['event_id'])
+          .get()
+          .then((value) {
+        print(value['event_fee']);
+        feeearlybirdgeneralorignal.value =
+            double.parse(int.parse(value['event_fee']).toString());
+        feegeneralorignal.value =
+            double.parse(int.parse(value['event_fee']).toString());
+        feeearlybirdviporignal.value =
+            double.parse(int.parse(value['event_fee']).toString());
+        feeviporignal.value =
+            double.parse(int.parse(value['event_fee']).toString());
+      });
+
+      update();
+    });
+  }
 
   // increment counter
   void incrementvip() {
@@ -58,6 +95,7 @@ class TicketController extends GetxController {
 
   void incrementgeneral() {
     countergeneral.value++;
+    print(generalpriceorignal.value);
     generalpricenew.value = generalpriceorignal.value * countergeneral.value;
     feegeneralnew.value =
         (generalpricenew.value * feegeneralorignal.value) / 100;
@@ -98,7 +136,7 @@ class TicketController extends GetxController {
 
   // decrement counter
   void decrementvip() {
-    countervip.value > 1 ? countervip.value-- : print('cannot decrement');
+    countervip.value > 0 ? countervip.value-- : print('cannot decrement');
     vippricenew.value = vippriceorignal.value * countervip.value;
     feevipnew.value = (vippricenew.value * feeviporignal.value) / 100;
     viptaxnew.value = (vippricenew.value * viptax.value) / 100;

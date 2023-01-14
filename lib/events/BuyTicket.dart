@@ -272,7 +272,8 @@ class _BuyTicketState extends State<BuyTicket> {
                   height: 6,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 95),
+                  padding: const EdgeInsets.only(left: 70 
+                  ),
                   child: Row(
                     children: [
                       Image.asset("assets/clock.png"),

@@ -63,6 +63,7 @@ class TicketType extends StatefulWidget {
 }
 
 class _TicketTypeState extends State<TicketType> {
+  TicketController ticketController = Get.put(TicketController());
   List earlybirdcheck = [];
   int earlybirdchecknew = 0;
   late final _subscription2;
@@ -90,10 +91,9 @@ class _TicketTypeState extends State<TicketType> {
   EventController entcontroller = Get.put(EventController());
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   late var _collection;
+  String ticketId = '';
 
   void getearlybrddata() {
-    print('talha uid hai yeh is event ki');
-    print(widget.uid);
     _subscription2 = FirebaseFirestore.instance
         .collection('events')
         .doc(widget.uid)
@@ -136,10 +136,18 @@ class _TicketTypeState extends State<TicketType> {
     });
   }
 
+  void getticketdata() {
+    print('ticket id');
+    print(ticketController.ticketId.value);
+    ticketId = ticketController.ticketId.value;
+  }
+
   @override
   void initState() {
+    getticketdata();
     getearlybrddata();
     getcoupondata();
+    ticketController.getprices(ticketId);
 
     // get discount code with single document in firestore
 
@@ -176,16 +184,15 @@ class _TicketTypeState extends State<TicketType> {
     ticketController.counterearlygeneral.value = 0;
     ticketController.countergeneral.value = 0;
     ticketController.countervip.value = 0;
-    ticketController.earlybirdpriceorignal.value = 15;
-    ticketController.earlybirdpricenew.value = 15;
-    ticketController.earlybirdvippriceorignal.value = 30;
-    ticketController.earlybirdvippricenew.value = 30;
-    ticketController.generalpriceorignal.value = 5;
-    ticketController.generalpricenew.value = 5;
-    ticketController.vippriceorignal.value = 10;
-    ticketController.vippricenew.value = 10;
-    ticketController.countergeneral.value = 1;
-    ticketController.countervip.value = 1;
+
+    ticketController.earlybirdpricenew.value = 0.0;
+
+    ticketController.earlybirdvippricenew.value = 0.0;
+
+    ticketController.generalpricenew.value = 0.0;
+
+    ticketController.vippricenew.value = 0.0;
+
     // setState(() {
     //   equal = butn! * _counter;
     //   equal2 = (butn! * _counter * (100 - discountt!)) / 100;
@@ -220,162 +227,209 @@ class _TicketTypeState extends State<TicketType> {
         ),
       ),
       body: SafeArea(
-          child: ListView(children: [
-        SizedBox(height: 20),
-        (earlybirdchecknew == 1)
-            ? Column(
-                children: [
-                  Obx(
-                    () => TicketTypeContainer(
-                        ticketname: 'Early Bird General Tickets \$15.00',
-                        Price: ticketController.earlybirdpricenew.value,
-                        fee: ticketController.feeearlybirdgeneralnew.value,
-                        tax: ticketController.earlybirdtaxnew.value,
-                        saleendmessage: 'Sales end on Jan 7, 2023',
-                        color: Color.fromARGB(
-                          253,
-                          56,
-                          171,
-                          216,
-                        ),
-                        description:
-                            'This RSVP guarantees entrance to The Shrine before 11pm.',
-                        onTapincrement: (() =>
-                            ticketController.incrementearlygeneral()),
-                        onTapdecrement: (() =>
-                            ticketController.decrementearlygeneral()),
-                        counter: ticketController.counterearlygeneral),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Obx(
-                    () => TicketTypeContainer(
-                      ticketname: 'Early Bird VIP   \$30.00',
-                      Price: ticketController.earlybirdvippricenew.value,
-                      fee: ticketController.feeearlybirdvipnew.value,
-                      tax: ticketController.earlybirdviptaxnew.value,
-                      saleendmessage: 'Sales end on Jan 7, 2023',
-                      description: 'This Ticket is a VIP seating Ticket',
-                      color: Color.fromARGB(253, 56, 171, 216),
-                      onTapincrement: () =>
-                          ticketController.incrementearlyvip(),
-                      onTapdecrement: () =>
-                          ticketController.decrementearlyvip(),
-                      counter: ticketController.counterearlyvip,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
-              )
-            : Column(
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Obx(
-                    () => TicketTypeContainer(
-                      ticketname: 'VIP',
-                      Price: ticketController.vippricenew.value,
-                      fee: ticketController.feevipnew.value,
-                      tax: ticketController.viptaxnew.value,
-                      saleendmessage: '',
-                      description: 'This is a VIP seating Ticket ',
-                      color: Color.fromARGB(253, 56, 171, 216),
-                      onTapincrement: () => ticketController.incrementvip(),
-                      onTapdecrement: () => ticketController.decrementvip(),
-                      counter: ticketController.countervip,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Obx(
-                    () => TicketTypeContainer(
-                      ticketname: 'General Admission',
-                      Price: ticketController.generalpricenew.value,
-                      fee: ticketController.feegeneralnew.value,
-                      tax: ticketController.generaltaxnew.value,
-                      saleendmessage: '',
-                      description: 'This Ticket is for General admission only',
-                      color: Color.fromARGB(255, 213, 220, 22),
-                      onTapincrement: () => ticketController.incrementgeneral(),
-                      onTapdecrement: () => ticketController.decrementgeneral(),
-                      counter: ticketController.countergeneral,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
-              ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        child: ListView(
           children: [
-            smallContainer(
-                'Event Coupon',
-                Color.fromARGB(255, 213, 220, 22),
-                Image.asset(
-                  'assets/image/arrowgreen.png',
-                  height: 20,
-                )),
-            smallContainer(
-                'Pay From wallet ',
-                Color.fromARGB(255, 56, 171, 216),
-                Image.asset(
-                  'assets/image/arrowblue.png',
-                  height: 20,
-                )),
+            SizedBox(height: 20),
+            (earlybirdchecknew == 1)
+                ? Column(
+                    children: [
+                      Obx(
+                        () => TicketTypeContainer(
+                            ticketname: 'Early Bird General Tickets ',
+                            Price: ticketController.earlybirdpricenew.value,
+                            fee: ticketController.feeearlybirdgeneralnew.value,
+                            tax: ticketController.earlybirdtaxnew.value,
+                            saleendmessage: 'Sales end on Jan 7, 2023',
+                            color: Color.fromARGB(
+                              253,
+                              56,
+                              171,
+                              216,
+                            ),
+                            description:
+                                'This RSVP guarantees entrance to The Shrine before 11pm.',
+                            onTapincrement: (() =>
+                                ticketController.incrementearlygeneral()),
+                            onTapdecrement: (() =>
+                                ticketController.decrementearlygeneral()),
+                            counter: ticketController.counterearlygeneral),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Obx(
+                        () => TicketTypeContainer(
+                          ticketname: 'Early Bird VIP  ',
+                          Price: ticketController.earlybirdvippricenew.value,
+                          fee: ticketController.feeearlybirdvipnew.value,
+                          tax: ticketController.earlybirdviptaxnew.value,
+                          saleendmessage: 'Sales end on Jan 7, 2023',
+                          description: 'This Ticket is a VIP seating Ticket',
+                          color: Color.fromARGB(253, 56, 171, 216),
+                          onTapincrement: () =>
+                              ticketController.incrementearlyvip(),
+                          onTapdecrement: () =>
+                              ticketController.decrementearlyvip(),
+                          counter: ticketController.counterearlyvip,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  )
+                : Column(
+                    children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Obx(
+                        () => TicketTypeContainer(
+                          ticketname: 'VIP',
+                          Price: ticketController.vippricenew.value,
+                          fee: ticketController.feevipnew.value,
+                          tax: ticketController.viptaxnew.value,
+                          saleendmessage: '',
+                          description: 'This is a VIP seating Ticket ',
+                          color: Color.fromARGB(253, 56, 171, 216),
+                          onTapincrement: () => ticketController.incrementvip(),
+                          onTapdecrement: () => ticketController.decrementvip(),
+                          counter: ticketController.countervip,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Obx(
+                        () => TicketTypeContainer(
+                          ticketname: 'General Admission',
+                          Price: ticketController.generalpricenew.value,
+                          fee: ticketController.feegeneralnew.value,
+                          tax: ticketController.generaltaxnew.value,
+                          saleendmessage: '',
+                          description:
+                              'This Ticket is for General admission only',
+                          color: Color.fromARGB(255, 213, 220, 22),
+                          onTapincrement: () =>
+                              ticketController.incrementgeneral(),
+                          onTapdecrement: () =>
+                              ticketController.decrementgeneral(),
+                          counter: ticketController.countergeneral,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                smallContainer(
+                    'Event Coupon',
+                    Color.fromARGB(255, 213, 220, 22),
+                    Image.asset(
+                      'assets/image/arrowgreen.png',
+                      height: 20,
+                    )),
+                smallContainer(
+                    'Pay From wallet ',
+                    Color.fromARGB(255, 56, 171, 216),
+                    Image.asset(
+                      'assets/image/arrowblue.png',
+                      height: 20,
+                    )),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Obx(
+              () => Center(
+                child: Text(
+                  earlybirdchecknew == 1
+                      ? ticketController.counterearlyvip.value == 0 &&
+                              ticketController.counterearlygeneral.value == 0
+                          ? 'Total   \$ 0.0 '
+                          : 'Total   \$' +
+                              ticketController.totalearlyticket.value
+                                  .toStringAsFixed(2)
+                      : ticketController.countergeneral.value == 0 &&
+                              ticketController.countervip.value == 0
+                          ? 'Total   \$ 0.0 '
+                          : 'Total   \$' +
+                              ticketController.totalgeneralticket.value
+                                  .toStringAsFixed(2),
+                  style: TextStyle(
+                      fontSize: 18, color: Color.fromARGB(255, 110, 110, 110)),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            earlybirdchecknew == 1
+                ? Obx(() => ticketController.counterearlyvip.value == 0 &&
+                        ticketController.counterearlygeneral.value == 0
+                    ? Center(
+                        child: Text(
+                          'Please add a Ticket First',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Color.fromARGB(255, 56, 171, 216),
+                              fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    : Center(
+                        child: Container(
+                          height: 40,
+                          width: 170,
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 213, 220, 22),
+                              borderRadius: BorderRadius.circular(6)),
+                          child: Center(
+                            child: Text(
+                              'Checkout',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ))
+                : Obx(() => ticketController.countergeneral.value == 0 &&
+                        ticketController.countervip.value == 0
+                    ? Center(
+                        child: Text(
+                          'Please add a Ticket First',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Color.fromARGB(255, 56, 171, 216),
+                              fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    : Center(
+                        child: Container(
+                          height: 40,
+                          width: 170,
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 213, 220, 22),
+                              borderRadius: BorderRadius.circular(6)),
+                          child: Center(
+                            child: Text(
+                              'Checkout',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      )),
           ],
         ),
-        SizedBox(
-          height: 30,
-        ),
-        Obx(
-          () => Center(
-            child: Text(
-              earlybirdchecknew == 1
-                  ? ticketController.counterearlyvip.value == 0 &&
-                          ticketController.counterearlygeneral.value == 0
-                      ? 'Total   \$ 0.0 '
-                      : 'Total   \$' +
-                          ticketController.totalearlyticket.value
-                              .toStringAsFixed(2)
-                  : ticketController.countergeneral.value == 0 &&
-                          ticketController.countervip.value == 0
-                      ? 'Total   \$ 0.0 '
-                      : 'Total   \$' +
-                          ticketController.totalgeneralticket.value
-                              .toStringAsFixed(2),
-              style: TextStyle(
-                  fontSize: 18, color: Color.fromARGB(255, 110, 110, 110)),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Center(
-          child: Container(
-            height: 40,
-            width: 170,
-            decoration: BoxDecoration(
-                color: Color.fromARGB(255, 213, 220, 22),
-                borderRadius: BorderRadius.circular(6)),
-            child: Center(
-              child: Text(
-                'Checkout',
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-        ),
-      ])),
+      ),
     );
   }
 }
