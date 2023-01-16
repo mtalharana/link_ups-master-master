@@ -148,9 +148,7 @@ class _TicketTypeState extends State<TicketType> {
     getearlybrddata();
     getcoupondata();
     ticketController.getprices(ticketId);
-    if (ticketController.discountavailable.value == true) {
-      ticketController.getdiscount();
-    }
+
     super.initState();
   }
 
@@ -169,32 +167,28 @@ class _TicketTypeState extends State<TicketType> {
       ticketController.getdiscount();
     }
 
-    ticketController.counterearlyvip.value = 0;
-    ticketController.counterearlygeneral.value = 0;
-    ticketController.countergeneral.value = 0;
-    ticketController.countervip.value = 0;
-    ticketController.feeearlybirdgeneralnew.value = 0.0;
-    ticketController.feeearlybirdvipnew.value = 0.0;
-    ticketController.feevipnew.value = 0.0;
-    ticketController.feegeneralnew.value = 0.0;
-    ticketController.earlybirdtaxnew.value = 0.0;
-    ticketController.viptaxnew.value = 0.0;
-    ticketController.generaltaxnew.value = 0.0;
-    ticketController.earlybirdviptaxnew.value = 0.0;
+    // ticketController.feeearlybirdgeneralnew.value = 0.0;
+    // ticketController.feeearlybirdvipnew.value = 0.0;
+    // ticketController.feevipnew.value = 0.0;
 
-    ticketController.earlybirdpricenew.value = 0.0;
-    ticketController.totalgeneral.value = 0.0;
-    ticketController.earlybirdvippricenew.value = 0.0;
+    // ticketController.earlybirdtaxnew.value = 0.0;
+    // ticketController.viptaxnew.value = 0.0;
+    // // ticketController.generaltaxnew.value = 0.0;
+    // ticketController.earlybirdviptaxnew.value = 0.0;
 
-    ticketController.generalpricenew.value = 0.0;
+    // ticketController.earlybirdpricenew.value = 0.0;
+    // ticketController.totalgeneral.value = 0.0;
+    // ticketController.earlybirdvippricenew.value = 0.0;
 
-    ticketController.vippricenew.value = 0.0;
-    ticketController.totalvip.value = 0.0;
-    ticketController.totalearlygeneral.value = 0.0;
-    ticketController.totalearlyvip.value = 0.0;
-    ticketController.totalgeneral.value = 0.0;
+    // // ticketController.generalpricenew.value = 0.0;
 
-    ticketController.totalvip.value = 0.0;
+    // ticketController.vippricenew.value = 0.0;
+    // ticketController.totalvip.value = 0.0;
+    // ticketController.totalearlygeneral.value = 0.0;
+    // ticketController.totalearlyvip.value = 0.0;
+    // ticketController.totalgeneral.value = 0.0;
+
+    // ticketController.totalvip.value = 0.0;
 
     var appSize = MediaQuery.of(context).size;
     var appSize2 = MediaQuery.of(context).size;

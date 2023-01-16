@@ -103,11 +103,15 @@ class _BuyTicketState extends State<BuyTicket> {
 
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
     getticketinfo(widget.id!);
     getData();
-    getticketinfo(widget.id!);
+    // TODO: implement initState
+    super.initState();
+  }
+
+  dispose() {
+    Get.delete<TicketController>();
+    super.dispose();
   }
 
   @override
@@ -272,8 +276,7 @@ class _BuyTicketState extends State<BuyTicket> {
                   height: 6,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 70 
-                  ),
+                  padding: const EdgeInsets.only(left: 70),
                   child: Row(
                     children: [
                       Image.asset("assets/clock.png"),

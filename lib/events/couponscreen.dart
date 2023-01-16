@@ -29,8 +29,6 @@ class _CouponScreenState extends State<CouponScreen> {
   String? discountcode;
   @override
   void initState() {
-    super.initState();
-
     if (ticketController.ticketId.value != null) {
       print('not null');
       var _collection1 = FirebaseFirestore.instance
@@ -65,13 +63,13 @@ class _CouponScreenState extends State<CouponScreen> {
     } else {
       print(' ticket id null');
     }
+    super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
     codeController.dispose();
+    super.dispose();
   }
 
   @override
