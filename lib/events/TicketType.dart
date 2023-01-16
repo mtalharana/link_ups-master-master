@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, unused_field, unused_element, must_be_immutable
+// ignore_for_file: non_constant_identifier_names, unused_field, unused_element, must_be_immutable, unused_local_variable
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -148,24 +148,9 @@ class _TicketTypeState extends State<TicketType> {
     getearlybrddata();
     getcoupondata();
     ticketController.getprices(ticketId);
-
-    // get discount code with single document in firestore
-
-    vip = int.parse(widget.vip_price.toString());
-    ecnmy = int.parse(widget.economy.toString());
-
-    tax1 = double.parse(tax.toString());
-
-    tax3 = tax1!.toInt();
-    // print(widget.fees);
-// resultfes=widget.fees!.replaceFirst("%","");
-    fee = widget.fees!;
-    total2 = total1!.toInt();
-
-    // getsubsciptiondata();
-    // button = '';
-    // dropdownvalue = "" + widget.earlybrdVip.toString();
-    // dropdownvalue2 = "" + widget.vip_price.toString();
+    if (ticketController.discountavailable.value == true) {
+      ticketController.getdiscount();
+    }
     super.initState();
   }
 
@@ -180,6 +165,10 @@ class _TicketTypeState extends State<TicketType> {
     print(entcontroller.percentage!.value.toString());
 
     TicketController ticketController = Get.put(TicketController());
+    if (ticketController.discountavailable.value == true) {
+      ticketController.getdiscount();
+    }
+
     ticketController.counterearlyvip.value = 0;
     ticketController.counterearlygeneral.value = 0;
     ticketController.countergeneral.value = 0;
@@ -206,16 +195,6 @@ class _TicketTypeState extends State<TicketType> {
     ticketController.totalgeneral.value = 0.0;
 
     ticketController.totalvip.value = 0.0;
-
-    // setState(() {
-    //   equal = butn! * _counter;
-    //   equal2 = (butn! * _counter * (100 - discountt!)) / 100;
-    //   // // print(equal2);
-    // });
-    // setState(() {
-    //   total1 = equal2! + ((equal! * tax3!) / 100) + ((equal! * fee!) / 100);
-    //   // // print(total1);
-    // });
 
     var appSize = MediaQuery.of(context).size;
     var appSize2 = MediaQuery.of(context).size;
@@ -339,13 +318,18 @@ class _TicketTypeState extends State<TicketType> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                smallContainer(
-                    'Event Coupon',
-                    Color.fromARGB(255, 213, 220, 22),
-                    Image.asset(
-                      'assets/image/arrowgreen.png',
-                      height: 20,
-                    )),
+                InkWell(
+                  onTap: () {
+                    Get.to(() => CouponScreen());
+                  },
+                  child: smallContainer(
+                      'Event Coupon',
+                      Color.fromARGB(255, 213, 220, 22),
+                      Image.asset(
+                        'assets/image/arrowgreen.png',
+                        height: 20,
+                      )),
+                ),
                 smallContainer(
                     'Pay From wallet ',
                     Color.fromARGB(255, 56, 171, 216),
@@ -358,26 +342,30 @@ class _TicketTypeState extends State<TicketType> {
             SizedBox(
               height: 30,
             ),
-            Obx(
-              () => Center(
-                child: Text(
-                  earlybirdchecknew == 1
-                      ? ticketController.counterearlyvip.value == 0 &&
-                              ticketController.counterearlygeneral.value == 0
-                          ? 'Total   \$ 0.0 '
-                          : 'Total   \$' +
-                              ticketController.totalearlyticket.value
-                                  .toStringAsFixed(2)
-                      : ticketController.countergeneral.value == 0 &&
-                              ticketController.countervip.value == 0
-                          ? 'Total   \$ 0.0 '
-                          : 'Total  \$' +
-                              ticketController.totalgeneralticket.value
-                                  .toStringAsFixed(2),
-                  style: TextStyle(
-                      fontSize: 18, color: Color.fromARGB(255, 110, 110, 110)),
-                ),
-              ),
+            Obx(() => Center(
+                child: ticketController.discountavailable.value.toString() ==
+                        true.toString()
+                    ? Text('Discount Available')
+                    : Text('Discount Not Available'))),
+            Center(
+              child: Obx(() => Text(
+                    earlybirdchecknew == 1
+                        ? ticketController.counterearlyvip.value == 0 &&
+                                ticketController.counterearlygeneral.value == 0
+                            ? 'Total   \$ 0.0 '
+                            : 'Total   \$' +
+                                ticketController.totalearlyticket.value
+                                    .toStringAsFixed(2)
+                        : ticketController.countergeneral.value == 0 &&
+                                ticketController.countervip.value == 0
+                            ? 'Total   \$ 0.0 '
+                            : 'Total  \$' +
+                                ticketController.totalgeneralticket.value
+                                    .toStringAsFixed(2),
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Color.fromARGB(255, 110, 110, 110)),
+                  )),
             ),
             SizedBox(
               height: 10,

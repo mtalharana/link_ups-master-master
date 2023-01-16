@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:link_up/helper/router/route_path.dart';
+import 'package:link_up/ui/legal.dart';
+import 'package:link_up/ui/support.dart';
 
 class LegalAndSupport extends StatefulWidget {
   const LegalAndSupport({Key? key}) : super(key: key);
@@ -30,10 +32,9 @@ class _LegalAndSupportState extends State<LegalAndSupport> {
             ),
             child: ListTile(
               onTap: () {
-                Navigator.pushNamed(context, RoutePath.pdf_view,
-                    arguments: {"key": "privacy_policy"});
+                Get.to(() => LegalScreen());
               },
-              title: Text('privacy_policy'.tr),
+              title: Text('Legal & Privacy'),
               trailing: Icon(Icons.arrow_forward_ios),
             ),
           ),
@@ -48,10 +49,9 @@ class _LegalAndSupportState extends State<LegalAndSupport> {
             ),
             child: ListTile(
               onTap: () {
-                Navigator.pushNamed(context, RoutePath.pdf_view,
-                    arguments: {"key": "term_and_condition"});
+                Get.to(() => SupportScreen());
               },
-              title: Text('term_condition'.tr),
+              title: Text('Support'),
               trailing: Icon(Icons.arrow_forward_ios),
             ),
           ),

@@ -7,12 +7,13 @@ import 'package:link_up/events/CurrentLocation.dart';
 import 'package:link_up/get_controller/auth_controller.dart';
 import 'package:link_up/helper/router/route_path.dart';
 import 'package:link_up/ui/Balance.dart';
+import 'package:link_up/ui/contactus.dart';
 import 'package:link_up/ui/downloadticket.dart';
 import 'package:link_up/ui/eticket.dart';
+import 'package:link_up/ui/help.dart';
 import 'package:rate_my_app/rate_my_app.dart';
 import 'package:share_plus/share_plus.dart';
 
-import 'addbalance.dart';
 import 'chat/chat_message_new.dart';
 
 class DrawerScreen extends StatefulWidget {
@@ -359,7 +360,6 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   title: Text("legal_support".tr),
                   onTap: () {
                     Navigator.pushNamed(context, RoutePath.legal_and_support);
-                    // Navigator.pop(context);
                   },
                   // trailing: Icon(
                   //                 Icons.arrow_forward,
@@ -474,14 +474,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   ),
                   title: Text("Contact Us"),
                   onTap: () {
-                    // Navigator.popAndPushNamed(
-                    //     context, RoutePath.setting_screen);
+                    Get.to(ContactUsScreen());
                   },
-                  // trailing: Icon(
-                  //                 Icons.arrow_forward,
-                  //              color: Colors.black,
-                  //           size: 20,
-                  //      ),
                 ),
                 ListTile(
                   leading: Image.asset(
@@ -491,8 +485,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   ),
                   title: Text("Help"),
                   onTap: () {
-                    // Navigator.popAndPushNamed(
-                    //     context, RoutePath.setting_screen);
+                    Get.to(HelpScreen());
                   },
                   // trailing: Icon(
                   //                 Icons.arrow_forward,

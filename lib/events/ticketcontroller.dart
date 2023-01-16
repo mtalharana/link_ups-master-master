@@ -1,9 +1,17 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class TicketController extends GetxController {
   RxString ticketId = "".obs;
   RxBool ticketavailable = false.obs;
+  RxBool amounthai = false.obs;
+  RxBool percentagehai = false.obs;
+  RxDouble dicountamount = 0.0.obs;
+  RxDouble dicountpercentage = 0.0.obs;
+
   RxInt countervip = 0.obs;
   RxInt countergeneral = 0.obs;
   RxInt counterearlyvip = 0.obs;
@@ -44,6 +52,9 @@ class TicketController extends GetxController {
   RxDouble totalearlyvip = 0.0.obs;
   RxDouble totalearlyticket = 0.0.obs;
   RxDouble totalgeneralticket = 0.0.obs;
+
+  RxString discountcode = ''.obs;
+  RxBool discountavailable = false.obs;
 
   void getprices(String ticketId) {
     var _subscription = FirebaseFirestore.instance
@@ -96,6 +107,20 @@ class TicketController extends GetxController {
   }
 
   void incrementgeneral() {
+    if (amounthai == true) {
+      print('calculation for amount hai');
+      countergeneral.value++;
+
+      generalpricenew.value = generalpriceorignal.value * countergeneral.value;
+      feegeneralnew.value =
+          (generalpricenew.value * feegeneralorignal.value) / 100;
+      generaltaxnew.value = (generalpricenew.value * generaltax.value) / 100;
+      totalgeneral.value =
+          generaltaxnew.value + feegeneralnew.value + generalpricenew.value;
+      totalgeneralticket.value = totalgeneral.value + totalvip.value;
+      totalgeneralticket.value = totalgeneralticket.value - dicountamount.value;
+    }
+
     countergeneral.value++;
 
     generalpricenew.value = generalpriceorignal.value * countergeneral.value;
@@ -119,21 +144,51 @@ class TicketController extends GetxController {
         feeearlybirdvipnew.value +
         earlybirdvippricenew.value;
     totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
-    print(totalearlyvip.value.toString());
   }
 
   void incrementearlygeneral() {
-    counterearlygeneral.value++;
-    earlybirdpricenew.value =
-        earlybirdpriceorignal.value * counterearlygeneral.value;
-    feeearlybirdgeneralnew.value =
-        (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
-    earlybirdtaxnew.value =
-        (earlybirdpricenew.value * earlybirdtax.value) / 100;
-    totalearlygeneral.value = earlybirdtaxnew.value +
-        feeearlybirdgeneralnew.value +
-        earlybirdpricenew.value;
-    totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
+    print('calculation for amount hai early general increment');
+    if (amounthai.value == true) {
+      counterearlygeneral.value++;
+      earlybirdpricenew.value =
+          earlybirdpriceorignal.value * counterearlygeneral.value;
+      feeearlybirdgeneralnew.value =
+          (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
+      earlybirdtaxnew.value =
+          (earlybirdpricenew.value * earlybirdtax.value) / 100;
+      totalearlygeneral.value = earlybirdtaxnew.value +
+          feeearlybirdgeneralnew.value +
+          earlybirdpricenew.value;
+      totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
+      totalearlyticket.value = totalearlyticket.value - dicountamount.value;
+    } else if (percentagehai.value == true) {
+      print('calculation for percentage hai early general increment');
+      counterearlygeneral.value++;
+      earlybirdpricenew.value =
+          earlybirdpriceorignal.value * counterearlygeneral.value;
+      feeearlybirdgeneralnew.value =
+          (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
+      earlybirdtaxnew.value =
+          (earlybirdpricenew.value * earlybirdtax.value) / 100;
+      totalearlygeneral.value = earlybirdtaxnew.value +
+          feeearlybirdgeneralnew.value +
+          earlybirdpricenew.value;
+      totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
+      totalearlyticket.value =
+          totalearlyticket.value * (100 - dicountpercentage.value) / 100;
+    } else {
+      counterearlygeneral.value++;
+      earlybirdpricenew.value =
+          earlybirdpriceorignal.value * counterearlygeneral.value;
+      feeearlybirdgeneralnew.value =
+          (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
+      earlybirdtaxnew.value =
+          (earlybirdpricenew.value * earlybirdtax.value) / 100;
+      totalearlygeneral.value = earlybirdtaxnew.value +
+          feeearlybirdgeneralnew.value +
+          earlybirdpricenew.value;
+      totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
+    }
   }
 
   // decrement counter
@@ -181,22 +236,81 @@ class TicketController extends GetxController {
   }
 
   void decrementearlygeneral() {
-    counterearlygeneral.value > 0
-        ? counterearlygeneral.value--
-        : print('cannot decrement');
-    earlybirdpricenew.value =
-        earlybirdpriceorignal.value * counterearlygeneral.value;
-    feeearlybirdgeneralnew.value =
-        (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
-    earlybirdtaxnew.value =
-        (earlybirdpricenew.value * earlybirdtax.value) / 100;
-    totalearlyvip.value = earlybirdviptaxnew.value +
-        feeearlybirdvipnew.value +
-        earlybirdvippricenew.value;
-    totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
-    totalearlygeneral.value = earlybirdtaxnew.value +
-        feeearlybirdgeneralnew.value +
-        earlybirdpricenew.value;
-    totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
+    print('calculation for amount hai early general decrement');
+    if (amounthai.value == true) {
+      counterearlygeneral.value--;
+      earlybirdpricenew.value =
+          earlybirdpriceorignal.value * counterearlygeneral.value;
+      feeearlybirdgeneralnew.value =
+          (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
+      earlybirdtaxnew.value =
+          (earlybirdpricenew.value * earlybirdtax.value) / 100;
+      totalearlygeneral.value = earlybirdtaxnew.value +
+          feeearlybirdgeneralnew.value +
+          earlybirdpricenew.value;
+      totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
+      totalearlyticket.value = totalearlyticket.value - dicountamount.value;
+    } else if (percentagehai.value == true) {
+      print('calculation for percentage hai early general increment');
+      counterearlygeneral.value--;
+      earlybirdpricenew.value =
+          earlybirdpriceorignal.value * counterearlygeneral.value;
+      feeearlybirdgeneralnew.value =
+          (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
+      earlybirdtaxnew.value =
+          (earlybirdpricenew.value * earlybirdtax.value) / 100;
+      totalearlygeneral.value = earlybirdtaxnew.value +
+          feeearlybirdgeneralnew.value +
+          earlybirdpricenew.value;
+      totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
+      totalearlyticket.value =
+          totalearlyticket.value * (100 - dicountpercentage.value) / 100;
+    } else {
+      counterearlygeneral.value--;
+      earlybirdpricenew.value =
+          earlybirdpriceorignal.value * counterearlygeneral.value;
+      feeearlybirdgeneralnew.value =
+          (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
+      earlybirdtaxnew.value =
+          (earlybirdpricenew.value * earlybirdtax.value) / 100;
+      totalearlygeneral.value = earlybirdtaxnew.value +
+          feeearlybirdgeneralnew.value +
+          earlybirdpricenew.value;
+      totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
+    }
+  }
+
+  void getdiscount() {
+    // ignore: cancel_subscriptions
+    var sub = FirebaseFirestore.instance
+        .collection('coupons')
+        .where('ticket_id', isEqualTo: ticketId.value)
+        .where('code', isEqualTo: discountcode.value)
+        .snapshots()
+        .listen((event) {
+      if (event.docs.length == 1) {
+        if (event.docs[0]['discount_type'] == 'percentage') {
+          percentagehai.value = true;
+          amounthai.value = false;
+          dicountpercentage.value =
+              double.parse(int.parse(event.docs[0]['discount']).toString());
+          print('yeh discount hoga  pertage main ' +
+              dicountpercentage.value.toString());
+        }
+        if (event.docs[0]['discount_type'] == 'amount') {
+          print('amount hai ');
+          amounthai.value = true;
+          percentagehai.value = false;
+          dicountamount.value =
+              double.parse(int.parse(event.docs[0]['discount']).toString());
+
+          print('yeh discount hoga  ' + dicountamount.value.toString());
+        }
+      } else if (event.docs.length == 0) {
+        print('no coupon');
+      } else {
+        print('more than one coupon');
+      }
+    });
   }
 }

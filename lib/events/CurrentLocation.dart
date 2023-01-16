@@ -608,7 +608,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                     CrossAxisAlignment
                                                                         .start,
                                                                 children: [
-                                                                  Expanded(
+                                                                  Flexible(
                                                                     child:
                                                                         Padding(
                                                                       padding: const EdgeInsets
@@ -656,28 +656,25 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                           fontWeight:
                                                                               FontWeight.w600),
                                                                     ),
-                                                                    Text(
-                                                                      data.get(
-                                                                          "venue"),
-                                                                      style: TextStyle(
-                                                                          fontFamily:
-                                                                              'OpenSans',
-                                                                          color: Colors
-                                                                              .white,
-                                                                          fontSize:
-                                                                              10,
-                                                                          fontWeight:
-                                                                              FontWeight.w600),
-                                                                    ),
-                                                                    Text(
-                                                                      (","),
-                                                                      style: TextStyle(
-                                                                          fontFamily:
-                                                                              'OpenSans',
-                                                                          color: Colors
-                                                                              .white,
-                                                                          fontSize:
-                                                                              10),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Text(
+                                                                        data.get(
+                                                                            "venue"),
+                                                                        style: TextStyle(
+                                                                            fontFamily:
+                                                                                'OpenSans',
+                                                                            color: Colors
+                                                                                .white,
+                                                                            fontSize:
+                                                                                10,
+                                                                            fontWeight:
+                                                                                FontWeight.w600),
+                                                                        overflow:
+                                                                            TextOverflow.ellipsis,
+                                                                        maxLines:
+                                                                            1,
+                                                                      ),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -972,7 +969,11 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                             style: TextStyle(
                                                                                 fontFamily: 'OpenSans',
                                                                                 color: Colors.grey,
-                                                                                fontSize: 13),
+                                                                                fontSize: 10),
+                                                                            maxLines:
+                                                                                1,
+                                                                            overflow:
+                                                                                TextOverflow.ellipsis,
                                                                           ),
                                                                         ),
                                                                         Text(
@@ -1069,7 +1070,11 @@ class _CurrentLocationState extends State<CurrentLocation> {
                                                                             style: TextStyle(
                                                                                 fontFamily: 'OpenSans',
                                                                                 color: Colors.grey,
-                                                                                fontSize: 15),
+                                                                                fontSize: 10),
+                                                                            maxLines:
+                                                                                1,
+                                                                            overflow:
+                                                                                TextOverflow.ellipsis,
                                                                           ),
                                                                         ),
                                                                         Text(

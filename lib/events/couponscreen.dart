@@ -8,6 +8,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart';
 import 'package:link_up/events/TicketType.dart';
 import 'package:link_up/events/getcontroller.dart';
+import 'package:link_up/events/ticketcontroller.dart';
 
 class CouponScreen extends StatefulWidget {
   String? id;
@@ -20,6 +21,7 @@ class CouponScreen extends StatefulWidget {
 class _CouponScreenState extends State<CouponScreen> {
   String? code;
   String? discount;
+  TicketController ticketController = Get.put(TicketController());
 
   TextEditingController codeController = TextEditingController();
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -28,22 +30,26 @@ class _CouponScreenState extends State<CouponScreen> {
   @override
   void initState() {
     super.initState();
-    //discountcode = entcontroller.codecONTROLLER.value.text.toString();
-    print(widget.id);
-    if (widget.id != null) {
+
+    if (ticketController.ticketId.value != null) {
       print('not null');
       var _collection1 = FirebaseFirestore.instance
           .collection('coupons')
-          .where('ticket_id', isEqualTo: widget.id);
+          .where('ticket_id', isEqualTo: ticketController.ticketId.value);
 
       // Get the data from the collection
       _collection1.get().then((snapshot) {
         print(snapshot.docs.length);
         if (snapshot.docs.length == 0) {
           print('no coupon');
+        } else if (snapshot.docs.length > 1) {
+          print('more than one coupon');
         }
         snapshot.docs.forEach((doc) {
           print(doc.data());
+          print(doc.data()['code']);
+          ticketController.discountcode.value = doc.data()['code'];
+
           entcontroller.discountcode.value = doc.data()['code'];
           if (doc.data()['discount_type'] == "amount") {
             entcontroller.discount!.value = doc.data()['discount'];
@@ -173,12 +179,8 @@ class _CouponScreenState extends State<CouponScreen> {
 
                       InkWell(
                         onTap: () {
-                          print('id passing ' + widget.id.toString());
-                          entcontroller.setdiscount(
-                              entcontroller.codecONTROLLER.value.text
-                                  .toString(),
-                              widget.id.toString());
-                          navigator!.pop();
+                          ticketController.discountavailable.value = true;
+                          Get.to(() => TicketType());
                         },
                         child: entcontroller.getbutton(),
                       ),

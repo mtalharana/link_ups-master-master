@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:link_up/events/TicketType.dart';
+import 'package:link_up/events/ticketcontroller.dart';
 
 class EventController extends GetxController {
   Rx<TextEditingController> eventscontroller = TextEditingController().obs;
@@ -23,6 +24,7 @@ class EventController extends GetxController {
   RxInt percentageoramount = 0.obs;
   RxDouble? currrentlongitude = 0.0.obs;
   RxDouble? currentlatitude = 0.0.obs;
+  TicketController ticketController = Get.put(TicketController());
   void getCurrentLocation() async {
     print('getting location');
     Position position = await Geolocator.getCurrentPosition(
@@ -66,9 +68,11 @@ class EventController extends GetxController {
   }
 
   Widget getbutton() {
-    print(codecONTROLLER.value.text.toString());
+    print('yeh code hai ' + ticketController.discountcode.value);
+    print('yeh likha hai ' + codecONTROLLER.value.text.toString());
     print(discountcode);
-    if (discountcode == codecONTROLLER.value.text.toString()) {
+    if (ticketController.discountcode.value ==
+        codecONTROLLER.value.text.toString()) {
       return Container(
           child: Image.asset(
         "assets/Economy.png",
