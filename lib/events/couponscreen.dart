@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_statements
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -23,7 +25,6 @@ class _CouponScreenState extends State<CouponScreen> {
   String? discount;
   TicketController ticketController = Get.put(TicketController());
 
-  TextEditingController codeController = TextEditingController();
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
   EventController entcontroller = Get.put(EventController());
   String? discountcode;
@@ -45,19 +46,27 @@ class _CouponScreenState extends State<CouponScreen> {
         }
         snapshot.docs.forEach((doc) {
           print(doc.data());
-          print(doc.data()['code']);
-          ticketController.discountcode.value = doc.data()['code'];
+          print('ode ' + doc.data()['code']);
+          if (doc.data()['code'] == '') {
+            print('empty');
+          } else {
+            print('agya');
 
-          entcontroller.discountcode.value = doc.data()['code'];
-          if (doc.data()['discount_type'] == "amount") {
-            entcontroller.discount!.value = doc.data()['discount'];
-            entcontroller.percentage!.value = '';
-          } else if (doc.data()['discount_type'] == "percentage") {
-            entcontroller.percentage!.value = doc.data()['discount'];
-            entcontroller.discount!.value = '';
-            print('percentage');
-            print(entcontroller.percentage!.value);
+            ticketController.discountcode.value = doc.data()['code'];
+            print('casdsa' + doc.data()['code']);
+
+            print('yrs' + ticketController.discountcode.value);
           }
+          // entcontroller.discountcode.value = doc.data()['code'];
+          // if (doc.data()['discount_type'] == "amount") {
+          //   entcontroller.discount!.value = doc.data()['discount'];
+          //   entcontroller.percentage!.value = '';
+          // } else if (doc.data()['discount_type'] == "percentage") {
+          //   entcontroller.percentage!.value = doc.data()['discount'];
+          //   entcontroller.discount!.value = '';
+          //   print('percentage');
+          //   print(entcontroller.percentage!.value);
+          // }
         });
       });
     } else {
@@ -68,7 +77,6 @@ class _CouponScreenState extends State<CouponScreen> {
 
   @override
   void dispose() {
-    codeController.dispose();
     super.dispose();
   }
 
@@ -174,14 +182,21 @@ class _CouponScreenState extends State<CouponScreen> {
                       SizedBox(
                         width: 15,
                       ),
-
-                      InkWell(
-                        onTap: () {
-                          ticketController.discountavailable.value = true;
-                          Get.to(() => TicketType());
-                        },
-                        child: entcontroller.getbutton(),
-                      ),
+                      ticketController.discountcode.value == ''
+                          ? Text('Loading...')
+                          : Obx(() => InkWell(
+                              onTap: () {
+                                ticketController.discountavailable.value = true;
+                                Get.to(() => TicketType());
+                              },
+                              child: ticketController.discountcode.value ==
+                                      entcontroller.codecONTROLLER.value.text
+                                  ? Container(
+                                      child: Image.asset(
+                                      "assets/Economy.png",
+                                      height: 40,
+                                    ))
+                                  : Text('Please Apply Coupon')))
                     ],
                   ),
                   // Text(codeController.text),

@@ -66,20 +66,4 @@ class EventController extends GetxController {
       }
     });
   }
-
-  Widget getbutton() {
-    print('yeh code hai ' + ticketController.discountcode.value);
-    print('yeh likha hai ' + codecONTROLLER.value.text.toString());
-    print(discountcode);
-    if (ticketController.discountcode.value ==
-        codecONTROLLER.value.text.toString()) {
-      return Container(
-          child: Image.asset(
-        "assets/Economy.png",
-        height: 40,
-      ));
-    } else {
-      return Text('No Coupon Available');
-    }
-  }
 }

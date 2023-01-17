@@ -1,4 +1,4 @@
-// ignore_for_file: unrelated_type_equality_checks
+// ignore_for_file: unrelated_type_equality_checks, non_constant_identifier_names
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
@@ -11,6 +11,8 @@ class TicketController extends GetxController {
   RxBool percentagehai = false.obs;
   RxDouble dicountamount = 0.0.obs;
   RxDouble dicountpercentage = 0.0.obs;
+  RxDouble priceafterdiscountgenral = 0.0.obs;
+  RxDouble priceafterdiscountearly = 0.0.obs;
 
   RxInt countervip = 0.obs;
   RxInt countergeneral = 0.obs;
@@ -55,6 +57,11 @@ class TicketController extends GetxController {
 
   RxString discountcode = ''.obs;
   RxBool discountavailable = false.obs;
+  RxBool notwaitforcode = false.obs;
+  RxDouble Pricettotalfordiscountgeneral = 0.0.obs;
+  RxDouble Pricettotalfordiscountearly = 0.0.obs;
+  RxDouble totalpricewithouttaxgenreral = 0.0.obs;
+  RxDouble totalpricewithouttaxearly = 0.0.obs;
 
   void getprices(String ticketId) {
     var _subscription = FirebaseFirestore.instance
@@ -99,29 +106,42 @@ class TicketController extends GetxController {
       print('calculation for amount hai');
       countervip.value++;
       vippricenew.value = vippriceorignal.value * countervip.value;
+
+      totalpricewithouttaxgenreral.value =
+          vippricenew.value + generalpricenew.value;
+      priceafterdiscountgenral.value =
+          totalpricewithouttaxgenreral.value - dicountamount.value;
+
       feevipnew.value = (vippricenew.value * feeviporignal.value) / 100;
       viptaxnew.value = (vippricenew.value * viptax.value) / 100;
-      totalvip.value = viptaxnew.value + feevipnew.value + vippricenew.value;
+      totalvip.value =
+          viptaxnew.value + feevipnew.value + priceafterdiscountgenral.value;
 
       totalgeneralticket.value = totalgeneral.value + totalvip.value;
-      print('vip' + totalvip.value.toString());
-      print('gen' + totalgeneralticket.value.toString());
-      totalgeneralticket.value = totalvip.value - dicountamount.value;
     } else if (percentagehai.value == true) {
       print('calculation for percentage hai');
       countervip.value++;
+      print('lion');
       vippricenew.value = vippriceorignal.value * countervip.value;
+
+      totalpricewithouttaxgenreral.value =
+          vippricenew.value + generalpricenew.value;
+
+      priceafterdiscountgenral.value = totalpricewithouttaxgenreral.value -
+          (totalpricewithouttaxgenreral.value * dicountpercentage.value) / 100;
       feevipnew.value = (vippricenew.value * feeviporignal.value) / 100;
       viptaxnew.value = (vippricenew.value * viptax.value) / 100;
-      totalvip.value = viptaxnew.value + feevipnew.value + vippricenew.value;
-      print('vip' + totalvip.value.toString());
-      print('gen' + totalgeneral.value.toString());
+      totalvip.value =
+          viptaxnew.value + feevipnew.value + priceafterdiscountgenral.value;
+      print('hello');
+      print(totalvip.value);
+      print(totalgeneral.value);
       totalgeneralticket.value = totalgeneral.value + totalvip.value;
-      totalgeneralticket.value =
-          totalgeneral.value * (100 - dicountpercentage.value / 100);
     } else {
       countervip.value++;
       vippricenew.value = vippriceorignal.value * countervip.value;
+      totalpricewithouttaxgenreral.value =
+          vippricenew.value + generalpricenew.value;
       feevipnew.value = (vippricenew.value * feeviporignal.value) / 100;
       viptaxnew.value = (vippricenew.value * viptax.value) / 100;
       totalvip.value = viptaxnew.value + feevipnew.value + vippricenew.value;
@@ -138,31 +158,44 @@ class TicketController extends GetxController {
       countergeneral.value++;
 
       generalpricenew.value = generalpriceorignal.value * countergeneral.value;
+      totalpricewithouttaxgenreral.value =
+          vippricenew.value + generalpricenew.value;
+
+      priceafterdiscountgenral.value =
+          totalpricewithouttaxgenreral.value - dicountamount.value;
       feegeneralnew.value =
           (generalpricenew.value * feegeneralorignal.value) / 100;
       generaltaxnew.value = (generalpricenew.value * generaltax.value) / 100;
       totalgeneral.value =
           generaltaxnew.value + feegeneralnew.value + generalpricenew.value;
       totalgeneralticket.value = totalgeneral.value + totalvip.value;
-      totalgeneralticket.value = totalgeneralticket.value - dicountamount.value;
     } else if (percentagehai.value == true) {
       print('calculation for percentage hai');
       countergeneral.value++;
 
       generalpricenew.value = generalpriceorignal.value * countergeneral.value;
+      totalpricewithouttaxgenreral.value =
+          vippricenew.value + generalpricenew.value;
+
+      priceafterdiscountgenral.value = totalpricewithouttaxgenreral.value -
+          (totalpricewithouttaxgenreral.value * dicountpercentage.value) / 100;
       feegeneralnew.value =
           (generalpricenew.value * feegeneralorignal.value) / 100;
       generaltaxnew.value = (generalpricenew.value * generaltax.value) / 100;
-      totalgeneral.value =
-          generaltaxnew.value + feegeneralnew.value + generalpricenew.value;
+      totalgeneral.value = generaltaxnew.value +
+          feegeneralnew.value +
+          priceafterdiscountgenral.value;
+      print('rana hah');
+      print(totalgeneral.value);
       totalgeneralticket.value = totalgeneral.value + totalvip.value;
-      totalgeneralticket.value =
-          totalgeneralticket.value * (100 - dicountpercentage.value) / 100;
+
       print(totalgeneralticket.value);
     } else {
       countergeneral.value++;
 
       generalpricenew.value = generalpriceorignal.value * countergeneral.value;
+      totalpricewithouttaxgenreral.value =
+          vippricenew.value + generalpricenew.value;
       feegeneralnew.value =
           (generalpricenew.value * feegeneralorignal.value) / 100;
       generaltaxnew.value = (generalpricenew.value * generaltax.value) / 100;
@@ -177,6 +210,11 @@ class TicketController extends GetxController {
       counterearlyvip.value++;
       earlybirdvippricenew.value =
           earlybirdvippriceorignal.value * counterearlyvip.value;
+      Pricettotalfordiscountearly.value =
+          earlybirdvippricenew.value + earlybirdpricenew.value;
+
+      priceafterdiscountearly.value =
+          Pricettotalfordiscountearly.value - dicountamount.value;
       feeearlybirdvipnew.value =
           (earlybirdvippricenew.value * feeearlybirdviporignal.value) / 100;
       earlybirdviptaxnew.value =
@@ -204,6 +242,8 @@ class TicketController extends GetxController {
       counterearlyvip.value++;
       earlybirdvippricenew.value =
           earlybirdvippriceorignal.value * counterearlyvip.value;
+      totalpricewithouttaxearly.value =
+          earlybirdvippricenew.value + earlybirdpricenew.value;
       feeearlybirdvipnew.value =
           (earlybirdvippricenew.value * feeearlybirdviporignal.value) / 100;
       earlybirdviptaxnew.value =
@@ -221,6 +261,12 @@ class TicketController extends GetxController {
       counterearlygeneral.value++;
       earlybirdpricenew.value =
           earlybirdpriceorignal.value * counterearlygeneral.value;
+      Pricettotalfordiscountearly.value =
+          earlybirdvippricenew.value + earlybirdpricenew.value;
+
+      priceafterdiscountearly.value =
+          Pricettotalfordiscountearly.value - dicountamount.value;
+
       feeearlybirdgeneralnew.value =
           (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
       earlybirdtaxnew.value =
@@ -250,6 +296,8 @@ class TicketController extends GetxController {
       counterearlygeneral.value++;
       earlybirdpricenew.value =
           earlybirdpriceorignal.value * counterearlygeneral.value;
+      totalpricewithouttaxearly.value =
+          earlybirdvippricenew.value + earlybirdpricenew.value;
       feeearlybirdgeneralnew.value =
           (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
       earlybirdtaxnew.value =
@@ -264,70 +312,121 @@ class TicketController extends GetxController {
   // decrement counter
   void decrementvip() {
     if (amounthai.value == true) {
-      countervip.value > 0 ? countervip.value-- : print('cannot decrement');
-      vippricenew.value = vippriceorignal.value * countervip.value;
-      feevipnew.value = (vippricenew.value * feeviporignal.value) / 100;
-      viptaxnew.value = (vippricenew.value * viptax.value) / 100;
-      totalvip.value = viptaxnew.value + feevipnew.value + vippricenew.value;
+      if (countervip.value > 0) {
+        countervip.value = countervip.value - 1;
+        vippricenew.value = vippriceorignal.value * countervip.value;
+        totalpricewithouttaxgenreral.value =
+            vippricenew.value + generalpricenew.value;
 
-      totalgeneralticket.value = totalgeneral.value + totalvip.value;
-      totalgeneralticket.value = totalgeneralticket.value - dicountamount.value;
+        priceafterdiscountgenral.value =
+            totalpricewithouttaxgenreral.value - dicountamount.value;
+        feevipnew.value = (vippricenew.value * feeviporignal.value) / 100;
+        viptaxnew.value = (vippricenew.value * viptax.value) / 100;
+        totalvip.value = viptaxnew.value + feevipnew.value + vippricenew.value;
+
+        totalgeneralticket.value = totalgeneral.value + totalvip.value;
+      } else {
+        totalvip.value = 0.0;
+        print('cannot decrement');
+      }
     } else if (percentagehai.value == true) {
-      countervip.value > 0 ? countervip.value-- : print('cannot decrement');
-      vippricenew.value = vippriceorignal.value * countervip.value;
-      feevipnew.value = (vippricenew.value * feeviporignal.value) / 100;
-      viptaxnew.value = (vippricenew.value * viptax.value) / 100;
-      totalvip.value = viptaxnew.value + feevipnew.value + vippricenew.value;
+      if (countervip.value > 0) {
+        countervip.value = countervip.value - 1;
+        vippricenew.value = vippriceorignal.value * countervip.value;
+        totalpricewithouttaxgenreral.value =
+            vippricenew.value + generalpricenew.value;
 
-      totalgeneralticket.value = totalgeneral.value + totalvip.value;
-      totalgeneralticket.value =
-          totalgeneralticket.value * (100 - dicountpercentage.value) / 100;
-    } else
-      countervip.value > 0 ? countervip.value-- : print('cannot decrement');
-    vippricenew.value = vippriceorignal.value * countervip.value;
-    feevipnew.value = (vippricenew.value * feeviporignal.value) / 100;
-    viptaxnew.value = (vippricenew.value * viptax.value) / 100;
-    totalvip.value = viptaxnew.value + feevipnew.value + vippricenew.value;
+        priceafterdiscountgenral.value = totalpricewithouttaxgenreral.value -
+            (totalpricewithouttaxgenreral.value * dicountpercentage.value) /
+                100;
+        feevipnew.value = (vippricenew.value * feeviporignal.value) / 100;
+        viptaxnew.value = (vippricenew.value * viptax.value) / 100;
+        totalvip.value =
+            viptaxnew.value + feevipnew.value + priceafterdiscountgenral.value;
+        print('haha');
+        print(totalvip.value);
+        print(totalgeneral.value);
 
-    totalgeneralticket.value = totalgeneral.value + totalvip.value;
+        totalgeneralticket.value = totalgeneral.value + totalvip.value;
+      } else {
+        totalvip.value = 0.0;
+        print('cannot decrement');
+      }
+    } else {
+      if (countervip.value > 0) {
+        countervip.value = countervip.value - 1;
+        vippricenew.value = vippriceorignal.value * countervip.value;
+        totalpricewithouttaxgenreral.value =
+            vippricenew.value + generalpricenew.value;
+        feevipnew.value = (vippricenew.value * feeviporignal.value) / 100;
+        viptaxnew.value = (vippricenew.value * viptax.value) / 100;
+        totalvip.value = viptaxnew.value + feevipnew.value + vippricenew.value;
+
+        totalgeneralticket.value = totalgeneral.value + totalvip.value;
+      } else {
+        print('cannot decrement');
+      }
+    }
   }
 
   void decrementgeneral() {
     if (amounthai.value == true) {
-      countergeneral.value > 0
-          ? countergeneral.value--
-          : print('cannot decrement');
-      generalpricenew.value = generalpriceorignal.value * countergeneral.value;
-      feegeneralnew.value =
-          (generalpricenew.value * feegeneralorignal.value) / 100;
-      generaltaxnew.value = (generalpricenew.value * generaltax.value) / 100;
-      totalgeneral.value =
-          generaltaxnew.value + feegeneralnew.value + generalpricenew.value;
-      totalgeneralticket.value = totalgeneral.value + totalvip.value;
-      totalgeneralticket.value = totalgeneralticket.value - dicountamount.value;
+      if (countergeneral.value > 0) {
+        countergeneral.value = countergeneral.value - 1;
+        generalpricenew.value =
+            generalpriceorignal.value * countergeneral.value;
+        totalpricewithouttaxgenreral.value =
+            vippricenew.value + generalpricenew.value;
+
+        priceafterdiscountgenral.value =
+            totalpricewithouttaxgenreral.value - dicountamount.value;
+        feegeneralnew.value =
+            (generalpricenew.value * feegeneralorignal.value) / 100;
+        generaltaxnew.value = (generalpricenew.value * generaltax.value) / 100;
+        totalgeneral.value =
+            generaltaxnew.value + feegeneralnew.value + generalpricenew.value;
+        totalgeneralticket.value = totalgeneral.value + totalvip.value;
+        totalgeneralticket.value =
+            totalgeneralticket.value - dicountamount.value;
+      } else {
+        totalgeneral.value = 0.0;
+        print('cannot decrement');
+      }
     } else if (percentagehai == true) {
       print('calculation for percentage hai general decrement');
-      countergeneral.value > 0
-          ? countergeneral.value--
-          : print('cannot decrement');
-      generalpricenew.value = generalpriceorignal.value * countergeneral.value;
-      feegeneralnew.value =
-          (generalpricenew.value * feegeneralorignal.value) / 100;
-      generaltaxnew.value = (generalpricenew.value * generaltax.value) / 100;
-      totalgeneral.value =
-          generaltaxnew.value + feegeneralnew.value + generalpricenew.value;
+      if (countergeneral.value > 0) {
+        countergeneral.value = countergeneral.value - 1;
+        generalpricenew.value =
+            generalpriceorignal.value * countergeneral.value;
+        totalpricewithouttaxgenreral.value =
+            vippricenew.value + generalpricenew.value;
 
-      totalgeneralticket.value = totalgeneral.value + totalvip.value;
-      totalgeneralticket.value =
-          totalgeneralticket.value * (100 - dicountpercentage.value) / 100;
-
-      totalearlyticket.value =
-          totalearlyticket.value * (100 - dicountpercentage.value) / 100;
+        priceafterdiscountgenral.value = totalpricewithouttaxgenreral.value -
+            (totalpricewithouttaxgenreral.value * dicountpercentage.value) /
+                100;
+        feegeneralnew.value =
+            (generalpricenew.value * feegeneralorignal.value) / 100;
+        generaltaxnew.value = (generalpricenew.value * generaltax.value) / 100;
+        totalgeneral.value = generaltaxnew.value +
+            feegeneralnew.value +
+            priceafterdiscountgenral.value;
+        print('hmmm');
+        print(totalgeneral.value);
+        print(totalvip.value);
+        totalgeneralticket.value = totalgeneral.value + totalvip.value;
+        print(totalgeneralticket.value);
+        print('sadsad');
+      } else {
+        totalgeneral.value = 0.0;
+        print('cannot decrement');
+      }
     } else {
       countergeneral.value > 0
           ? countergeneral.value--
           : print('cannot decrement');
       generalpricenew.value = generalpriceorignal.value * countergeneral.value;
+      totalpricewithouttaxgenreral.value =
+          vippricenew.value + generalpricenew.value;
       feegeneralnew.value =
           (generalpricenew.value * feegeneralorignal.value) / 100;
       generaltaxnew.value = (generalpricenew.value * generaltax.value) / 100;
@@ -340,12 +439,18 @@ class TicketController extends GetxController {
   void decrementearlyvip() {
     if (amounthai.value == true) {
       print('calculation for amount hai early vip decrement');
+      print('hello');
       counterearlyvip.value > 0
           ? counterearlyvip.value--
           : print('cannot decrement');
 
       earlybirdvippricenew.value =
           earlybirdvippriceorignal.value * counterearlyvip.value;
+      Pricettotalfordiscountearly.value =
+          earlybirdvippricenew.value + earlybirdpricenew.value;
+
+      priceafterdiscountearly.value =
+          Pricettotalfordiscountearly.value - dicountamount.value;
       feeearlybirdvipnew.value =
           (earlybirdvippricenew.value * feeearlybirdviporignal.value) / 100;
       earlybirdviptaxnew.value =
@@ -355,8 +460,7 @@ class TicketController extends GetxController {
           earlybirdvippricenew.value;
       totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
       totalearlyticket.value = totalearlyticket.value - dicountamount.value;
-    }
-    if (percentagehai.value == true) {
+    } else if (percentagehai.value == true) {
       print('calculation for percentage hai early vip decrement');
       counterearlyvip.value > 0
           ? counterearlyvip.value--
@@ -374,30 +478,14 @@ class TicketController extends GetxController {
       totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
       totalearlyticket.value =
           totalearlyticket.value * (100 - dicountpercentage.value) / 100;
-    } else if (percentagehai == true) {
-      counterearlyvip.value > 0
-          ? counterearlyvip.value--
-          : print('cannot decrement');
-
-      earlybirdvippricenew.value =
-          earlybirdvippriceorignal.value * counterearlyvip.value;
-      feeearlybirdvipnew.value =
-          (earlybirdvippricenew.value * feeearlybirdviporignal.value) / 100;
-      earlybirdviptaxnew.value =
-          (earlybirdvippricenew.value * earlybirdviptax.value) / 100;
-      totalearlyvip.value = earlybirdviptaxnew.value +
-          feeearlybirdvipnew.value +
-          earlybirdvippricenew.value;
-      totalearlyticket.value = totalearlyvip.value + totalearlygeneral.value;
-      totalearlyticket.value =
-          totalearlyticket.value * (100 - dicountpercentage.value) / 100;
     } else {
       counterearlyvip.value > 0
           ? counterearlyvip.value--
           : print('cannot decrement');
-
       earlybirdvippricenew.value =
           earlybirdvippriceorignal.value * counterearlyvip.value;
+      totalpricewithouttaxearly.value =
+          earlybirdvippricenew.value + earlybirdpricenew.value;
       feeearlybirdvipnew.value =
           (earlybirdvippricenew.value * feeearlybirdviporignal.value) / 100;
       earlybirdviptaxnew.value =
@@ -418,6 +506,12 @@ class TicketController extends GetxController {
 
       earlybirdpricenew.value =
           earlybirdpriceorignal.value * counterearlygeneral.value;
+
+      Pricettotalfordiscountearly.value =
+          earlybirdvippricenew.value + earlybirdpricenew.value;
+
+      priceafterdiscountearly.value =
+          Pricettotalfordiscountearly.value - dicountamount.value;
       feeearlybirdgeneralnew.value =
           (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
       earlybirdtaxnew.value =
@@ -450,6 +544,10 @@ class TicketController extends GetxController {
           : print('cannot decrement');
       earlybirdpricenew.value =
           earlybirdpriceorignal.value * counterearlygeneral.value;
+
+      totalpricewithouttaxearly.value =
+          earlybirdvippricenew.value + earlybirdpricenew.value;
+
       feeearlybirdgeneralnew.value =
           (earlybirdpricenew.value * feeearlybirdgeneralorignal.value) / 100;
       earlybirdtaxnew.value =

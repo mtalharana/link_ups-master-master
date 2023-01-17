@@ -64,6 +64,7 @@ class TicketType extends StatefulWidget {
 
 class _TicketTypeState extends State<TicketType> {
   TicketController ticketController = Get.put(TicketController());
+
   List earlybirdcheck = [];
   int earlybirdchecknew = 0;
   late final _subscription2;
@@ -160,35 +161,7 @@ class _TicketTypeState extends State<TicketType> {
 
   @override
   Widget build(BuildContext context) {
-    print(entcontroller.percentage!.value.toString());
-
     TicketController ticketController = Get.put(TicketController());
-    if (ticketController.discountavailable.value == true) {
-      ticketController.getdiscount();
-    }
-
-    // ticketController.feeearlybirdgeneralnew.value = 0.0;
-    // ticketController.feeearlybirdvipnew.value = 0.0;
-    // ticketController.feevipnew.value = 0.0;
-
-    // ticketController.earlybirdtaxnew.value = 0.0;
-    // ticketController.viptaxnew.value = 0.0;
-    // // ticketController.generaltaxnew.value = 0.0;
-    // ticketController.earlybirdviptaxnew.value = 0.0;
-
-    // ticketController.earlybirdpricenew.value = 0.0;
-    // ticketController.totalgeneral.value = 0.0;
-    // ticketController.earlybirdvippricenew.value = 0.0;
-
-    // // ticketController.generalpricenew.value = 0.0;
-
-    // ticketController.vippricenew.value = 0.0;
-    // ticketController.totalvip.value = 0.0;
-    // ticketController.totalearlygeneral.value = 0.0;
-    // ticketController.totalearlyvip.value = 0.0;
-    // ticketController.totalgeneral.value = 0.0;
-
-    // ticketController.totalvip.value = 0.0;
 
     var appSize = MediaQuery.of(context).size;
     var appSize2 = MediaQuery.of(context).size;
@@ -222,7 +195,9 @@ class _TicketTypeState extends State<TicketType> {
                     children: [
                       Obx(
                         () => TicketTypeContainer(
-                            ticketname: 'Early Bird General Tickets ',
+                            ticketname: 'Early Bird General Tickets   \$' +
+                                ticketController.earlybirdpriceorignal.value
+                                    .toString(),
                             Price: ticketController.earlybirdpricenew.value,
                             fee: ticketController.feeearlybirdgeneralnew.value,
                             tax: ticketController.earlybirdtaxnew.value,
@@ -246,7 +221,9 @@ class _TicketTypeState extends State<TicketType> {
                       ),
                       Obx(
                         () => TicketTypeContainer(
-                          ticketname: 'Early Bird VIP  ',
+                          ticketname: 'Early Bird VIP      \$' +
+                              ticketController.earlybirdvippriceorignal.value
+                                  .toString(),
                           Price: ticketController.earlybirdvippricenew.value,
                           fee: ticketController.feeearlybirdvipnew.value,
                           tax: ticketController.earlybirdviptaxnew.value,
@@ -272,7 +249,8 @@ class _TicketTypeState extends State<TicketType> {
                       ),
                       Obx(
                         () => TicketTypeContainer(
-                          ticketname: 'VIP',
+                          ticketname: 'VIP     \$' +
+                              ticketController.vippriceorignal.value.toString(),
                           Price: ticketController.vippricenew.value,
                           fee: ticketController.feevipnew.value,
                           tax: ticketController.viptaxnew.value,
@@ -289,7 +267,9 @@ class _TicketTypeState extends State<TicketType> {
                       ),
                       Obx(
                         () => TicketTypeContainer(
-                          ticketname: 'General Admission',
+                          ticketname: 'General Admission   \$' +
+                              ticketController.generalpriceorignal.value
+                                  .toString(),
                           Price: ticketController.generalpricenew.value,
                           fee: ticketController.feegeneralnew.value,
                           tax: ticketController.generaltaxnew.value,
@@ -336,11 +316,118 @@ class _TicketTypeState extends State<TicketType> {
             SizedBox(
               height: 30,
             ),
-            Obx(() => Center(
+            Obx(
+              () => Center(
                 child: ticketController.discountavailable.value.toString() ==
                         true.toString()
-                    ? Text('Discount Available')
-                    : Text('Discount Not Available'))),
+                    ? Column(
+                        children: [
+                          Text(
+                            'Discount Applied',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Color.fromARGB(255, 110, 110, 110)),
+                          ),
+                          Obx(() => ticketController.amounthai.value == true
+                              ? Center(
+                                  child: Text(
+                                    'Discount Amount: \$' +
+                                        ticketController.dicountamount.value
+                                            .toStringAsFixed(2),
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        color:
+                                            Color.fromARGB(255, 110, 110, 110)),
+                                  ),
+                                )
+                              : Center(
+                                  child: Text(
+                                    'Discount Percentage: ' +
+                                        ticketController.dicountpercentage
+                                            .toStringAsFixed(2) +
+                                        ' %',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        color:
+                                            Color.fromARGB(255, 110, 110, 110)),
+                                  ),
+                                ))
+                        ],
+                      )
+                    : Text(
+                        'Discount Not Applied',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 110, 110, 110)),
+                      ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ticketController.discountavailable.value == true
+                ? SizedBox(
+                    height: 20,
+                  )
+                : SizedBox(
+                    height: 0,
+                  ),
+            earlybirdchecknew == 1
+                ? Obx(
+                    () => Center(
+                      child: Text(
+                        'Total Price without Tax:  \$' +
+                            ticketController.Pricettotalfordiscountearly.value
+                                .toStringAsFixed(2),
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 110, 110, 110)),
+                      ),
+                    ),
+                  )
+                : Obx(
+                    () => Center(
+                      child: Text(
+                        'Total Price without Tax: \$' +
+                            ticketController.totalpricewithouttaxgenreral.value
+                                .toStringAsFixed(2),
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 110, 110, 110)),
+                      ),
+                    ),
+                  ),
+            SizedBox(
+              height: 20,
+            ),
+            earlybirdchecknew == 1
+                ? Obx(
+                    () => Center(
+                      child: Text(
+                        'Total Price after Discount: \$' +
+                            ticketController.priceafterdiscountearly.value
+                                .toStringAsFixed(2),
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 110, 110, 110)),
+                      ),
+                    ),
+                  )
+                : Obx(
+                    () => Center(
+                      child: Text(
+                        'Total Price after Discount \$' +
+                            ticketController.priceafterdiscountgenral.value
+                                .toStringAsFixed(2),
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 110, 110, 110)),
+                      ),
+                    ),
+                  ),
+            SizedBox(
+              height: 20,
+            ),
             Center(
               child: Obx(() => Text(
                     earlybirdchecknew == 1
@@ -353,7 +440,7 @@ class _TicketTypeState extends State<TicketType> {
                         : ticketController.countergeneral.value == 0 &&
                                 ticketController.countervip.value == 0
                             ? 'Total   \$ 0.0 '
-                            : 'Total  \$' +
+                            : 'Total  \$ ' +
                                 ticketController.totalgeneralticket.value
                                     .toStringAsFixed(2),
                     style: TextStyle(
@@ -362,7 +449,7 @@ class _TicketTypeState extends State<TicketType> {
                   )),
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
             earlybirdchecknew == 1
                 ? Obx(() => ticketController.counterearlyvip.value == 0 &&
